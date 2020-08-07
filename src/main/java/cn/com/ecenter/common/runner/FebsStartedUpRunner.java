@@ -71,7 +71,7 @@ public class FebsStartedUpRunner implements ApplicationRunner {
                 // 默认为 windows时才自动打开页面
                 if (StringUtils.containsIgnoreCase(os, FebsConstant.SYSTEM_WINDOWS)) {
                     //使用默认浏览器打开系统登录页
-//                    Runtime.getRuntime().exec("cmd  /c  start " + url);
+                    Runtime.getRuntime().exec("cmd  /c  start " + url);
                 }
             }
         }
