@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.com.ecenter.xzspxt.mapper.NytDepartMapper">
+
+    <resultMap type="cn.com.ecenter.xzspxt.entity.NytDepartEntity" id="BaseResultMap">
+        <result property="id" column="id"/>
+        <result property="address" column="address"/>
+        <result property="fkCreateUid" column="fk_create_uid"/>
+        <result property="createName" column="create_name"/>
+        <result property="fkManagerUid" column="fk_manager_uid"/>
+        <result property="managerName" column="manager_name"/>
+        <result property="name" column="name"/>
+        <result property="remarks" column="remarks"/>
+        <result property="idxParentId" column="idx_parent_id"/>
+        <result property="shortName" column="short_name"/>
+        <result property="sort" column="sort"/>
+        <result property="state" column="state"/>
+        <result property="telephone" column="telephone"/>
+        <result property="areaCode" column="area_code"/>
+        <result property="zipCode" column="zip_code"/>
+        <result property="organizationOid" column="organization_oid"/>
+        <result property="unifiedCreditCode" column="unified_credit_code"/>
+        <result property="orgLevel" column="org_level"/>
+        <result property="uniqueCoding" column="unique_coding"/>
+        <result property="administrationCode" column="administration_code"/>
+        <result property="administrationLevel" column="administration_level"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="bak1" column="bak1"/>
+        <result property="bak2" column="bak2"/>
+        <result property="bak3" column="bak3"/>
+        <result property="bak4" column="bak4"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+                        id,
+                        address,
+                        fk_create_uid,
+                        create_name,
+                        fk_manager_uid,
+                        manager_name,
+                        name,
+                        remarks,
+                        idx_parent_id,
+                        short_name,
+                        sort,
+                        state,
+                        telephone,
+                        area_code,
+                        zip_code,
+                        organization_oid,
+                        unified_credit_code,
+                        org_level,
+                        unique_coding,
+                        administration_code,
+                        administration_level,
+                        is_delete,
+                        create_time,
+                        update_time,
+                        bak1,
+                        bak2,
+                        bak3,
+                        bak4,
+            </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        *
+        from nyt_depart
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <insert id="insertSelective" parameterType="cn.com.ecenter.xzspxt.entity.NytDepartEntity" >
+        insert into nyt_depart
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+                        <if test="id != null" >
+                id,
+            </if>
+                        <if test="address != null" >
+                address,
+            </if>
+                        <if test="fkCreateUid != null" >
+                fk_create_uid,
+            </if>
+                        <if test="createName != null" >
+                create_name,
+            </if>
+                        <if test="fkManagerUid != null" >
+                fk_manager_uid,
+            </if>
+                        <if test="managerName != null" >
+                manager_name,
+            </if>
+                        <if test="name != null" >
+                name,
+            </if>
+                        <if test="remarks != null" >
+                remarks,
+            </if>
+                        <if test="idxParentId != null" >
+                idx_parent_id,
+            </if>
+                        <if test="shortName != null" >
+                short_name,
+            </if>
+                        <if test="sort != null" >
+                sort,
+            </if>
+                        <if test="state != null" >
+                state,
+            </if>
+                        <if test="telephone != null" >
+                telephone,
+            </if>
+                        <if test="areaCode != null" >
+                area_code,
+            </if>
+                        <if test="zipCode != null" >
+                zip_code,
+            </if>
+                        <if test="organizationOid != null" >
+                organization_oid,
+            </if>
+                        <if test="unifiedCreditCode != null" >
+                unified_credit_code,
+            </if>
+                        <if test="orgLevel != null" >
+                org_level,
+            </if>
+                        <if test="uniqueCoding != null" >
+                unique_coding,
+            </if>
+                        <if test="administrationCode != null" >
+                administration_code,
+            </if>
+                        <if test="administrationLevel != null" >
+                administration_level,
+            </if>
+                        <if test="isDelete != null" >
+                is_delete,
+            </if>
+                        <if test="createTime != null" >
+                create_time,
+            </if>
+                        <if test="updateTime != null" >
+                update_time,
+            </if>
+                        <if test="bak1 != null" >
+                bak1,
+            </if>
+                        <if test="bak2 != null" >
+                bak2,
+            </if>
+                        <if test="bak3 != null" >
+                bak3,
+            </if>
+                        <if test="bak4 != null" >
+                bak4,
+            </if>
+                    </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+                        <if test="id != null" >
+                #{id},
+            </if>
+                        <if test="address != null" >
+                #{address},
+            </if>
+                        <if test="fkCreateUid != null" >
+                #{fkCreateUid},
+            </if>
+                        <if test="createName != null" >
+                #{createName},
+            </if>
+                        <if test="fkManagerUid != null" >
+                #{fkManagerUid},
+            </if>
+                        <if test="managerName != null" >
+                #{managerName},
+            </if>
+                        <if test="name != null" >
+                #{name},
+            </if>
+                        <if test="remarks != null" >
+                #{remarks},
+            </if>
+                        <if test="idxParentId != null" >
+                #{idxParentId},
+            </if>
+                        <if test="shortName != null" >
+                #{shortName},
+            </if>
+                        <if test="sort != null" >
+                #{sort},
+            </if>
+                        <if test="state != null" >
+                #{state},
+            </if>
+                        <if test="telephone != null" >
+                #{telephone},
+            </if>
+                        <if test="areaCode != null" >
+                #{areaCode},
+            </if>
+                        <if test="zipCode != null" >
+                #{zipCode},
+            </if>
+                        <if test="organizationOid != null" >
+                #{organizationOid},
+            </if>
+                        <if test="unifiedCreditCode != null" >
+                #{unifiedCreditCode},
+            </if>
+                        <if test="orgLevel != null" >
+                #{orgLevel},
+            </if>
+                        <if test="uniqueCoding != null" >
+                #{uniqueCoding},
+            </if>
+                        <if test="administrationCode != null" >
+                #{administrationCode},
+            </if>
+                        <if test="administrationLevel != null" >
+                #{administrationLevel},
+            </if>
+                        <if test="isDelete != null" >
+                #{isDelete},
+            </if>
+                        <if test="createTime != null" >
+                #{createTime},
+            </if>
+                        <if test="updateTime != null" >
+                #{updateTime},
+            </if>
+                        <if test="bak1 != null" >
+                #{bak1},
+            </if>
+                        <if test="bak2 != null" >
+                #{bak2},
+            </if>
+                        <if test="bak3 != null" >
+                #{bak3},
+            </if>
+                        <if test="bak4 != null" >
+                #{bak4},
+            </if>
+                    </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="cn.com.ecenter.xzspxt.entity.NytDepartEntity" >
+        update nyt_depart
+        <set >
+                                    <if test="id != null" >
+                id = #{id},
+            </if>
+                                                <if test="address != null" >
+                address = #{address},
+            </if>
+                                                <if test="fkCreateUid != null" >
+                fk_create_uid = #{fkCreateUid},
+            </if>
+                                                <if test="createName != null" >
+                create_name = #{createName},
+            </if>
+                                                <if test="fkManagerUid != null" >
+                fk_manager_uid = #{fkManagerUid},
+            </if>
+                                                <if test="managerName != null" >
+                manager_name = #{managerName},
+            </if>
+                                                <if test="name != null" >
+                name = #{name},
+            </if>
+                                                <if test="remarks != null" >
+                remarks = #{remarks},
+            </if>
+                                                <if test="idxParentId != null" >
+                idx_parent_id = #{idxParentId},
+            </if>
+                                                <if test="shortName != null" >
+                short_name = #{shortName},
+            </if>
+                                                <if test="sort != null" >
+                sort = #{sort},
+            </if>
+                                                <if test="state != null" >
+                state = #{state},
+            </if>
+                                                <if test="telephone != null" >
+                telephone = #{telephone},
+            </if>
+                                                <if test="areaCode != null" >
+                area_code = #{areaCode},
+            </if>
+                                                <if test="zipCode != null" >
+                zip_code = #{zipCode},
+            </if>
+                                                <if test="organizationOid != null" >
+                organization_oid = #{organizationOid},
+            </if>
+                                                <if test="unifiedCreditCode != null" >
+                unified_credit_code = #{unifiedCreditCode},
+            </if>
+                                                <if test="orgLevel != null" >
+                org_level = #{orgLevel},
+            </if>
+                                                <if test="uniqueCoding != null" >
+                unique_coding = #{uniqueCoding},
+            </if>
+                                                <if test="administrationCode != null" >
+                administration_code = #{administrationCode},
+            </if>
+                                                <if test="administrationLevel != null" >
+                administration_level = #{administrationLevel},
+            </if>
+                                                <if test="isDelete != null" >
+                is_delete = #{isDelete},
+            </if>
+                                                <if test="createTime != null" >
+                create_time = #{createTime},
+            </if>
+                                                <if test="updateTime != null" >
+                update_time = #{updateTime},
+            </if>
+                                                <if test="bak1 != null" >
+                bak1 = #{bak1},
+            </if>
+                                                <if test="bak2 != null" >
+                bak2 = #{bak2},
+            </if>
+                                                <if test="bak3 != null" >
+                bak3 = #{bak3},
+            </if>
+                                                <if test="bak4 != null" >
+                bak4 = #{bak4},
+            </if>
+                                </set>
+        where pk_id = #{pkId,jdbcType=VARCHAR}
+    </update>
+
+    <select id="list" resultMap="BaseResultMap" parameterType="java.util.Map">
+        SELECT *
+        FROM
+        nyt_depart
+        WHERE
+        1 = 1
+        <if test="startTime != null and endTime != null">
+            and date(create_time) between #{startTime,jdbcType=VARCHAR} and #{endTime,jdbcType=VARCHAR}
+        </if>
+        ORDER BY create_time <if test="sort == 0">ASC</if><if test="sort == 1">DESC</if>
+        limit #{pageIndex}, #{pageSize};
+    </select>
+
+    <select id="count" resultType="java.lang.Integer" parameterType="java.util.Map" >
+        select COUNT(1)
+        FROM
+        nyt_depart
+        WHERE
+        1 = 1
+        <if test="startTime != null and endTime != null">
+            and date(create_time) between #{startTime,jdbcType=VARCHAR} and #{endTime,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+    <insert id="saveList" parameterType="java.util.List">
+    insert into nyt_data_dict
+    (
+
+    )
+    values
+    <foreach collection="list" item="item" index= "index" separator =",">
+        (
+
+        )
+    </foreach>
+    </insert>
+</mapper>

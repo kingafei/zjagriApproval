@@ -1,0 +1,1034 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.com.ecenter.xzspxt.mapper.NytQlsxMapper">
+
+    <resultMap type="cn.com.ecenter.xzspxt.entity.NytQlsxEntity" id="BaseResultMap">
+        <result property="id" column="ID"/>
+        <result property="rowguid" column="ROWGUID"/>
+        <result property="updateDate" column="UPDATE_DATE"/>
+        <result property="updateType" column="UPDATE_TYPE"/>
+        <result property="qlKind" column="QL_KIND"/>
+        <result property="qlAtt" column="QL_ATT"/>
+        <result property="qlFullId" column="QL_Full_ID"/>
+        <result property="qlMainitemId" column="QL_MAINITEM_ID"/>
+        <result property="qlSubitemId" column="QL_SUBITEM_ID"/>
+        <result property="shiquancj" column="SHIQUANCJ"/>
+        <result property="belongxiaqucode" column="BELONGXIAQUCODE"/>
+        <result property="qlDepOrgcdoe" column="QL_DEP_ORGCDOE"/>
+        <result property="ouorgcode" column="OUORGCODE"/>
+        <result property="ouguid" column="OUGUID"/>
+        <result property="itemsource" column="ITEMSOURCE"/>
+        <result property="itemsourcetype" column="ITEMSOURCETYPE"/>
+        <result property="entrust" column="ENTRUST"/>
+        <result property="entrustdes" column="ENTRUSTDES"/>
+        <result property="versionNumber" column="VERSION_NUMBER"/>
+        <result property="versionDate" column="VERSION_DATE"/>
+        <result property="qlEffectTime" column="QL_EFFECT_TIME"/>
+        <result property="qlInnerCode" column="QL_INNER_CODE"/>
+        <result property="qlName" column="QL_NAME"/>
+        <result property="qlState" column="QL_STATE"/>
+        <result property="lawbasis" column="LAWBASIS"/>
+        <result property="anticipateDay" column="ANTICIPATE_DAY"/>
+        <result property="anticipateType" column="ANTICIPATE_TYPE"/>
+        <result property="promiseDay" column="PROMISE_DAY"/>
+        <result property="feebasis" column="FeeBasis"/>
+        <result property="isLevywaiver" column="Is_LevyWaiver"/>
+        <result property="applyerminCount" column="APPLYERMIN_COUNT"/>
+        <result property="isPilot" column="IS_PILOT"/>
+        <result property="isSimplepunish" column="Is_SimplePunish"/>
+        <result property="qlDep" column="QL_DEP"/>
+        <result property="acpInstitution" column="Acp_institution"/>
+        <result property="decInstitution" column="Dec_institution"/>
+        <result property="leadDept" column="LEAD_DEPT"/>
+        <result property="bjtype" column="BJTYPE"/>
+        <result property="benjispxz" column="BENJISPXZ"/>
+        <result property="handleFrequency" column="HANDLE_FREQUENCY"/>
+        <result property="contentInvolve" column="Content_involve"/>
+        <result property="xingzhenxdrxz" column="XINGZHENXDRXZ"/>
+        <result property="applicableObject" column="Applicable_object"/>
+        <result property="xingzhenxdrxy" column="XINGZHENXDRXY"/>
+        <result property="applyCondition" column="APPLY_CONDITION"/>
+        <result property="countLimit" column="Count_limit"/>
+        <result property="countNote" column="Count_note"/>
+        <result property="banRequirement" column="Ban_requirement"/>
+        <result property="shixiangsctype" column="SHIXIANGSCtype"/>
+        <result property="shixiangsclx" column="SHIXIANGSCLX"/>
+        <result property="banjianFinishfiles" column="BANJIAN_FINISHFILES"/>
+        <result property="linkTel" column="LINK_TEL"/>
+        <result property="superviseTel" column="SUPERVISE_TEL"/>
+        <result property="applyType" column="Apply_type"/>
+        <result property="applyTypeTel" column="Apply_type_tel"/>
+        <result property="applyTypeMail" column="Apply_type_mail"/>
+        <result property="applyTypeFax" column="Apply_type_fax"/>
+        <result property="handleType" column="Handle_type"/>
+        <result property="webapplyurl" column="WEBAPPLYURL"/>
+        <result property="webconsulturl" column="WEBCONSULTURL"/>
+        <result property="mbfarenadd" column="MbFarenAdd"/>
+        <result property="mbgerenflag" column="MbGerenFlag"/>
+        <result property="nosuitApply" column="NoSuit_Apply"/>
+        <result property="isUnifydo" column="IS_UnifyDo"/>
+        <result property="isUpunify" column="IS_UpUnify"/>
+        <result property="isCs" column="IS_CS"/>
+        <result property="isVlb" column="IS_VLB"/>
+        <result property="unifydodes" column="UnifyDoDes"/>
+        <result property="webapplymode" column="WebApplyMode"/>
+        <result property="chargeFlag" column="CHARGE_FLAG"/>
+        <result property="chargeBasis" column="CHARGE_BASIS"/>
+        <result property="hangyeclasstype" column="HangYeClassType"/>
+        <result property="rightclassQiyezt" column="RIGHTCLASS_QIYEZT"/>
+        <result property="rightclassQiyedx" column="RIGHTCLASS_QIYEDX"/>
+        <result property="rightclassGerensx" column="RIGHTCLASS_GERENSX"/>
+        <result property="rightclassGerendx" column="RIGHTCLASS_GERENDX"/>
+        <result property="qlSubKind" column="QL_Sub_Kind"/>
+        <result property="imFlowUrl" column="IM_FLOW_url"/>
+        <result property="inFlowInfoId" column="IN_FLOW_INFO_ID"/>
+        <result property="outFlowUrl" column="OUT_FLOW_url"/>
+        <result property="materialInfoId" column="MATERIAL_INFO_ID"/>
+        <result property="chargeitemInfoId" column="CHARGEITEM_INFO_ID"/>
+        <result property="qaInfoId" column="QA_INFO_ID"/>
+        <result property="factInfoid" column="FACT_INFOID"/>
+        <result property="acceptAddressInfoId" column="ACCEPT_ADDRESS_INFO_ID"/>
+        <result property="farenurl" column="FaRenUrl"/>
+        <result property="serviceMode" column="Service_mode"/>
+        <result property="serviceDay" column="Service_day"/>
+        <result property="destime" column="DesTime"/>
+        <result property="gerenflag" column="GeRenFlag"/>
+        <result property="isTongjian" column="Is_TongJian"/>
+        <result property="qlInnerCodeItem" column="Ql_inner_code_item"/>
+        <result property="applyerminCountDesc" column="APPLYERMIN_COUNT_DESC"/>
+        <result property="outypecode" column="OUTypeCode"/>
+        <result property="outFlowDesc" column="OUT_FLOW_DESC"/>
+        <result property="banjianFinishtype" column="BANJIAN_FINISHTYPE"/>
+        <result property="isSpecialpro" column="IS_SpecialPro"/>
+        <result property="baknote" column="BakNote"/>
+        <result property="state2" column="State2"/>
+        <result property="syncSign" column="SYNC_SIGN"/>
+        <result property="syncDate" column="SYNC_DATE"/>
+        <result property="syncErrorDesc" column="SYNC_ERROR_DESC"/>
+        <result property="appwebapplyurl" column="APPWEBAPPLYURL"/>
+        <result property="appappointmenturl" column="APPAPPOINTMENTURL"/>
+        <result property="appointmenturl" column="APPOINTMENTURL"/>
+        <result property="isWebappointment" column="IS_WEBAPPOINTMENT"/>
+        <result property="webappointmentperiod" column="WEBAPPOINTMENTPERIOD"/>
+        <result property="maincontext" column="MAINCONTEXT"/>
+        <result property="doDept" column="DO_DEPT"/>
+        <result property="relatedguid" column="RELATEDGUID"/>
+        <result property="relatedId" column="RELATED_ID"/>
+        <result property="isExpress" column="IS_EXPRESS"/>
+        <result property="ispyc" column="ISPYC"/>
+        <result property="lbsx" column="LBSX"/>
+        <result property="serviceSubKind" column="Service_Sub_Kind"/>
+        <result property="bak1" column="Bak1"/>
+        <result property="bak2" column="Bak2"/>
+        <result property="bak3" column="Bak3"/>
+        <result property="bak4" column="Bak4"/>
+        <result property="bak5" column="Bak5"/>
+        <result property="bak6" column="Bak6"/>
+        <result property="bak7" column="Bak7"/>
+        <result property="bak8" column="Bak8"/>
+        <result property="bak9" column="Bak9"/>
+        <result property="bak10" column="Bak10"/>
+        <result property="bak11" column="Bak11"/>
+        <result property="bak12" column="Bak12"/>
+        <result property="bak13" column="Bak13"/>
+        <result property="op" column="op"/>
+        <result property="tongTime" column="tong_time"/>
+        <result property="sendtime" column="sendtime"/>
+        <result property="tongid" column="tongID"/>
+        <result property="isTouzip" column="Is_TouZiP"/>
+        <result property="nounifyDo" column="NoUnify_Do"/>
+        <result property="ununifydoOther" column="UNUnifyDo_Other"/>
+        <result property="ishasownflow" column="IsHasOwnFlow"/>
+        <result property="bsznUrl" column="bszn_url"/>
+        <result property="nosuitReasondesc" column="NoSuit_ReasonDesc"/>
+        <result property="businessRegulate" column="business_regulate"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+                        ID,
+                        ROWGUID,
+                        UPDATE_DATE,
+                        UPDATE_TYPE,
+                        QL_KIND,
+                        QL_ATT,
+                        QL_Full_ID,
+                        QL_MAINITEM_ID,
+                        QL_SUBITEM_ID,
+                        SHIQUANCJ,
+                        BELONGXIAQUCODE,
+                        QL_DEP_ORGCDOE,
+                        OUORGCODE,
+                        OUGUID,
+                        ITEMSOURCE,
+                        ITEMSOURCETYPE,
+                        ENTRUST,
+                        ENTRUSTDES,
+                        VERSION_NUMBER,
+                        VERSION_DATE,
+                        QL_EFFECT_TIME,
+                        QL_INNER_CODE,
+                        QL_NAME,
+                        QL_STATE,
+                        LAWBASIS,
+                        ANTICIPATE_DAY,
+                        ANTICIPATE_TYPE,
+                        PROMISE_DAY,
+                        FeeBasis,
+                        Is_LevyWaiver,
+                        APPLYERMIN_COUNT,
+                        IS_PILOT,
+                        Is_SimplePunish,
+                        QL_DEP,
+                        Acp_institution,
+                        Dec_institution,
+                        LEAD_DEPT,
+                        BJTYPE,
+                        BENJISPXZ,
+                        HANDLE_FREQUENCY,
+                        Content_involve,
+                        XINGZHENXDRXZ,
+                        Applicable_object,
+                        XINGZHENXDRXY,
+                        APPLY_CONDITION,
+                        Count_limit,
+                        Count_note,
+                        Ban_requirement,
+                        SHIXIANGSCtype,
+                        SHIXIANGSCLX,
+                        BANJIAN_FINISHFILES,
+                        LINK_TEL,
+                        SUPERVISE_TEL,
+                        Apply_type,
+                        Apply_type_tel,
+                        Apply_type_mail,
+                        Apply_type_fax,
+                        Handle_type,
+                        WEBAPPLYURL,
+                        WEBCONSULTURL,
+                        MbFarenAdd,
+                        MbGerenFlag,
+                        NoSuit_Apply,
+                        IS_UnifyDo,
+                        IS_UpUnify,
+                        IS_CS,
+                        IS_VLB,
+                        UnifyDoDes,
+                        WebApplyMode,
+                        CHARGE_FLAG,
+                        CHARGE_BASIS,
+                        HangYeClassType,
+                        RIGHTCLASS_QIYEZT,
+                        RIGHTCLASS_QIYEDX,
+                        RIGHTCLASS_GERENSX,
+                        RIGHTCLASS_GERENDX,
+                        QL_Sub_Kind,
+                        IM_FLOW_url,
+                        IN_FLOW_INFO_ID,
+                        OUT_FLOW_url,
+                        MATERIAL_INFO_ID,
+                        CHARGEITEM_INFO_ID,
+                        QA_INFO_ID,
+                        FACT_INFOID,
+                        ACCEPT_ADDRESS_INFO_ID,
+                        FaRenUrl,
+                        Service_mode,
+                        Service_day,
+                        DesTime,
+                        GeRenFlag,
+                        Is_TongJian,
+                        Ql_inner_code_item,
+                        APPLYERMIN_COUNT_DESC,
+                        OUTypeCode,
+                        OUT_FLOW_DESC,
+                        BANJIAN_FINISHTYPE,
+                        IS_SpecialPro,
+                        BakNote,
+                        State2,
+                        SYNC_SIGN,
+                        SYNC_DATE,
+                        SYNC_ERROR_DESC,
+                        APPWEBAPPLYURL,
+                        APPAPPOINTMENTURL,
+                        APPOINTMENTURL,
+                        IS_WEBAPPOINTMENT,
+                        WEBAPPOINTMENTPERIOD,
+                        MAINCONTEXT,
+                        DO_DEPT,
+                        RELATEDGUID,
+                        RELATED_ID,
+                        IS_EXPRESS,
+                        ISPYC,
+                        LBSX,
+                        Service_Sub_Kind,
+                        Bak1,
+                        Bak2,
+                        Bak3,
+                        Bak4,
+                        Bak5,
+                        Bak6,
+                        Bak7,
+                        Bak8,
+                        Bak9,
+                        Bak10,
+                        Bak11,
+                        Bak12,
+                        Bak13,
+                        op,
+                        tong_time,
+                        sendtime,
+                        tongID,
+                        Is_TouZiP,
+                        NoUnify_Do,
+                        UNUnifyDo_Other,
+                        IsHasOwnFlow,
+                        bszn_url,
+                        NoSuit_ReasonDesc,
+                        business_regulate,
+            </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        *
+        from "nyt_qlsx"
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <insert id="addList" parameterType="java.util.List" >
+        insert into nyt_qlsx
+        (
+        ID,
+        ROWGUID,
+        UPDATE_DATE,
+        UPDATE_TYPE,
+        QL_KIND,
+        QL_ATT,
+        QL_Full_ID,
+        QL_MAINITEM_ID,
+        QL_SUBITEM_ID,
+        SHIQUANCJ,
+        BELONGXIAQUCODE,
+        QL_DEP_ORGCDOE,
+        OUORGCODE,
+        OUGUID,
+        ITEMSOURCE,
+        ITEMSOURCETYPE,
+        ENTRUST,
+        ENTRUSTDES,
+        VERSION_NUMBER,
+        VERSION_DATE,
+        QL_EFFECT_TIME,
+        QL_INNER_CODE,
+        QL_NAME,
+        QL_STATE,
+        LAWBASIS,
+        ANTICIPATE_DAY,
+        ANTICIPATE_TYPE,
+        PROMISE_DAY,
+        FeeBasis,
+        Is_LevyWaiver,
+        APPLYERMIN_COUNT,
+        IS_PILOT,
+        Is_SimplePunish,
+        QL_DEP,
+        Acp_institution,
+        Dec_institution,
+        LEAD_DEPT,
+        BJTYPE,
+        BENJISPXZ,
+        HANDLE_FREQUENCY,
+        Content_involve,
+        XINGZHENXDRXZ,
+        Applicable_object,
+        XINGZHENXDRXY,
+        APPLY_CONDITION,
+        Count_limit,
+        Count_note,
+        Ban_requirement,
+        SHIXIANGSCtype,
+        SHIXIANGSCLX,
+        BANJIAN_FINISHFILES,
+        LINK_TEL,
+        SUPERVISE_TEL,
+        Apply_type,
+        Apply_type_tel,
+        Apply_type_mail,
+        Apply_type_fax,
+        Handle_type,
+        WEBAPPLYURL,
+        WEBCONSULTURL,
+        MbFarenAdd,
+        MbGerenFlag,
+        NoSuit_Apply,
+        IS_UnifyDo,
+        IS_UpUnify,
+        IS_CS,
+        IS_VLB,
+        UnifyDoDes,
+        WebApplyMode,
+        CHARGE_FLAG,
+        CHARGE_BASIS,
+        HangYeClassType,
+        RIGHTCLASS_QIYEZT,
+        RIGHTCLASS_QIYEDX,
+        RIGHTCLASS_GERENSX,
+        RIGHTCLASS_GERENDX,
+        QL_Sub_Kind,
+        IM_FLOW_url,
+        IN_FLOW_INFO_ID,
+        OUT_FLOW_url,
+        MATERIAL_INFO_ID,
+        CHARGEITEM_INFO_ID,
+        QA_INFO_ID,
+        FACT_INFOID,
+        ACCEPT_ADDRESS_INFO_ID,
+        FaRenUrl,
+        Service_mode,
+        Service_day,
+        DesTime,
+        GeRenFlag,
+        Is_TongJian,
+        Ql_inner_code_item,
+        APPLYERMIN_COUNT_DESC,
+        OUTypeCode,
+        OUT_FLOW_DESC,
+        BANJIAN_FINISHTYPE,
+        IS_SpecialPro,
+        BakNote,
+        State2,
+        SYNC_SIGN,
+        SYNC_DATE,
+        SYNC_ERROR_DESC,
+        APPWEBAPPLYURL,
+        APPAPPOINTMENTURL,
+        APPOINTMENTURL,
+        IS_WEBAPPOINTMENT,
+        WEBAPPOINTMENTPERIOD,
+        MAINCONTEXT,
+        DO_DEPT,
+        RELATEDGUID,
+        RELATED_ID,
+        IS_EXPRESS,
+        ISPYC,
+        LBSX,
+        Service_Sub_Kind,
+        Bak1,
+        Bak2,
+        Bak3,
+        Bak4,
+        Bak5,
+        Bak6,
+        Bak7,
+        Bak8,
+        Bak9,
+        Bak10,
+        Bak11,
+        Bak12,
+        Bak13,
+        op,
+        tong_time,
+        sendtime,
+        tongID,
+        Is_TouZiP,
+        NoUnify_Do,
+        UNUnifyDo_Other,
+        IsHasOwnFlow,
+        bszn_url,
+        NoSuit_ReasonDesc,
+        business_regulate
+        )
+        values
+        <foreach collection="list" item="item" index="index" separator=",">(
+            #{item.id
+        },
+            #{item.rowguid},
+            #{item.updateDate},
+            #{item.updateType},
+            #{item.qlKind},
+            #{item.qlAtt},
+            #{item.qlFullId},
+            #{item.qlMainitemId},
+            #{item.qlSubitemId},
+            #{item.shiquancj},
+            #{item.belongxiaqucode},
+            #{item.qlDepOrgcdoe},
+            #{item.ouorgcode},
+            #{item.ouguid},
+            #{item.itemsource},
+            #{item.itemsourcetype},
+            #{item.entrust},
+            #{item.entrustdes},
+            #{item.versionNumber},
+            #{item.versionDate},
+            #{item.qlEffectTime},
+            #{item.qlInnerCode},
+            #{item.qlName},
+            #{item.qlState},
+            #{item.lawbasis},
+            #{item.anticipateDay},
+            #{item.anticipateType},
+            #{item.promiseDay},
+            #{item.feebasis},
+            #{item.isLevywaiver},
+            #{item.applyerminCount},
+            #{item.isPilot},
+            #{item.isSimplepunish},
+            #{item.qlDep},
+            #{item.acpInstitution},
+            #{item.decInstitution},
+            #{item.leadDept},
+            #{item.bjtype},
+            #{item.benjispxz},
+            #{item.handleFrequency},
+            #{item.contentInvolve},
+            #{item.xingzhenxdrxz},
+            #{item.applicableObject},
+            #{item.xingzhenxdrxy},
+            #{item.applyCondition},
+            #{item.countLimit},
+            #{item.countNote},
+            #{item.banRequirement},
+            #{item.shixiangsctype},
+            #{item.shixiangsclx},
+            #{item.banjianFinishfiles},
+            #{item.linkTel},
+            #{item.superviseTel},
+            #{item.applyType},
+            #{item.applyTypeTel},
+            #{item.applyTypeMail},
+            #{item.applyTypeFax},
+            #{item.handleType},
+            #{item.webapplyurl},
+            #{item.webconsulturl},
+            #{item.mbfarenadd},
+            #{item.mbgerenflag},
+            #{item.nosuitApply},
+            #{item.isUnifydo},
+            #{item.isUpunify},
+            #{item.isCs},
+            #{item.isVlb},
+            #{item.unifydodes},
+            #{item.webapplymode},
+            #{item.chargeFlag},
+            #{item.chargeBasis},
+            #{item.hangyeclasstype},
+            #{item.rightclassQiyezt},
+            #{item.rightclassQiyedx},
+            #{item.rightclassGerensx},
+            #{item.rightclassGerendx},
+            #{item.qlSubKind},
+            #{item.imFlowUrl},
+            #{item.inFlowInfoId},
+            #{item.outFlowUrl},
+            #{item.materialInfoId},
+            #{item.chargeitemInfoId},
+            #{item.qaInfoId},
+            #{item.factInfoid},
+            #{item.acceptAddressInfoId},
+            #{item.farenurl},
+            #{item.serviceMode},
+            #{item.serviceDay},
+            #{item.destime},
+            #{item.gerenflag},
+            #{item.isTongjian},
+            #{item.qlInnerCodeItem},
+            #{item.applyerminCountDesc},
+            #{item.outypecode},
+            #{item.outFlowDesc},
+            #{item.banjianFinishtype},
+            #{item.isSpecialpro},
+            #{item.baknote},
+            #{item.state2},
+            #{item.syncSign},
+            #{item.syncDate},
+            #{item.syncErrorDesc},
+            #{item.appwebapplyurl},
+            #{item.appappointmenturl},
+            #{item.appointmenturl},
+            #{item.isWebappointment},
+            #{item.webappointmentperiod},
+            #{item.maincontext},
+            #{item.doDept},
+            #{item.relatedguid},
+            #{item.relatedId},
+            #{item.isExpress},
+            #{item.ispyc},
+            #{item.lbsx},
+            #{item.serviceSubKind},
+            #{item.bak1},
+            #{item.bak2},
+            #{item.bak3},
+            #{item.bak4},
+            #{item.bak5},
+            #{item.bak6},
+            #{item.bak7},
+            #{item.bak8},
+            #{item.bak9},
+            #{item.bak10},
+            #{item.bak11},
+            #{item.bak12},
+            #{item.bak13},
+            #{item.op},
+            #{item.tongTime},
+            #{item.sendtime},
+            #{item.tongid},
+            #{item.isTouzip},
+            #{item.nounifyDo},
+            #{item.ununifydoOther},
+            #{item.ishasownflow},
+            #{item.bsznUrl},
+            #{item.nosuitReasondesc},
+            #{item.businessRegulate}
+         )
+        </foreach>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="cn.com.ecenter.xzspxt.entity.NytQlsxEntity" >
+        update "nyt_qlsx"
+        <set >
+                                    <if test="id != null" >
+                ID = #{id},
+            </if>
+                                                <if test="rowguid != null" >
+                ROWGUID = #{rowguid},
+            </if>
+                                                <if test="updateDate != null" >
+                UPDATE_DATE = #{updateDate},
+            </if>
+                                                <if test="updateType != null" >
+                UPDATE_TYPE = #{updateType},
+            </if>
+                                                <if test="qlKind != null" >
+                QL_KIND = #{qlKind},
+            </if>
+                                                <if test="qlAtt != null" >
+                QL_ATT = #{qlAtt},
+            </if>
+                                                <if test="qlFullId != null" >
+                QL_Full_ID = #{qlFullId},
+            </if>
+                                                <if test="qlMainitemId != null" >
+                QL_MAINITEM_ID = #{qlMainitemId},
+            </if>
+                                                <if test="qlSubitemId != null" >
+                QL_SUBITEM_ID = #{qlSubitemId},
+            </if>
+                                                <if test="shiquancj != null" >
+                SHIQUANCJ = #{shiquancj},
+            </if>
+                                                <if test="belongxiaqucode != null" >
+                BELONGXIAQUCODE = #{belongxiaqucode},
+            </if>
+                                                <if test="qlDepOrgcdoe != null" >
+                QL_DEP_ORGCDOE = #{qlDepOrgcdoe},
+            </if>
+                                                <if test="ouorgcode != null" >
+                OUORGCODE = #{ouorgcode},
+            </if>
+                                                <if test="ouguid != null" >
+                OUGUID = #{ouguid},
+            </if>
+                                                <if test="itemsource != null" >
+                ITEMSOURCE = #{itemsource},
+            </if>
+                                                <if test="itemsourcetype != null" >
+                ITEMSOURCETYPE = #{itemsourcetype},
+            </if>
+                                                <if test="entrust != null" >
+                ENTRUST = #{entrust},
+            </if>
+                                                <if test="entrustdes != null" >
+                ENTRUSTDES = #{entrustdes},
+            </if>
+                                                <if test="versionNumber != null" >
+                VERSION_NUMBER = #{versionNumber},
+            </if>
+                                                <if test="versionDate != null" >
+                VERSION_DATE = #{versionDate},
+            </if>
+                                                <if test="qlEffectTime != null" >
+                QL_EFFECT_TIME = #{qlEffectTime},
+            </if>
+                                                <if test="qlInnerCode != null" >
+                QL_INNER_CODE = #{qlInnerCode},
+            </if>
+                                                <if test="qlName != null" >
+                QL_NAME = #{qlName},
+            </if>
+                                                <if test="qlState != null" >
+                QL_STATE = #{qlState},
+            </if>
+                                                <if test="lawbasis != null" >
+                LAWBASIS = #{lawbasis},
+            </if>
+                                                <if test="anticipateDay != null" >
+                ANTICIPATE_DAY = #{anticipateDay},
+            </if>
+                                                <if test="anticipateType != null" >
+                ANTICIPATE_TYPE = #{anticipateType},
+            </if>
+                                                <if test="promiseDay != null" >
+                PROMISE_DAY = #{promiseDay},
+            </if>
+                                                <if test="feebasis != null" >
+                FeeBasis = #{feebasis},
+            </if>
+                                                <if test="isLevywaiver != null" >
+                Is_LevyWaiver = #{isLevywaiver},
+            </if>
+                                                <if test="applyerminCount != null" >
+                APPLYERMIN_COUNT = #{applyerminCount},
+            </if>
+                                                <if test="isPilot != null" >
+                IS_PILOT = #{isPilot},
+            </if>
+                                                <if test="isSimplepunish != null" >
+                Is_SimplePunish = #{isSimplepunish},
+            </if>
+                                                <if test="qlDep != null" >
+                QL_DEP = #{qlDep},
+            </if>
+                                                <if test="acpInstitution != null" >
+                Acp_institution = #{acpInstitution},
+            </if>
+                                                <if test="decInstitution != null" >
+                Dec_institution = #{decInstitution},
+            </if>
+                                                <if test="leadDept != null" >
+                LEAD_DEPT = #{leadDept},
+            </if>
+                                                <if test="bjtype != null" >
+                BJTYPE = #{bjtype},
+            </if>
+                                                <if test="benjispxz != null" >
+                BENJISPXZ = #{benjispxz},
+            </if>
+                                                <if test="handleFrequency != null" >
+                HANDLE_FREQUENCY = #{handleFrequency},
+            </if>
+                                                <if test="contentInvolve != null" >
+                Content_involve = #{contentInvolve},
+            </if>
+                                                <if test="xingzhenxdrxz != null" >
+                XINGZHENXDRXZ = #{xingzhenxdrxz},
+            </if>
+                                                <if test="applicableObject != null" >
+                Applicable_object = #{applicableObject},
+            </if>
+                                                <if test="xingzhenxdrxy != null" >
+                XINGZHENXDRXY = #{xingzhenxdrxy},
+            </if>
+                                                <if test="applyCondition != null" >
+                APPLY_CONDITION = #{applyCondition},
+            </if>
+                                                <if test="countLimit != null" >
+                Count_limit = #{countLimit},
+            </if>
+                                                <if test="countNote != null" >
+                Count_note = #{countNote},
+            </if>
+                                                <if test="banRequirement != null" >
+                Ban_requirement = #{banRequirement},
+            </if>
+                                                <if test="shixiangsctype != null" >
+                SHIXIANGSCtype = #{shixiangsctype},
+            </if>
+                                                <if test="shixiangsclx != null" >
+                SHIXIANGSCLX = #{shixiangsclx},
+            </if>
+                                                <if test="banjianFinishfiles != null" >
+                BANJIAN_FINISHFILES = #{banjianFinishfiles},
+            </if>
+                                                <if test="linkTel != null" >
+                LINK_TEL = #{linkTel},
+            </if>
+                                                <if test="superviseTel != null" >
+                SUPERVISE_TEL = #{superviseTel},
+            </if>
+                                                <if test="applyType != null" >
+                Apply_type = #{applyType},
+            </if>
+                                                <if test="applyTypeTel != null" >
+                Apply_type_tel = #{applyTypeTel},
+            </if>
+                                                <if test="applyTypeMail != null" >
+                Apply_type_mail = #{applyTypeMail},
+            </if>
+                                                <if test="applyTypeFax != null" >
+                Apply_type_fax = #{applyTypeFax},
+            </if>
+                                                <if test="handleType != null" >
+                Handle_type = #{handleType},
+            </if>
+                                                <if test="webapplyurl != null" >
+                WEBAPPLYURL = #{webapplyurl},
+            </if>
+                                                <if test="webconsulturl != null" >
+                WEBCONSULTURL = #{webconsulturl},
+            </if>
+                                                <if test="mbfarenadd != null" >
+                MbFarenAdd = #{mbfarenadd},
+            </if>
+                                                <if test="mbgerenflag != null" >
+                MbGerenFlag = #{mbgerenflag},
+            </if>
+                                                <if test="nosuitApply != null" >
+                NoSuit_Apply = #{nosuitApply},
+            </if>
+                                                <if test="isUnifydo != null" >
+                IS_UnifyDo = #{isUnifydo},
+            </if>
+                                                <if test="isUpunify != null" >
+                IS_UpUnify = #{isUpunify},
+            </if>
+                                                <if test="isCs != null" >
+                IS_CS = #{isCs},
+            </if>
+                                                <if test="isVlb != null" >
+                IS_VLB = #{isVlb},
+            </if>
+                                                <if test="unifydodes != null" >
+                UnifyDoDes = #{unifydodes},
+            </if>
+                                                <if test="webapplymode != null" >
+                WebApplyMode = #{webapplymode},
+            </if>
+                                                <if test="chargeFlag != null" >
+                CHARGE_FLAG = #{chargeFlag},
+            </if>
+                                                <if test="chargeBasis != null" >
+                CHARGE_BASIS = #{chargeBasis},
+            </if>
+                                                <if test="hangyeclasstype != null" >
+                HangYeClassType = #{hangyeclasstype},
+            </if>
+                                                <if test="rightclassQiyezt != null" >
+                RIGHTCLASS_QIYEZT = #{rightclassQiyezt},
+            </if>
+                                                <if test="rightclassQiyedx != null" >
+                RIGHTCLASS_QIYEDX = #{rightclassQiyedx},
+            </if>
+                                                <if test="rightclassGerensx != null" >
+                RIGHTCLASS_GERENSX = #{rightclassGerensx},
+            </if>
+                                                <if test="rightclassGerendx != null" >
+                RIGHTCLASS_GERENDX = #{rightclassGerendx},
+            </if>
+                                                <if test="qlSubKind != null" >
+                QL_Sub_Kind = #{qlSubKind},
+            </if>
+                                                <if test="imFlowUrl != null" >
+                IM_FLOW_url = #{imFlowUrl},
+            </if>
+                                                <if test="inFlowInfoId != null" >
+                IN_FLOW_INFO_ID = #{inFlowInfoId},
+            </if>
+                                                <if test="outFlowUrl != null" >
+                OUT_FLOW_url = #{outFlowUrl},
+            </if>
+                                                <if test="materialInfoId != null" >
+                MATERIAL_INFO_ID = #{materialInfoId},
+            </if>
+                                                <if test="chargeitemInfoId != null" >
+                CHARGEITEM_INFO_ID = #{chargeitemInfoId},
+            </if>
+                                                <if test="qaInfoId != null" >
+                QA_INFO_ID = #{qaInfoId},
+            </if>
+                                                <if test="factInfoid != null" >
+                FACT_INFOID = #{factInfoid},
+            </if>
+                                                <if test="acceptAddressInfoId != null" >
+                ACCEPT_ADDRESS_INFO_ID = #{acceptAddressInfoId},
+            </if>
+                                                <if test="farenurl != null" >
+                FaRenUrl = #{farenurl},
+            </if>
+                                                <if test="serviceMode != null" >
+                Service_mode = #{serviceMode},
+            </if>
+                                                <if test="serviceDay != null" >
+                Service_day = #{serviceDay},
+            </if>
+                                                <if test="destime != null" >
+                DesTime = #{destime},
+            </if>
+                                                <if test="gerenflag != null" >
+                GeRenFlag = #{gerenflag},
+            </if>
+                                                <if test="isTongjian != null" >
+                Is_TongJian = #{isTongjian},
+            </if>
+                                                <if test="qlInnerCodeItem != null" >
+                Ql_inner_code_item = #{qlInnerCodeItem},
+            </if>
+                                                <if test="applyerminCountDesc != null" >
+                APPLYERMIN_COUNT_DESC = #{applyerminCountDesc},
+            </if>
+                                                <if test="outypecode != null" >
+                OUTypeCode = #{outypecode},
+            </if>
+                                                <if test="outFlowDesc != null" >
+                OUT_FLOW_DESC = #{outFlowDesc},
+            </if>
+                                                <if test="banjianFinishtype != null" >
+                BANJIAN_FINISHTYPE = #{banjianFinishtype},
+            </if>
+                                                <if test="isSpecialpro != null" >
+                IS_SpecialPro = #{isSpecialpro},
+            </if>
+                                                <if test="baknote != null" >
+                BakNote = #{baknote},
+            </if>
+                                                <if test="state2 != null" >
+                State2 = #{state2},
+            </if>
+                                                <if test="syncSign != null" >
+                SYNC_SIGN = #{syncSign},
+            </if>
+                                                <if test="syncDate != null" >
+                SYNC_DATE = #{syncDate},
+            </if>
+                                                <if test="syncErrorDesc != null" >
+                SYNC_ERROR_DESC = #{syncErrorDesc},
+            </if>
+                                                <if test="appwebapplyurl != null" >
+                APPWEBAPPLYURL = #{appwebapplyurl},
+            </if>
+                                                <if test="appappointmenturl != null" >
+                APPAPPOINTMENTURL = #{appappointmenturl},
+            </if>
+                                                <if test="appointmenturl != null" >
+                APPOINTMENTURL = #{appointmenturl},
+            </if>
+                                                <if test="isWebappointment != null" >
+                IS_WEBAPPOINTMENT = #{isWebappointment},
+            </if>
+                                                <if test="webappointmentperiod != null" >
+                WEBAPPOINTMENTPERIOD = #{webappointmentperiod},
+            </if>
+                                                <if test="maincontext != null" >
+                MAINCONTEXT = #{maincontext},
+            </if>
+                                                <if test="doDept != null" >
+                DO_DEPT = #{doDept},
+            </if>
+                                                <if test="relatedguid != null" >
+                RELATEDGUID = #{relatedguid},
+            </if>
+                                                <if test="relatedId != null" >
+                RELATED_ID = #{relatedId},
+            </if>
+                                                <if test="isExpress != null" >
+                IS_EXPRESS = #{isExpress},
+            </if>
+                                                <if test="ispyc != null" >
+                ISPYC = #{ispyc},
+            </if>
+                                                <if test="lbsx != null" >
+                LBSX = #{lbsx},
+            </if>
+                                                <if test="serviceSubKind != null" >
+                Service_Sub_Kind = #{serviceSubKind},
+            </if>
+                                                <if test="bak1 != null" >
+                Bak1 = #{bak1},
+            </if>
+                                                <if test="bak2 != null" >
+                Bak2 = #{bak2},
+            </if>
+                                                <if test="bak3 != null" >
+                Bak3 = #{bak3},
+            </if>
+                                                <if test="bak4 != null" >
+                Bak4 = #{bak4},
+            </if>
+                                                <if test="bak5 != null" >
+                Bak5 = #{bak5},
+            </if>
+                                                <if test="bak6 != null" >
+                Bak6 = #{bak6},
+            </if>
+                                                <if test="bak7 != null" >
+                Bak7 = #{bak7},
+            </if>
+                                                <if test="bak8 != null" >
+                Bak8 = #{bak8},
+            </if>
+                                                <if test="bak9 != null" >
+                Bak9 = #{bak9},
+            </if>
+                                                <if test="bak10 != null" >
+                Bak10 = #{bak10},
+            </if>
+                                                <if test="bak11 != null" >
+                Bak11 = #{bak11},
+            </if>
+                                                <if test="bak12 != null" >
+                Bak12 = #{bak12},
+            </if>
+                                                <if test="bak13 != null" >
+                Bak13 = #{bak13},
+            </if>
+                                                <if test="op != null" >
+                op = #{op},
+            </if>
+                                                <if test="tongTime != null" >
+                tong_time = #{tongTime},
+            </if>
+                                                <if test="sendtime != null" >
+                sendtime = #{sendtime},
+            </if>
+                                                <if test="tongid != null" >
+                tongID = #{tongid},
+            </if>
+                                                <if test="isTouzip != null" >
+                Is_TouZiP = #{isTouzip},
+            </if>
+                                                <if test="nounifyDo != null" >
+                NoUnify_Do = #{nounifyDo},
+            </if>
+                                                <if test="ununifydoOther != null" >
+                UNUnifyDo_Other = #{ununifydoOther},
+            </if>
+                                                <if test="ishasownflow != null" >
+                IsHasOwnFlow = #{ishasownflow},
+            </if>
+                                                <if test="bsznUrl != null" >
+                bszn_url = #{bsznUrl},
+            </if>
+                                                <if test="nosuitReasondesc != null" >
+                NoSuit_ReasonDesc = #{nosuitReasondesc},
+            </if>
+                                                <if test="businessRegulate != null" >
+                business_regulate = #{businessRegulate},
+            </if>
+                                </set>
+        where pk_id = #{pkId,jdbcType=VARCHAR}
+    </update>
+
+    <select id="list" resultMap="BaseResultMap" parameterType="java.util.Map">
+        SELECT *
+        FROM
+        "nyt_qlsx"
+        WHERE
+        1 = 1
+        <if test="startTime != null and endTime != null">
+            and date(create_time) between #{startTime,jdbcType=VARCHAR} and #{endTime,jdbcType=VARCHAR}
+        </if>
+        ORDER BY create_time <if test="sort == 0">ASC</if><if test="sort == 1">DESC</if>
+        limit #{pageIndex}, #{pageSize};
+    </select>
+
+    <select id="count" resultType="java.lang.Integer" parameterType="java.util.Map" >
+        select COUNT(1)
+        FROM
+        "nyt_qlsx"
+        WHERE
+        1 = 1
+        <if test="startTime != null and endTime != null">
+            and date(create_time) between #{startTime,jdbcType=VARCHAR} and #{endTime,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+</mapper>

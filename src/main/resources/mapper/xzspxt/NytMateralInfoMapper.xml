@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.ecenter.xzspxt.mapper.NytMateralInfoMapper">
+    <insert id="add" parameterType="java.util.List">
+        insert into nyt_materal_info
+        (
+        ID,
+        CHANGE_FLAG,
+        MATERIAL_GUID,
+        MATERIAL_NAME,
+        MATERIAL_FORMAT,
+        MATERIAL_DETAIL,
+        NECESSITY,
+        NECESSITY_DESC,
+        MATERIAL_RES,
+        FILENAMEK,
+        FILEURLK,
+        FILENAME,
+        FILEURL,
+        BAK,
+        POPULARTYPES,
+        CONDITIONS,
+        IS_RQ,
+        ISPUBLISH,
+        FILECONTENTK,
+        FILECONTENT,
+        MATERIAL_TYPE,
+        SOURCE_TYPE,
+        SOURCE_EXPLAIN,
+        PAGE_NUM,
+        PAGE_FORMAT,
+        FILL_EXPLIAN,
+        ACCEPT_STAND,
+        BY_LAW,
+        ORDERNUM,
+        P_ID,
+        CREATE_TIME,
+        UPDATE_TIME,
+        REMARKS,
+        IS_DELETE
+        )
+        values
+        <foreach collection="list" item="item" index= "index" separator =",">
+            (
+            #{item.id},
+            #{item.changeFlag},
+            #{item.materialGuid},
+            #{item.materialName},
+            #{item.materialFormat},
+            #{item.materialDetail},
+            #{item.necessity},
+            #{item.necessityDesc},
+            #{item.materialRes},
+            #{item.filenamek},
+            #{item.fileurlk},
+            #{item.filename},
+            #{item.fileurl},
+            #{item.bak},
+            #{item.populartypes},
+            #{item.conditions},
+            #{item.isRq},
+            #{item.ispublish},
+            #{item.filecontentk},
+            #{item.filecontent},
+            #{item.materialType},
+            #{item.sourceType},
+            #{item.sourceExplain},
+            #{item.pageNum},
+            #{item.pageFormat},
+            #{item.fillExplian},
+            #{item.acceptStand},
+            #{item.byLaw},
+            #{item.ordernum},
+            #{item.pId},
+            #{item.createTime},
+            #{item.updateTime},
+            #{item.remarks},
+            #{item.isDelete}
+            )
+        </foreach>
+
+    </insert>
+</mapper>

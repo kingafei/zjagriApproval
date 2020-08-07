@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.com.ecenter.xzspxt.mapper.ZwfwRegionMapper">
+
+    <resultMap type="cn.com.ecenter.xzspxt.entity.ZwfwRegionEntity" id="BaseResultMap">
+        <result property="id" column="id"/>
+        <result property="orgcoding" column="orgcoding"/>
+        <result property="uncode" column="uncode"/>
+        <result property="name" column="name"/>
+        <result property="uniquecoding" column="uniquecoding"/>
+        <result property="regioncode" column="regioncode"/>
+        <result property="pid" column="pid"/>
+        <result property="AdCode" column="AdCode"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+                        id,
+                        orgcoding,
+                        uncode,
+                        name,
+                        uniquecoding,
+                        regioncode,
+                        pid,
+                        AdCode,
+            </sql>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select * from (select * from zwfw_region_new WHERE LENGTH(regioncode)=6 and length(uniquecoding)=6  ORDER BY adcode) re GROUP BY substr(adcode,1,4)
+    </select>
+
+    <select id="selectAllBycode" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select * from zwfw_region_new WHERE LENGTH(regioncode)=6 and length(uniquecoding)=6 and adcode LIKE CONCAT(CONCAT(#{param1},'%')) and uniquecoding != #{param1}
+    </select>
+
+    <select id="selectAllByDept" resultType="cn.com.ecenter.xzspxt.entity.ZwfwRegionEntity" parameterType="java.lang.Integer" >
+
+        SELECT * FROM zwfw_region_new
+        where uniquecoding NOT IN (select uniquecoding from zwfw_region_new  where LENGTH(regioncode)=6 and length(uniquecoding)=6)
+    </select>
+
+
+</mapper>

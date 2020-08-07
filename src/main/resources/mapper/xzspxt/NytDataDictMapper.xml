@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.com.ecenter.xzspxt.mapper.NytDataDictMapper">
+
+    <resultMap type="cn.com.ecenter.xzspxt.entity.po.NytDataDictEntity" id="BaseResultMap">
+        <result property="pkId" column="pk_id"/>
+        <result property="comment" column="comment"/>
+        <result property="dictSign" column="dict_sign"/>
+        <result property="dictValue" column="dict_value"/>
+        <result property="valueComment" column="value_comment"/>
+        <result property="valueSort" column="value_sort"/>
+        <result property="fkUid" column="fk_uid"/>
+        <result property="state" column="state"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+                        pk_id,
+                        comment,
+                        dict_sign,
+                        dict_value,
+                        value_comment,
+                        value_sort,
+                        fk_uid,
+                        state,
+                        is_delete,
+                        create_time,
+                        update_time,
+            </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        *
+        from "nyt_data_dict"
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <insert id="insertSelective" parameterType="cn.com.ecenter.xzspxt.entity.po.NytDataDictEntity" >
+        insert into nyt_data_dict
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+                        <if test="pkId != null" >
+                pk_id,
+            </if>
+                        <if test="comment != null" >
+                comment,
+            </if>
+                        <if test="dictSign != null" >
+                dict_sign,
+            </if>
+                        <if test="dictValue != null" >
+                dict_value,
+            </if>
+                        <if test="valueComment != null" >
+                value_comment,
+            </if>
+                        <if test="valueSort != null" >
+                value_sort,
+            </if>
+                        <if test="fkUid != null" >
+                fk_uid,
+            </if>
+                        <if test="state != null" >
+                state,
+            </if>
+                        <if test="isDelete != null" >
+                is_delete,
+            </if>
+                        <if test="createTime != null" >
+                create_time,
+            </if>
+                        <if test="updateTime != null" >
+                update_time,
+            </if>
+                    </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+                        <if test="pkId != null" >
+                #{pkId},
+            </if>
+                        <if test="comment != null" >
+                #{comment},
+            </if>
+                        <if test="dictSign != null" >
+                #{dictSign},
+            </if>
+                        <if test="dictValue != null" >
+                #{dictValue},
+            </if>
+                        <if test="valueComment != null" >
+                #{valueComment},
+            </if>
+                        <if test="valueSort != null" >
+                #{valueSort},
+            </if>
+                        <if test="fkUid != null" >
+                #{fkUid},
+            </if>
+                        <if test="state != null" >
+                #{state},
+            </if>
+                        <if test="isDelete != null" >
+                #{isDelete},
+            </if>
+                        <if test="createTime != null" >
+                #{createTime},
+            </if>
+                        <if test="updateTime != null" >
+                #{updateTime},
+            </if>
+                    </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="cn.com.ecenter.xzspxt.entity.po.NytDataDictEntity" >
+        update "nyt_data_dict"
+        <set >
+                                                            <if test="comment != null" >
+                comment = #{comment},
+            </if>
+                                                <if test="dictSign != null" >
+                dict_sign = #{dictSign},
+            </if>
+                                                <if test="dictValue != null" >
+                dict_value = #{dictValue},
+            </if>
+                                                <if test="valueComment != null" >
+                value_comment = #{valueComment},
+            </if>
+                                                <if test="valueSort != null" >
+                value_sort = #{valueSort},
+            </if>
+                                                <if test="fkUid != null" >
+                fk_uid = #{fkUid},
+            </if>
+                                                <if test="state != null" >
+                state = #{state},
+            </if>
+                                                <if test="isDelete != null" >
+                is_delete = #{isDelete},
+            </if>
+                                                <if test="createTime != null" >
+                create_time = #{createTime},
+            </if>
+                                                <if test="updateTime != null" >
+                update_time = #{updateTime},
+            </if>
+                                </set>
+        where pk_id = #{pkId,jdbcType=VARCHAR}
+    </update>
+
+    <select id="list" resultMap="BaseResultMap" parameterType="java.util.Map">
+        SELECT *
+        FROM
+        nyt_data_dict
+        WHERE
+        1 = 1
+        <if test="startTime != null and endTime != null">
+            and date(create_time) between #{startTime,jdbcType=VARCHAR} and #{endTime,jdbcType=VARCHAR}
+        </if>
+        ORDER BY create_time <if test="sort == 0">ASC</if><if test="sort == 1">DESC</if>
+        limit #{pageIndex}, #{pageSize};
+    </select>
+
+    <select id="count" resultType="java.lang.Integer" parameterType="java.util.Map" >
+        select COUNT(1)
+        FROM
+        nyt_data_dict
+        WHERE
+        1 = 1
+        <if test="startTime != null and endTime != null">
+            and date(create_time) between #{startTime,jdbcType=VARCHAR} and #{endTime,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+
+
+
+
+
+
+</mapper>

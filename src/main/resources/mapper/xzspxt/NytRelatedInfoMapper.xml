@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.ecenter.xzspxt.mapper.NytRelatedInfoMapper">
+    <insert id="add" parameterType="java.util.List">
+        insert into nyt_related_info
+        (
+        ID,
+        FILENAME,
+        FILEURL,
+        P_ID,
+        CREATE_TIME,
+        UPDATE_TIME,
+        REMARKS,
+        IS_DELETE
+        )
+        values
+        <foreach collection="list" item="item" index= "index" separator =",">
+            (
+            #{item.id},
+            #{item.filename},
+            #{item.fileurl},
+            #{item.pId},
+            #{item.createTime},
+            #{item.updateTime},
+            #{item.remarks},
+            #{item.isDelete}
+            )
+        </foreach>
+
+    </insert>
+</mapper>

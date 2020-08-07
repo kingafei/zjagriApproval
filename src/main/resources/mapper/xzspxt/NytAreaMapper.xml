@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.com.ecenter.xzspxt.mapper.NytAreaMapper">
+
+    <resultMap type="cn.com.ecenter.xzspxt.entity.NytAreaEntity" id="BaseResultMap">
+        <result property="id" column="id"/>
+        <result property="parentId" column="parent_id"/>
+        <result property="name" column="name"/>
+        <result property="code" column="code"/>
+        <result property="codeUrl" column="code_url"/>
+        <result property="forOrder" column="for_order"/>
+        <result property="level" column="level"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="fkUid" column="fk_uid"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="state" column="state"/>
+        <result property="orgcoding" column="orgcoding"/>
+        <result property="uncode" column="uncode"/>
+        <result property="uniquecoding" column="uniquecoding"/>
+        <result property="adcode" column="adcode"/>
+        <result property="regioncode" column="regioncode"/>
+        <result property="bak1" column="bak1"/>
+        <result property="bak2" column="bak2"/>
+        <result property="bak3" column="bak3"/>
+        <result property="bak4" column="bak4"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+                        id,
+                        parent_id,
+                        name,
+                        code,
+                        code_url,
+                        for_order,
+                        level,
+                        is_delete,
+                        fk_uid,
+                        create_time,
+                        update_time,
+                        state,
+                        orgcoding,
+                        uncode,
+                        uniquecoding,
+                        adcode,
+                        regioncode,
+                        bak1,
+                        bak2,
+                        bak3,
+                        bak4,
+            </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select * from nyt_area
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <insert id="insertSelective" parameterType="cn.com.ecenter.xzspxt.entity.NytAreaEntity" >
+        insert into nyt_area
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+                        <if test="id != null" >
+                id,
+            </if>
+                        <if test="parentId != null" >
+                parent_id,
+            </if>
+                        <if test="name != null" >
+                name,
+            </if>
+                        <if test="code != null" >
+                code,
+            </if>
+                        <if test="codeUrl != null" >
+                code_url,
+            </if>
+                        <if test="forOrder != null" >
+                for_order,
+            </if>
+                        <if test="level != null" >
+                level,
+            </if>
+                        <if test="isDelete != null" >
+                is_delete,
+            </if>
+                        <if test="fkUid != null" >
+                fk_uid,
+            </if>
+                        <if test="createTime != null" >
+                create_time,
+            </if>
+                        <if test="updateTime != null" >
+                update_time,
+            </if>
+                        <if test="state != null" >
+                state,
+            </if>
+            <if test="orgcoding != null" >
+                orgcoding,
+            </if>
+            <if test="uncode != null" >
+                uncode,
+            </if>
+            <if test="uniquecoding != null" >
+                uniquecoding,
+            </if>
+            <if test="adcode != null" >
+                adcode,
+            </if>
+            <if test="regioncode != null" >
+                regioncode,
+            </if>
+            <if test="bak1 != null" >
+                bak1,
+            </if>
+            <if test="bak2 != null" >
+                bak2,
+            </if>
+            <if test="bak3 != null" >
+                bak3,
+            </if>
+            <if test="bak4 != null" >
+                bak4,
+            </if>
+
+                    </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+                        <if test="id != null" >
+                #{id},
+            </if>
+                        <if test="parentId != null" >
+                #{parentId},
+            </if>
+                        <if test="name != null" >
+                #{name},
+            </if>
+                        <if test="code != null" >
+                #{code},
+            </if>
+                        <if test="codeUrl != null" >
+                #{codeUrl},
+            </if>
+                        <if test="forOrder != null" >
+                #{forOrder},
+            </if>
+                        <if test="level != null" >
+                #{level},
+            </if>
+                        <if test="isDelete != null" >
+                #{isDelete},
+            </if>
+                        <if test="fkUid != null" >
+                #{fkUid},
+            </if>
+                        <if test="createTime != null" >
+                #{createTime},
+            </if>
+                        <if test="updateTime != null" >
+                #{updateTime},
+            </if>
+                        <if test="state != null" >
+                #{state},
+            </if>
+            <if test="orgcoding != null" >
+                 #{orgcoding},
+            </if>
+            <if test="uncode != null" >
+                #{uncode},
+            </if>
+            <if test="uniquecoding != null" >
+                #{uniquecoding},
+            </if>
+            <if test="adcode != null" >
+                #{adcode},
+            </if>
+            <if test="regioncode != null" >
+                #{regioncode},
+            </if>
+            <if test="bak1 != null" >
+                #{bak1},
+            </if>
+            <if test="bak2 != null" >
+                #{bak2},
+            </if>
+            <if test="bak3 != null" >
+                #{bak3},
+            </if>
+            <if test="bak4 != null" >
+                #{bak4},
+            </if>
+                    </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="cn.com.ecenter.xzspxt.entity.NytAreaEntity" >
+        update nyt_area
+        <set >
+                                                <if test="parentId != null" >
+                parent_id = #{parentId},
+            </if>
+                                                <if test="name != null" >
+                name = #{name},
+            </if>
+                                                <if test="code != null" >
+                code = #{code},
+            </if>
+                                                <if test="codeUrl != null" >
+                code_url = #{codeUrl},
+            </if>
+                                                <if test="forOrder != null" >
+                for_order = #{forOrder},
+            </if>
+                                                <if test="level != null" >
+                level = #{level},
+            </if>
+                                                <if test="isDelete != null" >
+                is_delete = #{isDelete},
+            </if>
+                                                <if test="fkUid != null" >
+                fk_uid = #{fkUid},
+            </if>
+                                                <if test="createTime != null" >
+                create_time = #{createTime},
+            </if>
+                                                <if test="updateTime != null" >
+                update_time = #{updateTime},
+            </if>
+                                                <if test="state != null" >
+                state = #{state},
+            </if>
+            <if test="orgcoding != null" >
+                orgcoding = #{orgcoding},
+            </if>
+            <if test="uncode != null" >
+                uncode = #{uncode},
+            </if>
+            <if test="uniquecoding != null" >
+                uniquecoding = #{uniquecoding},
+            </if>
+            <if test="adcode != null" >
+                adcode = #{adcode},
+            </if>
+            <if test="regioncode != null" >
+                regioncode = #{regioncode},
+            </if>
+            <if test="bak1 != null" >
+                bak1 = #{bak1},
+            </if>
+            <if test="bak2 != null" >
+                bak2 = #{bak2},
+            </if>
+            <if test="bak3 != null" >
+                bak3 = #{bak3},
+            </if>
+            <if test="bak4 != null" >
+                bak4 = #{bak4},
+            </if>
+                                </set>
+        where id = #{id}
+    </update>
+
+    <select id="list" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        SELECT * FROM nyt_area
+            WHERE 1 = 1
+            and is_delete = 0
+            and parent_id = ${parentId}
+            ORDER BY for_order
+    </select>
+
+    <select id="count" resultType="java.lang.Integer" parameterType="java.util.Map" >
+        select COUNT(1)
+        FROM
+        "nyt_area"
+        WHERE
+        1 = 1
+        <if test="startTime != null and endTime != null">
+            and date(create_time) between #{startTime,jdbcType=VARCHAR} and #{endTime,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+    <select id="maxId" resultType="java.lang.Integer">
+        select max(id) FROM nyt_area
+    </select>
+
+</mapper>

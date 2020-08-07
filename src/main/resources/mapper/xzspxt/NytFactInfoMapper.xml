@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.ecenter.xzspxt.mapper.NytFactInfoMapper">
+    <insert id="add" parameterType="java.util.List">
+        insert into nyt_fact_info
+        (
+        ID,
+        CHANGE_FLAG,
+        FACTDESCRIPTION,
+        LAW,
+        P_ID,
+        CREATE_TIME,
+        UPDATE_TIME,
+        REMARKS,
+        IS_DELETE
+        )
+        values
+        <foreach collection="list" item="item" index= "index" separator =",">
+            (
+            #{item.id},
+            #{item.changeFlag},
+            #{item.factdescription},
+            #{item.law},
+            #{item.pId},
+            #{item.createTime},
+            #{item.updateTime},
+            #{item.remarks},
+            #{item.isDelete}
+            )
+        </foreach>
+
+    </insert>
+</mapper>

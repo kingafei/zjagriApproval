@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.ecenter.xzspxt.mapper.NytFlowInfoMapper">
+    <insert id="add" parameterType="java.util.List">
+        insert into nyt_flow_info
+        (
+        ID,
+        FLOW_ID,
+        CHANGE_FLAG_P,
+        CHANGE_FLAG_A,
+        FLOW_TITLE,
+        POSITION_ID,
+        POSITION_NAME,
+        POSITION_DUTY,
+        DEPARTMENT,
+        PERSON,
+        PERSON_GUIDS,
+        PERSON_NAMES,
+        ACTIVITY_ID,
+        ACTIVITY_TYPE,
+        ACTIVITY_TITLE,
+        HANDLE_TIMELIMT,
+        HANDLE_TIMELIMTTYPE,
+        FILE_ID,
+        SOURCE_ACTIVITY_ID,
+        TARGET_ACTIVITY_ID,
+        NOTE,
+        P_ID,
+        CREATE_TIME,
+        UPDATE_TIME,
+        REMARKS,
+        IS_DELETE
+        )
+        values
+        <foreach collection="list" item="item" index= "index" separator =",">
+            (
+            #{item.id},
+            #{item.flowId},
+            #{item.changeFlagP},
+            #{item.changeFlagA},
+            #{item.flowTitle},
+            #{item.positionId},
+            #{item.positionName},
+            #{item.positionDuty},
+            #{item.department},
+            #{item.person},
+            #{item.personGuids},
+            #{item.personNames},
+            #{item.activityId},
+            #{item.activityType},
+            #{item.activityTitle},
+            #{item.handleTimelimt},
+            #{item.handleTimelimttype},
+            #{item.fileId},
+            #{item.sourceActivityId},
+            #{item.targetActivityId},
+            #{item.note},
+            #{item.pId},
+            #{item.createTime},
+            #{item.updateTime},
+            #{item.remarks},
+            #{item.isDelete}
+            )
+        </foreach>
+
+    </insert>
+</mapper>

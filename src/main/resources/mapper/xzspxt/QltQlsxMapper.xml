@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.ecenter.xzspxt.mapper.QltQlsxMapper">
+    <select id="findQlsx" parameterType="java.lang.Integer"  resultType="cn.com.ecenter.xzspxt.entity.QltQlsxEntity">
+        /*SELECT * FROM qlt_qlsx where ROWGUID in
+        ("414e54ac-cd0d-44f0-aa69-64f6bd971752","42ac966a-fda0-4f67-8948-836b18e6b056","43adcb64-6cfb-4352-be22-35aa84162dd2","444c52b5-15b1-468a-aabf-374a6ae417af")*/
+
+        /*SELECT * from (SELECT * from qlt_qlsx ORDER BY UPDATE_DATE desc)  t GROUP BY ROWGUID*/
+        SELECT * from qlt_qlsx LIMIT #{param1},#{param2}
+    </select>
+    <select id="fingTotal"  resultType="java.lang.Integer">
+        SELECT COUNT(1) from (SELECT * from (SELECT * from qlt_qlsx ORDER BY UPDATE_DATE desc)  t GROUP BY ROWGUID) t2
+    </select>
+
+</mapper>
