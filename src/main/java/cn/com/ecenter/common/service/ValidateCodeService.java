@@ -44,16 +44,16 @@ public class ValidateCodeService {
 
     
     public void check(String key, String value) throws FebsException {
-        Object codeInRedis = redisService.get(FebsConstant.CODE_PREFIX + key);
-        if (StringUtils.isBlank(value)) {
-            throw new FebsException("请输入验证码");
-        }
-        if (codeInRedis == null) {
-            throw new FebsException("验证码已过期");
-        }
-        if (!StringUtils.equalsIgnoreCase(value, String.valueOf(codeInRedis))) {
-            throw new FebsException("验证码不正确");
-        }
+//        Object codeInRedis = redisService.get(FebsConstant.CODE_PREFIX + key);
+//        if (StringUtils.isBlank(value)) {
+//            throw new FebsException("请输入验证码");
+//        }
+//        if (codeInRedis == null) {
+//            throw new FebsException("验证码已过期");
+//        }
+//        if (!StringUtils.equalsIgnoreCase(value, String.valueOf(codeInRedis))) {
+//            throw new FebsException("验证码不正确");
+//        }
     }
 
     private Captcha createCaptcha(ValidateCodeProperties code) {

@@ -1,0 +1,677 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.com.ecenter.pre.mapper.ApasinfoMapper">
+
+    <resultMap type="cn.com.ecenter.pre.entity.ApasinfoEntity" id="BaseResultMap">
+        <result property="projid" column="PROJID"/>
+        <result property="projpwd" column="PROJPWD"/>
+        <result property="servicecode" column="SERVICECODE"/>
+        <result property="servicecodeId" column="SERVICECODE_ID"/>
+        <result property="serviceDeptid" column="SERVICE_DEPTID"/>
+        <result property="busMode" column="BUS_MODE"/>
+        <result property="busModeDesc" column="BUS_MODE_DESC"/>
+        <result property="serviceversion" column="SERVICEVERSION"/>
+        <result property="servicename" column="SERVICENAME"/>
+        <result property="projectname" column="PROJECTNAME"/>
+        <result property="infotype" column="INFOTYPE"/>
+        <result property="busType" column="BUS_TYPE"/>
+        <result property="relBusId" column="REL_BUS_ID"/>
+        <result property="applyname" column="APPLYNAME"/>
+        <result property="applyCardtype" column="APPLY_CARDTYPE"/>
+        <result property="applyCardnumber" column="APPLY_CARDNUMBER"/>
+        <result property="contactman" column="CONTACTMAN"/>
+        <result property="contactmanCardtype" column="CONTACTMAN_CARDTYPE"/>
+        <result property="contactmanCardnumber" column="CONTACTMAN_CARDNUMBER"/>
+        <result property="telphone" column="TELPHONE"/>
+        <result property="dtelphone" column="DTELPHONE"/>
+        <result property="postcode" column="POSTCODE"/>
+        <result property="address" column="ADDRESS"/>
+        <result property="legalman" column="LEGALMAN"/>
+        <result property="xkFrSfzh" column="XK_FR_SFZH"/>
+        <result property="deptid" column="DEPTID"/>
+        <result property="deptname" column="DEPTNAME"/>
+        <result property="ssOrgcode" column="SS_ORGCODE"/>
+        <result property="receiveuseidType" column="RECEIVEUSEID_TYPE"/>
+        <result property="receiveUseid" column="RECEIVE_USEID"/>
+        <result property="receiveName" column="RECEIVE_NAME"/>
+        <result property="applyfrom" column="APPLYFROM"/>
+        <result property="approveType" column="APPROVE_TYPE"/>
+        <result property="applyPropertiy" column="APPLY_PROPERTIY"/>
+        <result property="receivetime" column="RECEIVETIME"/>
+        <result property="belongto" column="BELONGTO"/>
+        <result property="areacode" column="AREACODE"/>
+        <result property="datastate" column="DATASTATE"/>
+        <result property="belongsystem" column="BELONGSYSTEM"/>
+        <result property="extend" column="EXTEND"/>
+        <result property="createTime" column="CREATE_TIME"/>
+        <result property="xkLydw" column="XK_LYDW"/>
+        <result property="xkLydwdm" column="XK_LYDWDM"/>
+        <result property="syncStatus" column="SYNC_STATUS"/>
+        <result property="dataversion" column="DATAVERSION"/>
+        <result property="op" column="op"/>
+        <result property="tongTime" column="tong_time"/>
+        <result property="tongid" column="tongID"/>
+        <result property="extend2" column="EXTEND_2"/>
+        <result property="extend3" column="EXTEND_3"/>
+        <result property="extend4" column="EXTEND_4"/>
+        <result property="extend5" column="EXTEND_5"/>
+        <result property="projnum" column="PROJNUM"/>
+        <result property="handlestart" column="HANDLESTART"/>
+        <result property="applyType" column="APPLY_TYPE"/>
+        <result property="isTouzip" column="is_touzip"/>
+        <result property="acceptTime" column="ACCEPT_TIME"/>
+        <result property="promiseDay" column="PROMISE_DAY"/>
+        <result property="anticipateType" column="ANTICIPATE_TYPE"/>
+        <result property="promiseEtime" column="PROMISE_ETIME"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+                        PROJID,
+                        PROJPWD,
+                        SERVICECODE,
+                        SERVICECODE_ID,
+                        SERVICE_DEPTID,
+                        BUS_MODE,
+                        BUS_MODE_DESC,
+                        SERVICEVERSION,
+                        SERVICENAME,
+                        PROJECTNAME,
+                        INFOTYPE,
+                        BUS_TYPE,
+                        REL_BUS_ID,
+                        APPLYNAME,
+                        APPLY_CARDTYPE,
+                        APPLY_CARDNUMBER,
+                        CONTACTMAN,
+                        CONTACTMAN_CARDTYPE,
+                        CONTACTMAN_CARDNUMBER,
+                        TELPHONE,
+                        DTELPHONE,
+                        POSTCODE,
+                        ADDRESS,
+                        LEGALMAN,
+                        XK_FR_SFZH,
+                        DEPTID,
+                        DEPTNAME,
+                        SS_ORGCODE,
+                        RECEIVEUSEID_TYPE,
+                        RECEIVE_USEID,
+                        RECEIVE_NAME,
+                        APPLYFROM,
+                        APPROVE_TYPE,
+                        APPLY_PROPERTIY,
+                        RECEIVETIME,
+                        BELONGTO,
+                        AREACODE,
+                        DATASTATE,
+                        BELONGSYSTEM,
+                        EXTEND,
+                        CREATE_TIME,
+                        XK_LYDW,
+                        XK_LYDWDM,
+                        SYNC_STATUS,
+                        DATAVERSION,
+                        op,
+                        tong_time,
+                        tongID,
+                        EXTEND_2,
+                        EXTEND_3,
+                        EXTEND_4,
+                        EXTEND_5,
+                        PROJNUM,
+                        HANDLESTART,
+                        APPLY_TYPE,
+                        is_touzip,
+            </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+        select pa.*,nq.PROMISE_DAY,nq.ANTICIPATE_TYPE from pre_apasinfo pa
+            LEFT JOIN qlsx_pre qp ON pa.tongID = qp.tongID and pa.projid = qp.projid
+            LEFT JOIN nyt_qlsx nq ON qp.tongID = nq.tongID and qp.rowguid = nq.rowguid
+        where pa.PROJID = #{projid}
+    </select>
+
+    <insert id="insertSelective" parameterType="cn.com.ecenter.pre.entity.ApasinfoEntity" >
+        insert into pre_apasinfo
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+                        <if test="projid != null" >
+                PROJID,
+            </if>
+                        <if test="projpwd != null" >
+                PROJPWD,
+            </if>
+                        <if test="servicecode != null" >
+                SERVICECODE,
+            </if>
+                        <if test="servicecodeId != null" >
+                SERVICECODE_ID,
+            </if>
+                        <if test="serviceDeptid != null" >
+                SERVICE_DEPTID,
+            </if>
+                        <if test="busMode != null" >
+                BUS_MODE,
+            </if>
+                        <if test="busModeDesc != null" >
+                BUS_MODE_DESC,
+            </if>
+                        <if test="serviceversion != null" >
+                SERVICEVERSION,
+            </if>
+                        <if test="servicename != null" >
+                SERVICENAME,
+            </if>
+                        <if test="projectname != null" >
+                PROJECTNAME,
+            </if>
+                        <if test="infotype != null" >
+                INFOTYPE,
+            </if>
+                        <if test="busType != null" >
+                BUS_TYPE,
+            </if>
+                        <if test="relBusId != null" >
+                REL_BUS_ID,
+            </if>
+                        <if test="applyname != null" >
+                APPLYNAME,
+            </if>
+                        <if test="applyCardtype != null" >
+                APPLY_CARDTYPE,
+            </if>
+                        <if test="applyCardnumber != null" >
+                APPLY_CARDNUMBER,
+            </if>
+                        <if test="contactman != null" >
+                CONTACTMAN,
+            </if>
+                        <if test="contactmanCardtype != null" >
+                CONTACTMAN_CARDTYPE,
+            </if>
+                        <if test="contactmanCardnumber != null" >
+                CONTACTMAN_CARDNUMBER,
+            </if>
+                        <if test="telphone != null" >
+                TELPHONE,
+            </if>
+                        <if test="dtelphone != null" >
+                DTELPHONE,
+            </if>
+                        <if test="projnum != null" >
+                 PROJNUM,
+            </if>
+                        <if test="postcode != null" >
+                POSTCODE,
+            </if>
+                        <if test="address != null" >
+                ADDRESS,
+            </if>
+                        <if test="legalman != null" >
+                LEGALMAN,
+            </if>
+                        <if test="xkFrSfzh != null" >
+                XK_FR_SFZH,
+            </if>
+                        <if test="deptid != null" >
+                DEPTID,
+            </if>
+                        <if test="deptname != null" >
+                DEPTNAME,
+            </if>
+                        <if test="ssOrgcode != null" >
+                SS_ORGCODE,
+            </if>
+                        <if test="receiveuseidType != null" >
+                RECEIVEUSEID_TYPE,
+            </if>
+                        <if test="receiveUseid != null" >
+                RECEIVE_USEID,
+            </if>
+                        <if test="receiveName != null" >
+                RECEIVE_NAME,
+            </if>
+                        <if test="applyfrom != null" >
+                APPLYFROM,
+            </if>
+                        <if test="approveType != null" >
+                APPROVE_TYPE,
+            </if>
+                        <if test="applyPropertiy != null" >
+                APPLY_PROPERTIY,
+            </if>
+                        <if test="receivetime != null" >
+                RECEIVETIME,
+            </if>
+                        <if test="belongto != null" >
+                BELONGTO,
+            </if>
+                        <if test="areacode != null" >
+                AREACODE,
+            </if>
+                        <if test="datastate != null" >
+                DATASTATE,
+            </if>
+                        <if test="belongsystem != null" >
+                BELONGSYSTEM,
+            </if>
+                        <if test="extend != null" >
+                EXTEND,
+            </if>
+                        <if test="createTime != null" >
+                CREATE_TIME,
+            </if>
+                        <if test="xkLydw != null" >
+                XK_LYDW,
+            </if>
+                        <if test="xkLydwdm != null" >
+                XK_LYDWDM,
+            </if>
+                        <if test="syncStatus != null" >
+                SYNC_STATUS,
+            </if>
+                        <if test="dataversion != null" >
+                DATAVERSION,
+            </if>
+                         <if test="op != null" >
+                op,
+            </if>
+                        <if test="tongTime != null" >
+                tong_time,
+            </if>
+                        <if test="tongid != null" >
+                tongID,
+            </if>
+                        <if test="extend2 != null" >
+                EXTEND_2,
+            </if>
+                        <if test="extend3 != null" >
+                EXTEND_3,
+            </if>
+                        <if test="extend4 != null" >
+                EXTEND_4,
+            </if>
+                        <if test="extend5 != null" >
+                EXTEND_5,
+            </if>
+                        <if test="handlestart != null" >
+                HANDLESTART,
+            </if>
+                        <if test="applyType != null" >
+                APPLY_TYPE,
+            </if>
+                        <if test="isTouzip != null" >
+                is_touzip,
+            </if>
+
+                    </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+                        <if test="projid != null" >
+                #{projid},
+            </if>
+                        <if test="projpwd != null" >
+                #{projpwd},
+            </if>
+                        <if test="servicecode != null" >
+                #{servicecode},
+            </if>
+                        <if test="servicecodeId != null" >
+                #{servicecodeId},
+            </if>
+                        <if test="serviceDeptid != null" >
+                #{serviceDeptid},
+            </if>
+                        <if test="busMode != null" >
+                #{busMode},
+            </if>
+                        <if test="busModeDesc != null" >
+                #{busModeDesc},
+            </if>
+                        <if test="serviceversion != null" >
+                #{serviceversion},
+            </if>
+                        <if test="servicename != null" >
+                #{servicename},
+            </if>
+                        <if test="projectname != null" >
+                #{projectname},
+            </if>
+                        <if test="infotype != null" >
+                #{infotype},
+            </if>
+                        <if test="busType != null" >
+                #{busType},
+            </if>
+                        <if test="relBusId != null" >
+                #{relBusId},
+            </if>
+                        <if test="applyname != null" >
+                #{applyname},
+            </if>
+                        <if test="applyCardtype != null" >
+                #{applyCardtype},
+            </if>
+                        <if test="applyCardnumber != null" >
+                #{applyCardnumber},
+            </if>
+                        <if test="contactman != null" >
+                #{contactman},
+            </if>
+                        <if test="contactmanCardtype != null" >
+                #{contactmanCardtype},
+            </if>
+                        <if test="contactmanCardnumber != null" >
+                #{contactmanCardnumber},
+            </if>
+                        <if test="telphone != null" >
+                #{telphone},
+            </if>
+                        <if test="dtelphone != null" >
+                #{dtelphone},
+            </if>
+                        <if test="projnum != null" >
+                #{projnum},
+            </if>
+                        <if test="postcode != null" >
+                #{postcode},
+            </if>
+                        <if test="address != null" >
+                #{address},
+            </if>
+                        <if test="legalman != null" >
+                #{legalman},
+            </if>
+                        <if test="xkFrSfzh != null" >
+                #{xkFrSfzh},
+            </if>
+                        <if test="deptid != null" >
+                #{deptid},
+            </if>
+                        <if test="deptname != null" >
+                #{deptname},
+            </if>
+                        <if test="ssOrgcode != null" >
+                #{ssOrgcode},
+            </if>
+                        <if test="receiveuseidType != null" >
+                #{receiveuseidType},
+            </if>
+                        <if test="receiveUseid != null" >
+                #{receiveUseid},
+            </if>
+                        <if test="receiveName != null" >
+                #{receiveName},
+            </if>
+                        <if test="applyfrom != null" >
+                #{applyfrom},
+            </if>
+                        <if test="approveType != null" >
+                #{approveType},
+            </if>
+                        <if test="applyPropertiy != null" >
+                #{applyPropertiy},
+            </if>
+                        <if test="receivetime != null" >
+                #{receivetime},
+            </if>
+                        <if test="belongto != null" >
+                #{belongto},
+            </if>
+                        <if test="areacode != null" >
+                #{areacode},
+            </if>
+                        <if test="datastate != null" >
+                #{datastate},
+            </if>
+                        <if test="belongsystem != null" >
+                #{belongsystem},
+            </if>
+                        <if test="extend != null" >
+                #{extend},
+            </if>
+                        <if test="createTime != null" >
+                #{createTime},
+            </if>
+                        <if test="xkLydw != null" >
+                #{xkLydw},
+            </if>
+                        <if test="xkLydwdm != null" >
+                #{xkLydwdm},
+            </if>
+                        <if test="syncStatus != null" >
+                #{syncStatus},
+            </if>
+                        <if test="dataversion != null" >
+                #{dataversion},
+            </if>
+                        <if test="op != null" >
+                #{op},
+            </if>
+                        <if test="tongTime != null" >
+                #{tongTime},
+            </if>
+                        <if test="tongid != null" >
+                #{tongid},
+            </if>
+                        <if test="extend2 != null" >
+                #{extend2},
+            </if>
+                        <if test="extend3 != null" >
+                #{extend3},
+            </if>
+                        <if test="extend4 != null" >
+                #{extend4},
+            </if>
+                        <if test="extend5 != null" >
+                #{extend5},
+            </if>
+                        <if test="handlestart != null" >
+                #{handlestart},
+            </if>
+                        <if test="applyType != null" >
+                #{applyType},
+            </if>
+                        <if test="isTouzip != null" >
+                #{isTouzip},
+            </if>
+                    </trim>
+    </insert>
+
+    <update id="updateByProId" parameterType="cn.com.ecenter.pre.entity.ApasinfoEntity" >
+        update pre_apasinfo
+        <set >
+                                                <if test="projpwd != null" >
+                PROJPWD = #{projpwd},
+            </if>
+                                                <if test="servicecode != null" >
+                SERVICECODE = #{servicecode},
+            </if>
+                                                <if test="servicecodeId != null" >
+                SERVICECODE_ID = #{servicecodeId},
+            </if>
+                                                <if test="serviceDeptid != null" >
+                SERVICE_DEPTID = #{serviceDeptid},
+            </if>
+                                                <if test="busMode != null" >
+                BUS_MODE = #{busMode},
+            </if>
+                                                <if test="busModeDesc != null" >
+                BUS_MODE_DESC = #{busModeDesc},
+            </if>
+                                                <if test="serviceversion != null" >
+                SERVICEVERSION = #{serviceversion},
+            </if>
+                                                <if test="servicename != null" >
+                SERVICENAME = #{servicename},
+            </if>
+                                                <if test="projectname != null" >
+                PROJECTNAME = #{projectname},
+            </if>
+                                                <if test="infotype != null" >
+                INFOTYPE = #{infotype},
+            </if>
+                                                <if test="busType != null" >
+                BUS_TYPE = #{busType},
+            </if>
+                                                <if test="relBusId != null" >
+                REL_BUS_ID = #{relBusId},
+            </if>
+                                                <if test="applyname != null" >
+                APPLYNAME = #{applyname},
+            </if>
+                                                <if test="applyCardtype != null" >
+                APPLY_CARDTYPE = #{applyCardtype},
+            </if>
+                                                <if test="applyCardnumber != null" >
+                APPLY_CARDNUMBER = #{applyCardnumber},
+            </if>
+                                                <if test="contactman != null" >
+                CONTACTMAN = #{contactman},
+            </if>
+                                                <if test="contactmanCardtype != null" >
+                CONTACTMAN_CARDTYPE = #{contactmanCardtype},
+            </if>
+                                                <if test="contactmanCardnumber != null" >
+                CONTACTMAN_CARDNUMBER = #{contactmanCardnumber},
+            </if>
+                                                <if test="telphone != null" >
+                TELPHONE = #{telphone},
+            </if>
+                                                <if test="dtelphone != null" >
+                DTELPHONE = #{dtelphone},
+            </if>
+                                                <if test="projnum != null" >
+                PROJNUM = #{projnum},
+            </if>
+                                                <if test="postcode != null" >
+                POSTCODE = #{postcode},
+            </if>
+                                                <if test="address != null" >
+                ADDRESS = #{address},
+            </if>
+                                                <if test="legalman != null" >
+                LEGALMAN = #{legalman},
+            </if>
+                                                <if test="xkFrSfzh != null" >
+                XK_FR_SFZH = #{xkFrSfzh},
+            </if>
+                                                <if test="deptid != null" >
+                DEPTID = #{deptid},
+            </if>
+                                                <if test="deptname != null" >
+                DEPTNAME = #{deptname},
+            </if>
+                                                <if test="ssOrgcode != null" >
+                SS_ORGCODE = #{ssOrgcode},
+            </if>
+                                                <if test="receiveuseidType != null" >
+                RECEIVEUSEID_TYPE = #{receiveuseidType},
+            </if>
+                                                <if test="receiveUseid != null" >
+                RECEIVE_USEID = #{receiveUseid},
+            </if>
+                                                <if test="receiveName != null" >
+                RECEIVE_NAME = #{receiveName},
+            </if>
+                                                <if test="applyfrom != null" >
+                APPLYFROM = #{applyfrom},
+            </if>
+                                                <if test="approveType != null" >
+                APPROVE_TYPE = #{approveType},
+            </if>
+                                                <if test="applyPropertiy != null" >
+                APPLY_PROPERTIY = #{applyPropertiy},
+            </if>
+                                                <if test="receivetime != null" >
+                RECEIVETIME = #{receivetime},
+            </if>
+                                                <if test="belongto != null" >
+                BELONGTO = #{belongto},
+            </if>
+                                                <if test="areacode != null" >
+                AREACODE = #{areacode},
+            </if>
+                                                <if test="datastate != null" >
+                DATASTATE = #{datastate},
+            </if>
+                                                <if test="belongsystem != null" >
+                BELONGSYSTEM = #{belongsystem},
+            </if>
+                                                <if test="extend != null" >
+                EXTEND = #{extend},
+            </if>
+                                                <if test="createTime != null" >
+                CREATE_TIME = #{createTime},
+            </if>
+                                                <if test="xkLydw != null" >
+                XK_LYDW = #{xkLydw},
+            </if>
+                                                <if test="xkLydwdm != null" >
+                XK_LYDWDM = #{xkLydwdm},
+            </if>
+                                                <if test="syncStatus != null" >
+                SYNC_STATUS = #{syncStatus},
+            </if>
+                                                <if test="dataversion != null" >
+                DATAVERSION = #{dataversion},
+            </if>
+                                                <if test="op != null" >
+                op = #{op},
+            </if>
+                                                <if test="tongTime != null" >
+                tong_time = #{tongTime},
+            </if>
+                                                <if test="tongid != null" >
+                tongID = #{tongid},
+            </if>
+                                                <if test="extend2 != null" >
+                EXTEND_2 = #{extend2},
+            </if>
+                                                <if test="extend3 != null" >
+                EXTEND_3 = #{extend3},
+            </if>
+                                                <if test="extend4 != null" >
+                EXTEND_4 = #{extend4},
+            </if>
+                                                <if test="extend5 != null" >
+                EXTEND_5 = #{extend5},
+            </if>
+                                                <if test="handlestart != null" >
+                HANDLESTART = #{handlestart},
+            </if>
+                                                <if test="applyType != null" >
+                APPLY_TYPE = #{applyType},
+            </if>
+                                                <if test="isTouzip != null" >
+                is_touzip = #{isTouzip},
+            </if>
+                                </set>
+        where PROJID = #{projid}
+    </update>
+
+    <!--根据当前用户id-->
+    <select id="getTables" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select pa.*,ac.ACCEPT_TIME,ac.PROMISE_ETIME from pre_apasinfo pa
+            left join pre_accept ac on pa.projid = ac.projid
+            left join qlsx_pre qp on pa.tongID = qp.tongID and pa.projid = qp.projid
+            left join nyt_qlsx nq on qp.tongID = nq.tongID and qp.rowguid = nq.rowguid
+            left join t_dept td on nq.ouguid = td.org_live
+            left join t_user tu on td.dept_id = tu.dept_id
+           where tu.user_id = #{userId}
+        <if test="handlestart != null">
+                and pa.handlestart in
+            <foreach item="item" index="index" collection="handlestart" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="servicename != null" >
+               and SERVICENAME like concat('%', #{servicename}, '%')
+            </if>
+    </select>
+
+    <!--通过申报者证件号码获取申报历史记录-->
+    <select id="getByCardId" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select * from pre_apasinfo where apply_cardnumber = #{cardId}
+    </select>
+
+</mapper>

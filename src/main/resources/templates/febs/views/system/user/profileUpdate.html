@@ -19,6 +19,13 @@
 <div class="layui-fluid" id="profile-update">
     <form class="layui-form" action="" lay-filter="profile-update-form">
         <div class="layui-form-item">
+            <label class="layui-form-label">姓名：</label>
+            <div class="layui-input-block">
+                <input type="text" name="name" readonly class="layui-input">
+            </div>
+        </div>
+        
+        <div class="layui-form-item">
             <label class="layui-form-label">用户名：</label>
             <div class="layui-input-block">
                 <input type="text" name="username" readonly class="layui-input">
@@ -95,6 +102,7 @@
         function initUserValue() {
             form.val("profile-update-form", {
                 "username": user.username,
+                "name": user.name,
                 "mobile": user.mobile,
                 "email": user.email,
                 "sex": user.sex,

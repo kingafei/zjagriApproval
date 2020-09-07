@@ -1,6 +1,9 @@
 package cn.com.ecenter.xzspxt.controller;
 
 
+import cn.com.ecenter.common.annotation.ControllerEndpoint;
+import cn.com.ecenter.common.entity.DictTree;
+import cn.com.ecenter.common.entity.FebsResponse;
 import cn.com.ecenter.xzspxt.entity.Page;
 import cn.com.ecenter.xzspxt.entity.ResultData;
 import cn.com.ecenter.xzspxt.entity.po.NytDataDictEntity;
@@ -20,85 +23,42 @@ public class NytDataDictController {
     @Autowired
     private NytDataDictService NytDataDictService;
 
-    /**
-     * 列表
-     */
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public ResultData<List<NytDataDictEntity>> list(
-            @RequestParam(value = "pageNow", required = false) Integer pageNow,
-            @RequestParam(value = "pageSize", required = false) Integer pageSize,
-            @RequestParam(value = "startTime", required = false) Long startTime,
-            @RequestParam(value = "endTime", required = false) Long endTime,
-            @RequestParam(value = "state", required = false) Integer state,
-            @RequestParam(value = "sort", required = false) Integer sort
-    ){
-        Page page = new Page();
-        // 先生成基类的公共pageView
-        if (pageNow != null) {
-            page.setPageNow(pageNow);
-        }
-        if (pageSize != null) {
-            page.setPageSize(pageSize);
-        }
-        Map<String, Object> qryMap = new HashMap<String, Object>();
-        qryMap.put("pageIndex", page.getPageIndex());
-        qryMap.put("pageSize", page.getPageSize());
-        if (sort != null) {
-            qryMap.put("sort", sort);
-        } else {
-            qryMap.put("sort", 1);
-        }
-        if (startTime != null) {
-            qryMap.put("startTime", startTime);
-        }
-        if (endTime != null) {
-            qryMap.put("endTime", endTime);
-        }
-        if (state != null) {
-            qryMap.put("state", state);
-        }
-        return NytDataDictService.list(qryMap);
-    }
-
-
-    /**
-     * 查找单个信息
-     */
-    @RequestMapping(value = "/sel", method = RequestMethod.GET)
-    public ResultData<NytDataDictEntity> sel(
-            @RequestParam(value = "id", required = true) String id
-    ){
-        return NytDataDictService.sel(id);
-    }
 
     /**
      * 保存
      */
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public ResultData<NytDataDictEntity> save(
-            @ModelAttribute NytDataDictEntity NytDataDict
-    ){
-        return NytDataDictService.save(NytDataDict);
+    public FebsResponse save(@ModelAttribute NytDataDictEntity NytDataDict){
+        NytDataDictService.save(NytDataDict);
+        return new FebsResponse().success();
     }
 
     /**
      * 修改
      */
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    public ResultData<NytDataDictEntity> update(
-            @ModelAttribute NytDataDictEntity NytDataDict
-            ){
-        return NytDataDictService.update(NytDataDict);
+    public FebsResponse update(@ModelAttribute NytDataDictEntity NytDataDict){
+        NytDataDictService.update(NytDataDict);
+        return new FebsResponse().success();
     }
 
-    /**
-     * 批量软删除
-     */
-    @RequestMapping(value = "/delByIds", method = RequestMethod.POST)
-    public ResultData<String> delByIds(
-            @RequestParam(value = "ids", required = true) String ids
-    ){
-        return NytDataDictService.delByIds(ids);
+
+
+
+    //  获取字典表分组集合
+    @RequestMapping(value = "/selectByPid", method = RequestMethod.GET)
+    FebsResponse selectByPid(String pid){
+        List<Map<String, String>> list = NytDataDictService.selectByPid(pid);
+        return new FebsResponse().success().data(list);
     }
+
+    //  获取分组集合子级
+    @RequestMapping(value = "/selectTree", method = RequestMethod.GET)
+    public FebsResponse selectTree(){
+        List<DictTree<NytDataDictEntity>> list = NytDataDictService.selectTree();
+        return new FebsResponse().success().data(list);
+    }
+
+
 
 }

@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.com.ecenter.pre.mapper.TransactMapper">
+    <resultMap type="cn.com.ecenter.pre.entity.TransactEntity" id="BaseResultMap">
+        <result property="projid" column="PROJID"/>
+        <result property="transactUser" column="TRANSACT_USER"/>
+        <result property="handerDeptname" column="Hander_Deptname"/>
+        <result property="handerDeptid" column="Hander_Deptid"/>
+        <result property="areacode" column="Areacode"/>
+        <result property="transactTime" column="TRANSACT_TIME"/>
+        <result property="transactResult" column="TRANSACT_RESULT"/>
+        <result property="transactDescribe" column="TRANSACT_DESCRIBE"/>
+        <result property="xkXkjgdm" column="XK_XKJGDM"/>
+        <result property="xkXkws" column="XK_XKWS"/>
+        <result property="xkXkzs" column="XK_XKZS"/>
+        <result property="xkYxqz" column="XK_YXQZ"/>
+        <result property="xkYxqzi" column="XK_YXQZI"/>
+        <result property="resultCode" column="RESULT_CODE"/>
+        <result property="remark" column="REMARK"/>
+        <result property="belongsystem" column="BELONGSYSTEM"/>
+        <result property="extend" column="EXTEND"/>
+        <result property="createTime" column="CREATE_TIME"/>
+        <result property="syncStatus" column="SYNC_STATUS"/>
+        <result property="dataversion" column="DATAVERSION"/>
+        <result property="servicecode" column="SERVICECODE"/>
+        <result property="serviceDeptid" column="SERVICE_DEPTID"/>
+        <result property="xkLydw" column="XK_LYDW"/>
+        <result property="xkLydwdm" column="XK_LYDWDM"/>
+        <result property="extend2" column="EXTEND_2"/>
+        <result property="extend3" column="EXTEND_3"/>
+        <result property="extend4" column="EXTEND_4"/>
+        <result property="extend5" column="EXTEND_5"/>
+        <result property="op" column="op"/>
+        <result property="tongTime" column="tong_time"/>
+        <result property="tongid" column="tongID"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+                        PROJID,
+                        TRANSACT_USER,
+                        Hander_Deptname,
+                        Hander_Deptid,
+                        Areacode,
+                        TRANSACT_TIME,
+                        TRANSACT_RESULT,
+                        TRANSACT_DESCRIBE,
+                        XK_XKJGDM,
+                        XK_XKWS,
+                        XK_XKZS,
+                        XK_YXQZ,
+                        XK_YXQZI,
+                        RESULT_CODE,
+                        REMARK,
+                        BELONGSYSTEM,
+                        EXTEND,
+                        CREATE_TIME,
+                        SYNC_STATUS,
+                        DATAVERSION,
+                        SERVICECODE,
+                        SERVICE_DEPTID,
+                        XK_LYDW,
+                        XK_LYDWDM,
+                        EXTEND_2,
+                        EXTEND_3,
+                        EXTEND_4,
+                        EXTEND_5,
+                        op,
+                        tong_time,
+                        tongID,
+            </sql>
+
+
+    <insert id="save" parameterType="cn.com.ecenter.pre.entity.TransactEntity">
+        insert into pre_transact
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="projid != null">
+                PROJID,
+            </if>
+            <if test="transactUser != null">
+                TRANSACT_USER,
+            </if>
+            <if test="handerDeptname != null">
+                Hander_Deptname,
+            </if>
+            <if test="handerDeptid != null">
+                Hander_Deptid,
+            </if>
+            <if test="areacode != null">
+                Areacode,
+            </if>
+            <if test="transactTime != null">
+                TRANSACT_TIME,
+            </if>
+            <if test="transactResult != null">
+                TRANSACT_RESULT,
+            </if>
+            <if test="transactDescribe != null">
+                TRANSACT_DESCRIBE,
+            </if>
+            <if test="xkXkjgdm != null">
+                XK_XKJGDM,
+            </if>
+            <if test="xkXkws != null">
+                XK_XKWS,
+            </if>
+            <if test="xkXkzs != null">
+                XK_XKZS,
+            </if>
+            <if test="xkYxqz != null">
+                XK_YXQZ,
+            </if>
+            <if test="xkYxqzi != null">
+                XK_YXQZI,
+            </if>
+            <if test="resultCode != null">
+                RESULT_CODE,
+            </if>
+            <if test="remark != null">
+                REMARK,
+            </if>
+            <if test="belongsystem != null">
+                BELONGSYSTEM,
+            </if>
+            <if test="extend != null">
+                EXTEND,
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME,
+            </if>
+            <if test="syncStatus != null">
+                SYNC_STATUS,
+            </if>
+            <if test="dataversion != null">
+                DATAVERSION,
+            </if>
+            <if test="servicecode != null">
+                SERVICECODE,
+            </if>
+            <if test="serviceDeptid != null">
+                SERVICE_DEPTID,
+            </if>
+            <if test="xkLydw != null">
+                XK_LYDW,
+            </if>
+            <if test="xkLydwdm != null">
+                XK_LYDWDM,
+            </if>
+            <if test="extend2 != null">
+                EXTEND_2,
+            </if>
+            <if test="extend3 != null">
+                EXTEND_3,
+            </if>
+            <if test="extend4 != null">
+                EXTEND_4,
+            </if>
+            <if test="extend5 != null">
+                EXTEND_5,
+            </if>
+            <if test="op != null">
+                op,
+            </if>
+            <if test="tongTime != null">
+                tong_time,
+            </if>
+            <if test="tongid != null">
+                tongID,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="projid != null">
+                #{projid},
+            </if>
+            <if test="transactUser != null">
+                #{transactUser},
+            </if>
+            <if test="handerDeptname != null">
+                #{handerDeptname},
+            </if>
+            <if test="handerDeptid != null">
+                #{handerDeptid},
+            </if>
+            <if test="areacode != null">
+                #{areacode},
+            </if>
+            <if test="transactTime != null">
+                #{transactTime},
+            </if>
+            <if test="transactResult != null">
+                #{transactResult},
+            </if>
+            <if test="transactDescribe != null">
+                #{transactDescribe},
+            </if>
+            <if test="xkXkjgdm != null">
+                #{xkXkjgdm},
+            </if>
+            <if test="xkXkws != null">
+                #{xkXkws},
+            </if>
+            <if test="xkXkzs != null">
+                #{xkXkzs},
+            </if>
+            <if test="xkYxqz != null">
+                #{xkYxqz},
+            </if>
+            <if test="xkYxqzi != null">
+                #{xkYxqzi},
+            </if>
+            <if test="resultCode != null">
+                #{resultCode},
+            </if>
+            <if test="remark != null">
+                #{remark},
+            </if>
+            <if test="belongsystem != null">
+                #{belongsystem},
+            </if>
+            <if test="extend != null">
+                #{extend},
+            </if>
+            <if test="createTime != null">
+                #{createTime},
+            </if>
+            <if test="syncStatus != null">
+                #{syncStatus},
+            </if>
+            <if test="dataversion != null">
+                #{dataversion},
+            </if>
+            <if test="servicecode != null">
+                #{servicecode},
+            </if>
+            <if test="serviceDeptid != null">
+                #{serviceDeptid},
+            </if>
+            <if test="xkLydw != null">
+                #{xkLydw},
+            </if>
+            <if test="xkLydwdm != null">
+                #{xkLydwdm},
+            </if>
+            <if test="extend2 != null">
+                #{extend2},
+            </if>
+            <if test="extend3 != null">
+                #{extend3},
+            </if>
+            <if test="extend4 != null">
+                #{extend4},
+            </if>
+            <if test="extend5 != null">
+                #{extend5},
+            </if>
+            <if test="op != null">
+                #{op},
+            </if>
+            <if test="tongTime != null">
+                #{tongTime},
+            </if>
+            <if test="tongid != null">
+                #{tongid},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByProjid" parameterType="cn.com.ecenter.pre.entity.TransactEntity">
+        update pre_transact
+        <set>
+            <if test="transactUser != null">
+                TRANSACT_USER = #{transactUser},
+            </if>
+            <if test="handerDeptname != null">
+                Hander_Deptname = #{handerDeptname},
+            </if>
+            <if test="handerDeptid != null">
+                Hander_Deptid = #{handerDeptid},
+            </if>
+            <if test="areacode != null">
+                Areacode = #{areacode},
+            </if>
+            <if test="transactTime != null">
+                TRANSACT_TIME = #{transactTime},
+            </if>
+            <if test="transactResult != null">
+                TRANSACT_RESULT = #{transactResult},
+            </if>
+            <if test="transactDescribe != null">
+                TRANSACT_DESCRIBE = #{transactDescribe},
+            </if>
+            <if test="xkXkjgdm != null">
+                XK_XKJGDM = #{xkXkjgdm},
+            </if>
+            <if test="xkXkws != null">
+                XK_XKWS = #{xkXkws},
+            </if>
+            <if test="xkXkzs != null">
+                XK_XKZS = #{xkXkzs},
+            </if>
+            <if test="xkYxqz != null">
+                XK_YXQZ = #{xkYxqz},
+            </if>
+            <if test="xkYxqzi != null">
+                XK_YXQZI = #{xkYxqzi},
+            </if>
+            <if test="resultCode != null">
+                RESULT_CODE = #{resultCode},
+            </if>
+            <if test="remark != null">
+                REMARK = #{remark},
+            </if>
+            <if test="belongsystem != null">
+                BELONGSYSTEM = #{belongsystem},
+            </if>
+            <if test="extend != null">
+                EXTEND = #{extend},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime},
+            </if>
+            <if test="syncStatus != null">
+                SYNC_STATUS = #{syncStatus},
+            </if>
+            <if test="dataversion != null">
+                DATAVERSION = #{dataversion},
+            </if>
+            <if test="servicecode != null">
+                SERVICECODE = #{servicecode},
+            </if>
+            <if test="serviceDeptid != null">
+                SERVICE_DEPTID = #{serviceDeptid},
+            </if>
+            <if test="xkLydw != null">
+                XK_LYDW = #{xkLydw},
+            </if>
+            <if test="xkLydwdm != null">
+                XK_LYDWDM = #{xkLydwdm},
+            </if>
+            <if test="extend2 != null">
+                EXTEND_2 = #{extend2},
+            </if>
+            <if test="extend3 != null">
+                EXTEND_3 = #{extend3},
+            </if>
+            <if test="extend4 != null">
+                EXTEND_4 = #{extend4},
+            </if>
+            <if test="extend5 != null">
+                EXTEND_5 = #{extend5},
+            </if>
+            <if test="op != null">
+                op = #{op},
+            </if>
+            <if test="tongTime != null">
+                tong_time = #{tongTime},
+            </if>
+            <if test="tongid != null">
+                tongID = #{tongid},
+            </if>
+        </set>
+        where PROJID = #{projid}
+    </update>
+
+
+</mapper>

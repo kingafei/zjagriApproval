@@ -30,6 +30,15 @@
                 <input type="text" name="userId" data-th-value="${user.userId}">
             </div>
         </div>
+        
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">姓名：</label>
+            <div class="layui-input-block">
+                <input type="text" name="name" minlength="4" maxlength="10" data-th-id="${user.userId}"
+                       lay-verify="range|name" autocomplete="off" class="layui-input" readonly>
+            </div>
+        </div>
+        
         <div class="layui-form-item">
             <label class="layui-form-label febs-form-item-require">用户名：</label>
             <div class="layui-input-block">
@@ -191,6 +200,7 @@
         function initUserValue() {
             form.val("user-update-form", {
                 "username": user.username,
+                "name": user.name,
                 "mobile": user.mobile,
                 "email": user.email,
                 "status": user.status,

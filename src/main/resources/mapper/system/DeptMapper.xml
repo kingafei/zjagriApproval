@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.com.ecenter.system.mapper.DeptMapper">
+
+    <resultMap type="cn.com.ecenter.system.entity.Dept" id="BaseResultMap">
+        <result property="deptId" column="DEPT_ID"/>
+        <result property="parentId" column="PARENT_ID"/>
+        <result property="deptName" column="DEPT_NAME"/>
+        <result property="orderNum" column="ORDER_NUM"/>
+        <result property="createTime" column="CREATE_TIME"/>
+        <result property="modifyTime" column="MODIFY_TIME"/>
+        <result property="organizationOid" column="organization_oid"/>
+        <result property="unifiedCreditCode" column="unified_credit_code"/>
+        <result property="orgLive" column="org_live"/>
+        <result property="uniqueCoding" column="unique_coding"/>
+        <result property="administrationCode" column="administration_code"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="regioncode" column="regioncode"/>
+    </resultMap>
+
+    <insert id="add" parameterType="cn.com.ecenter.system.entity.Dept" >
+        insert into t_dept
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+                        <if test="deptId != null" >
+                  DEPT_ID,
+            </if>
+                        <if test="parentId != null" >
+                 PARENT_ID,
+            </if>
+                        <if test="deptName != null" >
+                 DEPT_NAME,
+            </if>
+                        <if test="orderNum != null" >
+                 ORDER_NUM,
+            </if>
+                        <if test="createTime != null" >
+                 CREATE_TIME,
+            </if>
+                        <if test="modifyTime != null" >
+                  MODIFY_TIME,
+            </if>
+                        <if test="organizationOid != null" >
+                  organization_oid,
+            </if>
+                        <if test="unifiedCreditCode != null" >
+                 unified_credit_code,
+            </if>
+                        <if test="uniqueCoding != null" >
+                 unique_coding,
+            </if>
+                        <if test="orgLive != null" >
+                 org_live,
+            </if>
+                        <if test="administrationCode != null" >
+                 administration_code,
+            </if>
+                        <if test="isDelete != null" >
+                 is_delete,
+            </if>
+                        <if test="regioncode != null" >
+                 regioncode,
+            </if>
+
+                    </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="deptId != null" >
+                #{deptId},
+            </if>
+            <if test="parentId != null" >
+                #{parentId},
+            </if>
+            <if test="deptName != null" >
+                #{deptName},
+            </if>
+            <if test="orderNum != null" >
+                #{orderNum},
+            </if>
+            <if test="createTime != null" >
+                #{createTime},
+            </if>
+            <if test="modifyTime != null" >
+                #{modifyTime},
+            </if>
+            <if test="organizationOid != null" >
+                #{organizationOid},
+            </if>
+            <if test="unifiedCreditCode != null" >
+                #{unifiedCreditCode},
+            </if>
+            <if test="uniqueCoding != null" >
+                #{uniqueCoding},
+            </if>
+            <if test="orgLive != null" >
+                #{orgLive},
+            </if>
+            <if test="administrationCode != null" >
+                #{administrationCode},
+            </if>
+            <if test="isDelete != null" >
+                #{isDelete},
+            </if>
+            <if test="regioncode != null" >
+                #{regioncode},
+            </if>
+                    </trim>
+    </insert>
+
+    <!--根据AdCode查询-->
+    <select id="selectByID" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select * from t_dept where dept_id = #{deptId}
+    </select>
+
+    <!--根据AdCode查询-->
+    <select id="selectByAdCode" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select * from t_dept where administration_code = #{AdCode}
+    </select>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select a.name bik1, d.* FROM t_dept d LEFT JOIN nyt_area a ON substr(d.unique_coding,1,6) = a.adcode OR d.administration_code = a.adcode
+    </select>
+
+
+</mapper>

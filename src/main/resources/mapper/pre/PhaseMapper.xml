@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+    <mapper namespace="cn.com.ecenter.pre.mapper.PhaseMapper">
+        <resultMap type="cn.com.ecenter.pre.entity.PhaseEntity" id="BaseResultMap">
+        <result property="unid" column="UNID"/>
+        <result property="projid" column="PROJID"/>
+        <result property="phaseCode" column="PHASE_CODE"/>
+        <result property="handlestart" column="HANDLESTART"/>
+        <result property="nodeName" column="NODE_NAME"/>
+        <result property="belongsystem" column="BELONGSYSTEM"/>
+        <result property="areacode" column="Areacode"/>
+        <result property="createTime" column="CREATE_TIME"/>
+        <result property="syncStatus" column="SYNC_STATUS"/>
+        <result property="dataversion" column="DATAVERSION"/>
+        <result property="servicecode" column="SERVICECODE"/>
+        <result property="serviceDeptid" column="SERVICE_DEPTID"/>
+        <result property="xkLydw" column="XK_LYDW"/>
+        <result property="xkLydwdm" column="XK_LYDWDM"/>
+        <result property="extend2" column="EXTEND_2"/>
+        <result property="extend3" column="EXTEND_3"/>
+        <result property="extend4" column="EXTEND_4"/>
+        <result property="extend5" column="EXTEND_5"/>
+        <result property="op" column="op"/>
+        <result property="tongTime" column="tong_time"/>
+        <result property="tongid" column="tongID"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+                            UNID,
+                            PROJID,
+                            PHASE_CODE,
+                            HANDLESTART,
+                            NODE_NAME,
+                            BELONGSYSTEM,
+                            Areacode,
+                            CREATE_TIME,
+                            SYNC_STATUS,
+                            DATAVERSION,
+                            SERVICECODE,
+                            SERVICE_DEPTID,
+                            XK_LYDW,
+                            XK_LYDWDM,
+                            EXTEND_2,
+                            EXTEND_3,
+                            EXTEND_4,
+                            EXTEND_5,
+                            op,
+                            tong_time,
+                            tongID,
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+            select
+            *
+            from pre_phase
+            where id = #{id,jdbcType=VARCHAR}
+     </select>
+
+    <insert id="save" parameterType="cn.com.ecenter.pre.entity.PhaseEntity" >
+            insert into pre_phase
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="unid != null" >
+                UNID,
+            </if>
+            <if test="projid != null" >
+                PROJID,
+            </if>
+            <if test="phaseCode != null" >
+                PHASE_CODE,
+            </if>
+            <if test="handlestart != null" >
+                HANDLESTART,
+            </if>
+            <if test="nodeName != null" >
+                NODE_NAME,
+            </if>
+            <if test="belongsystem != null" >
+                BELONGSYSTEM,
+            </if>
+            <if test="areacode != null" >
+                Areacode,
+            </if>
+            <if test="createTime != null" >
+                CREATE_TIME,
+            </if>
+            <if test="syncStatus != null" >
+                SYNC_STATUS,
+            </if>
+            <if test="dataversion != null" >
+                DATAVERSION,
+            </if>
+            <if test="servicecode != null" >
+                SERVICECODE,
+            </if>
+            <if test="serviceDeptid != null" >
+                SERVICE_DEPTID,
+            </if>
+            <if test="xkLydw != null" >
+                XK_LYDW,
+            </if>
+            <if test="xkLydwdm != null" >
+                XK_LYDWDM,
+            </if>
+            <if test="extend2 != null" >
+                EXTEND_2,
+            </if>
+            <if test="extend3 != null" >
+                EXTEND_3,
+            </if>
+            <if test="extend4 != null" >
+                EXTEND_4,
+            </if>
+            <if test="extend5 != null" >
+                EXTEND_5,
+            </if>
+            <if test="op != null" >
+                op,
+            </if>
+            <if test="tongTime != null" >
+                tong_time,
+            </if>
+            <if test="tongid != null" >
+                tongID,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="unid != null" >
+                #{unid},
+            </if>
+            <if test="projid != null" >
+                #{projid},
+            </if>
+            <if test="phaseCode != null" >
+                #{phaseCode},
+            </if>
+            <if test="handlestart != null" >
+                #{handlestart},
+            </if>
+            <if test="nodeName != null" >
+                #{nodeName},
+            </if>
+            <if test="belongsystem != null" >
+                #{belongsystem},
+            </if>
+            <if test="areacode != null" >
+                #{areacode},
+            </if>
+            <if test="createTime != null" >
+                #{createTime},
+            </if>
+            <if test="syncStatus != null" >
+                #{syncStatus},
+            </if>
+            <if test="dataversion != null" >
+                #{dataversion},
+            </if>
+            <if test="servicecode != null" >
+                #{servicecode},
+            </if>
+            <if test="serviceDeptid != null" >
+                #{serviceDeptid},
+            </if>
+            <if test="xkLydw != null" >
+                #{xkLydw},
+            </if>
+            <if test="xkLydwdm != null" >
+                #{xkLydwdm},
+            </if>
+            <if test="extend2 != null" >
+                #{extend2},
+            </if>
+            <if test="extend3 != null" >
+                #{extend3},
+            </if>
+            <if test="extend4 != null" >
+                #{extend4},
+            </if>
+            <if test="extend5 != null" >
+                #{extend5},
+            </if>
+            <if test="op != null" >
+                #{op},
+            </if>
+            <if test="tongTime != null" >
+                #{tongTime},
+            </if>
+            <if test="tongid != null" >
+                #{tongid},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="cn.com.ecenter.pre.entity.PhaseEntity" >
+            update pre_phase
+                <set >
+                    <if test="projid != null" >
+                        PROJID = #{projid},
+                    </if>
+                    <if test="phaseCode != null" >
+                        PHASE_CODE = #{phaseCode},
+                    </if>
+                    <if test="handlestart != null" >
+                        HANDLESTART = #{handlestart},
+                    </if>
+                    <if test="nodeName != null" >
+                        NODE_NAME = #{nodeName},
+                    </if>
+                    <if test="belongsystem != null" >
+                        BELONGSYSTEM = #{belongsystem},
+                    </if>
+                    <if test="areacode != null" >
+                        Areacode = #{areacode},
+                    </if>
+                    <if test="createTime != null" >
+                        CREATE_TIME = #{createTime},
+                    </if>
+                    <if test="syncStatus != null" >
+                        SYNC_STATUS = #{syncStatus},
+                    </if>
+                    <if test="dataversion != null" >
+                        DATAVERSION = #{dataversion},
+                    </if>
+                    <if test="servicecode != null" >
+                        SERVICECODE = #{servicecode},
+                    </if>
+                    <if test="serviceDeptid != null" >
+                        SERVICE_DEPTID = #{serviceDeptid},
+                    </if>
+                    <if test="xkLydw != null" >
+                        XK_LYDW = #{xkLydw},
+                    </if>
+                    <if test="xkLydwdm != null" >
+                        XK_LYDWDM = #{xkLydwdm},
+                    </if>
+                    <if test="extend2 != null" >
+                        EXTEND_2 = #{extend2},
+                    </if>
+                    <if test="extend3 != null" >
+                        EXTEND_3 = #{extend3},
+                    </if>
+                    <if test="extend4 != null" >
+                        EXTEND_4 = #{extend4},
+                    </if>
+                    <if test="extend5 != null" >
+                        EXTEND_5 = #{extend5},
+                    </if>
+                    <if test="op != null" >
+                        op = #{op},
+                    </if>
+                    <if test="tongTime != null" >
+                        tong_time = #{tongTime},
+                    </if>
+                    <if test="tongid != null" >
+                        tongID = #{tongid},
+                    </if>
+                </set>
+            where UNID = #{unid}
+    </update>
+
+
+
+</mapper>

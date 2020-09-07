@@ -90,6 +90,14 @@ public class User implements Serializable {
     private String username;
 
     /**
+     * 用户名
+     */
+    @TableField("NAME")
+    @Size(min = 4, max = 10, message = "{range}")
+    @ExcelField(value = "用户真实姓名")
+    private String name;
+
+    /**
      * 密码
      */
     @TableField("PASSWORD")
@@ -182,6 +190,14 @@ public class User implements Serializable {
     @Size(max = 100, message = "{noMoreThan}")
     @ExcelField(value = "个人描述")
     private String description;
+
+    /**
+     * 地区名称
+     */
+    @ExcelField(value = "地区")
+    @TableField(exist = false)
+    private String areaName;
+
 
     /**
      * 部门名称

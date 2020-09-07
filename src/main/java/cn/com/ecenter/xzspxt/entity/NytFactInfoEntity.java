@@ -42,6 +42,10 @@ private Date updateTime;
 	 */
 private String remarks;
 	/**
+	 * tongID
+	 */
+private Long tongid;
+	/**
 	 * 0-未删除，1-已删； 默认0
 	 */
 private String isDelete;

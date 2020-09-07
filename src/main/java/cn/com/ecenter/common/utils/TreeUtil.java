@@ -1,7 +1,9 @@
 package cn.com.ecenter.common.utils;
 
 
+import cn.com.ecenter.common.entity.AreaTree;
 import cn.com.ecenter.common.entity.DeptTree;
+import cn.com.ecenter.common.entity.DictTree;
 import cn.com.ecenter.common.entity.MenuTree;
 import org.apache.commons.lang3.StringUtils;
 
@@ -101,4 +103,52 @@ public class TreeUtil {
         });
         return topNodes;
     }
+
+    public static <T> List<AreaTree<T>> buildAreaList(List<AreaTree<T>> nodes, String idParam) {
+        if (nodes == null) {
+            return new ArrayList<>();
+        }
+        List<AreaTree<T>> topNodes = new ArrayList<>();
+        nodes.forEach(children -> {
+            String pid = children.getParentId();
+            if (pid == null || idParam.equals(pid)) {
+                topNodes.add(children);
+                return;
+            }
+            nodes.forEach(parent -> {
+                String id = parent.getId();
+                if (id != null && id.equals(pid)) {
+                    parent.getChilds().add(children);
+                    children.setHasParent(true);
+                    parent.setHasChild(true);
+                }
+            });
+        });
+        return topNodes;
+    }
+
+    public static <T> List<DictTree<T>> buildDictList(List<DictTree<T>> nodes) {
+        if (nodes == null) {
+            return new ArrayList<>();
+        }
+        List<DictTree<T>> topNodes = new ArrayList<>();
+        nodes.forEach(children -> {
+            String pid = children.getParentId();
+            if (pid == null || TOP_NODE_ID.equals(pid)) {
+                topNodes.add(children);
+                return;
+            }
+            nodes.forEach(parent -> {
+                String id = parent.getId();
+                if (id != null && id.equals(pid)) {
+                    parent.getChildren().add(children);
+                    children.setHasParent(true);
+                    parent.setHasChild(true);
+                }
+            });
+        });
+        return topNodes;
+    }
+
+
 }

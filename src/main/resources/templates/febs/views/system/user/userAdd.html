@@ -24,6 +24,14 @@
 </style>
 <div class="layui-fluid" id="user-add">
     <form class="layui-form" action="" lay-filter="user-add-form">
+        
+        <div class="layui-form-item">
+            <label class="layui-form-label febs-form-item-require">姓名：</label>
+            <div class="layui-input-block">
+                <input type="text" name="name" minlength="2" maxlength="10" lay-verify="range|username"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
         <div class="layui-form-item">
             <label class="layui-form-label febs-form-item-require">用户名：</label>
             <div class="layui-input-block">

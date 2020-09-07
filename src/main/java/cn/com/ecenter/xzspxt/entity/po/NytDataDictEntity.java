@@ -2,6 +2,7 @@ package cn.com.ecenter.xzspxt.entity.po;
 
 import lombok.Data;
 import java.util.Date;
+import java.util.List;
 
 @Data
 public class NytDataDictEntity {
@@ -31,7 +32,7 @@ private String valueComment;
 	 */
 private Byte valueSort;
 	/**
-	 * 创建人id
+	 * 父级id
 	 */
 private String fkUid;
 	/**
@@ -50,5 +51,8 @@ private Date createTime;
 	 * 更新时间
 	 */
 private Date updateTime;
+
+
+private List<NytDataDictEntity> list;
 
 }

@@ -10,4 +10,6 @@ import java.util.List;
 public interface NytMateralInfoMapper extends BaseMapper<NytMateralInfoEntity> {
 
     void add(List<NytMateralInfoEntity> list);
+
+    List<NytMateralInfoEntity> selectPID(String pId);
 }

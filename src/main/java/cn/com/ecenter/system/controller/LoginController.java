@@ -13,10 +13,7 @@ import cn.com.ecenter.system.service.IUserService;
 import lombok.RequiredArgsConstructor;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,6 +30,7 @@ import java.util.Map;
 @Validated
 @RestController
 @RequiredArgsConstructor
+@CrossOrigin // 接口跨域
 public class LoginController extends BaseController {
 
     private final IUserService userService;

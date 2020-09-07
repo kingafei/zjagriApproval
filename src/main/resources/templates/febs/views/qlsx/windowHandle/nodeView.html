@@ -1,0 +1,73 @@
+<!--环节弹窗-->
+<div class="site-text" style="margin: 0;" id="nodeview">
+    <div class="layui-card-body febs-table-full">
+        <table lay-filter="nodeTable" id="nodeTable"></table>
+    </div>
+</div>
+<!--环节弹窗结束-->
+<input type="hidden" th:value="${tongid}" id="nodetongid" name="nodetongid"/>
+
+<!--</script>-->
+<script data-th-inline="none" type="text/javascript">
+
+    layui.use([ 'jquery',  'form', 'table' ], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            table = layui.table,
+            $view = $('#nodeview'),
+            nodeTable;
+
+        form.render();
+        
+        
+       nodeTable();
+        
+        //事项环节 弹窗
+        function nodeTable() {
+  
+        	nodeTable = table.render({
+                elem: '#nodeTable',
+                url: ctx + 'nytFlowInfo/selectByPid?tongId=' +  $('#nodetongid').val(),  //数据接口
+                page: false, //开启分页
+                cols: [[ //表头
+                    { type: 'numbers', title: '<b>序号</b>', width: 50, align:'center' },
+                    { field: 'activityId', title: '<b>环节名称</b>', width: 100, align:'center' },
+                    { field: 'positionName', title: '<b>岗位名称</b>', width: 120, align:'center' },
+                    { field: 'personNames', title: '<b>办理人员</b>', width: 150, align:'center' }
+                ]]
+            });
+        	
+        	
+        }
+    })
+
+
+</script>
+
+
+<style>
+    .layui-table-cell {
+        font-size: 14px;
+        padding: 0 5px;
+        height: auto;
+        overflow: visible;
+        text-overflow: inherit;
+        white-space: normal;
+        word-break: break-all;
+        border-color: #000000;
+    }
+
+    .layui-table {
+        border-color: #000000;
+    }
+
+    .layui-input,
+    .layui-input-block,
+    .layui-textarea {
+        border-color: #ffffff
+    }
+
+    .layui-input layui-unselect {
+        hight: 22px;
+    }
+</style>

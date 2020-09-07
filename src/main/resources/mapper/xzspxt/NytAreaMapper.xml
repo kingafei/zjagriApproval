@@ -281,4 +281,25 @@
         select max(id) FROM nyt_area
     </select>
 
+    <select id="queryByLevel" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT * FROM nyt_area
+            where level = #{level}
+            and is_delete = 0
+    </select>
+
+    <select id="queryByUrl" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT * FROM nyt_area
+            WHERE code_url LIKE CONCAT(CONCAT(#{codeUrl},'%'))
+            and is_delete = 0
+            and level &lt;#{level}
+            ORDER BY for_order
+    </select>
+
+    <select id="queryByAdcode" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT * FROM nyt_area
+            WHERE adcode = #{adcode}
+            and is_delete = 0
+    </select>
+
+
 </mapper>

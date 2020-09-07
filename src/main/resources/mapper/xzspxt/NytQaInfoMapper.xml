@@ -13,6 +13,7 @@
         CREATE_TIME,
         UPDATE_TIME,
         REMARKS,
+        tongID,
         IS_DELETE
         )
         values
@@ -27,6 +28,7 @@
             #{item.createTime},
             #{item.updateTime},
             #{item.remarks},
+            #{item.tongid},
             #{item.isDelete}
             )
         </foreach>

@@ -29,6 +29,7 @@
         CREATE_TIME,
         UPDATE_TIME,
         REMARKS,
+        tongID,
         IS_DELETE
         )
         values
@@ -59,9 +60,19 @@
             #{item.createTime},
             #{item.updateTime},
             #{item.remarks},
+            #{item.tongid},
             #{item.isDelete}
             )
         </foreach>
 
     </insert>
+
+
+
+    <select id="selectByPid" resultType="cn.com.ecenter.xzspxt.entity.NytFlowInfoEntity" parameterType="java.lang.String">
+         select  nyt.* from nyt_flow_info nyt
+            LEFT JOIN nyt_qlsx nq on nyt.p_id = CONCAT_WS("_",nq.rowguid,nq.id)
+            where nq.tongID = #{tongId}
+    </select>
+
 </mapper>

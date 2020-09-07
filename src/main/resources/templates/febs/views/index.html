@@ -133,14 +133,14 @@
                 <div class="layui-card-body">
                     <table class="project-table">
                         <tr>
-                            <td style="padding: .8rem;">进行中的项目</td>
+                            <td style="padding: .8rem;">待办工作</td>
                             <td style="padding: .8rem;text-align: right">
-                                <a target="_blank" href="https://github.com/wuyouzhuguli?tab=repositories">所有项目</a>
+                                <a target="_blank" href="#">更多</a>
                             </td>
                         </tr>
                         <tr>
                             <td class="project-table-td">
-                                <div class="layui-row">
+                                <!-- <div class="layui-row">
                                     <div class="layui-col-md12 layui-col-xs12">
                                         <div class="layui-row">
                                             <div class="layui-col-md12">
@@ -152,10 +152,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </td>
                             <td class="project-table-td">
-                                <div class="layui-row">
+                                <!-- <div class="layui-row">
                                     <div class="layui-col-md12 layui-col-xs12">
                                         <div class="layui-row">
                                             <div class="layui-col-md12">
@@ -167,12 +167,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </td>
                         </tr>
                         <tr>
                             <td class="project-table-td">
-                                <div class="layui-row">
+                                <!-- <div class="layui-row">
                                     <div class="layui-col-md12 layui-col-xs12">
                                         <div class="layui-row">
                                             <div class="layui-col-md12">
@@ -184,10 +184,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </td>
                             <td class="project-table-td">
-                                <div class="layui-row">
+                                <!-- <div class="layui-row">
                                     <div class="layui-col-md12 layui-col-xs12">
                                         <div class="layui-row">
                                             <div class="layui-col-md12">
@@ -199,12 +199,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </td>
                         </tr>
                         <tr>
                             <td class="project-table-td">
-                                <div class="layui-row">
+                               <!--  <div class="layui-row">
                                     <div class="layui-col-md12 layui-col-xs12">
                                         <div class="layui-row">
                                             <div class="layui-col-md12">
@@ -216,10 +216,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </td>
                             <td class="project-table-td">
-                                <div class="layui-row">
+                                <!-- <div class="layui-row">
                                     <div class="layui-col-md12 layui-col-xs12">
                                         <div class="layui-row">
                                             <div class="layui-col-md12">
@@ -230,12 +230,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </td>
                         </tr>
                         <tr>
                             <td class="project-table-td">
-                                <div class="layui-row">
+                               <!--  <div class="layui-row">
                                     <div class="layui-col-md12 layui-col-xs12">
                                         <div class="layui-row">
                                             <div class="layui-col-md12">
@@ -247,10 +247,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </td>
                             <td class="project-table-td">
-                                <div class="layui-row">
+                                <!-- <div class="layui-row">
                                     <div class="layui-col-md12 layui-col-xs12">
                                         <div class="layui-row">
                                             <div class="layui-col-md12">
@@ -261,7 +261,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </td>
                         </tr>
                     </table>
@@ -296,7 +296,7 @@
                 '周末要不要去看电影？'
             ];
             var index = Math.floor((Math.random() * welcomeArr.length));
-            var welcomeMessage = time + '，<a id="febs-index-user">' + currentUser.username + '</a>，' + welcomeArr[index];
+            var welcomeMessage = time + '，<a id="febs-index-user">' + currentUser.name + '</a>，' + welcomeArr[index];
             $view.find('#today-ip').text(data.todayIp).end()
                 .find('#today-visit-count').text(data.todayVisitCount).end()
                 .find('#total-visit-count').text(data.totalVisitCount).end()

@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface NytMateralInfoService {
     void add(List<NytMateralInfoEntity> list);
+
+    List<NytMateralInfoEntity> selectPId(String pId);
 }

@@ -10,4 +10,6 @@ import java.util.List;
 public interface NytFlowInfoMapper extends BaseMapper<NytFlowInfoEntity> {
 
     void add(List<NytFlowInfoEntity> list);
+
+    List<NytFlowInfoEntity> selectByPid(String tongId);
 }

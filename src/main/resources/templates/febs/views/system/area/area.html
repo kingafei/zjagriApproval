@@ -1,0 +1,259 @@
+<div class="layui-fluid layui-anim febs-anim" id="febs-area" lay-title="地区管理">
+    <div class="layui-row layui-col-space8 febs-container">
+        <div class="layui-col-md6 layui-col-sm6 layui-col-xs12">
+            <div class="layui-card">
+                <div class="layui-card-body febs-table-full">
+                    <form class="layui-form layui-table-form" lay-filter="area-table-form" id="area-table-form">
+                        <div class="layui-row">
+                            <div class="layui-col-md8 layui-col-sm9 layui-col-xs9">
+                                <div class="layui-form-item">
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">名称</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="areaName" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-col-md4 layui-col-sm12 layui-col-xs12 table-action-area">
+                                <div class="layui-btn layui-btn-sm layui-btn-primary febs-button-blue-plain  table-action" id="query">
+                                    <i class="layui-icon">&#xe848;</i>
+                                </div>
+                                <div class="layui-btn layui-btn-sm layui-btn-primary febs-button-green-plain  table-action" id="reset">
+                                    <i class="layui-icon">&#xe79b;</i>
+                                </div>
+                                <div class="layui-btn layui-btn-sm layui-btn-primary table-action action-more"
+                                     shiro:hasAnyPermissions="area:add,area:delete,area:export">
+                                    <i class="layui-icon">&#xe875;</i>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="area-tree" lay-filter="areaTree" style="margin-left: 1rem"></div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-md6 layui-col-sm6 layui-col-xs12">
+            <div class="layui-card">
+                <div class="layui-card-header" id="form-header">新增地区</div>
+                <div class="layui-card-body febs-table-full">
+                    <form class="layui-form layui-table-form" action="" lay-filter="area-form">
+                        <div class="layui-form-item febs-hide">
+                            <label class="layui-form-label febs-form-item-require">ID：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="id" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">上级ID：</label>
+                            <div class="layui-input-block">
+                                <input type="text" value="" name="parentId" readonly autocomplete="off"
+                                       class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label febs-form-item-require">地区名称：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="name" autocomplete="off" class="layui-input"
+                                       minlength="2" maxlength="10" lay-verify="range">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">地区编码：</label>
+                            <div class="layui-input-block">
+                                <input type="text" value="" name="adcode" readonly autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">区地排序：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="forOrder" autocomplete="off" class="layui-input"
+                                       lay-verify="number">
+                            </div>
+                        </div>
+                        <!-- <div class="layui-form-item">
+                            <label class="layui-form-label">等级：</label>
+                            <div class="layui-input-block">
+                                <input type="text" value="" name="level" readonly autocomplete="off" class="layui-input">
+                            </div>
+                        </div>-->
+                        <button type="reset" class="layui-btn febs-hide" id="reset-form"></button>
+                        <button class="layui-btn febs-hide" lay-submit="" lay-filter="area-form-submit"
+                                id="submit-form"></button>
+                    </form>
+                </div>
+                <div class="layui-card-footer">
+                    <button class="layui-btn layui-btn-normal" id="submit">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script data-th-inline="javascript" type="text/javascript">
+    layui.use(['dropdown', 'jquery', 'validate', 'febs', 'form', 'eleTree'], function () {
+        var $ = layui.jquery,
+            febs = layui.febs,
+            form = layui.form,
+            validate = layui.validate,
+            eleTree = layui.eleTree,
+            dropdown = layui.dropdown,
+            $view = $('#febs-area'),
+            $query = $view.find('#query'),
+            $reset = $view.find('#reset'),
+            $submit = $view.find('#submit'),
+            $header = $view.find('#form-header'),
+            $searchForm = $view.find('#area-table-form'),
+            $areaName = $searchForm.find('input[name="areaName"]'),
+            _currentAreaData,
+            _areaTree;
+
+        form.verify(validate);
+        form.render();
+
+        renderAreaTree();
+
+        eleTree.on("nodeClick(areaTree)", function (d) {
+            $header.text('修改区域');
+            var data = d.data.currentData.data;
+            _currentAreaData = data;
+            form.val("area-form", {
+                "name": data.name,
+                "forOrder": data.forOrder,
+                "parentId": data.parentId,
+                "id": data.id,
+                "adcode": data.adcode
+            });
+        });
+
+        dropdown.render({
+            elem: $view.find('.action-more'),
+            click: function (name, elem, event) {
+                if (name === 'save') {
+                    reset();
+                    var selected = _areaTree.getChecked(false, true);
+                    if (selected.length > 1) {
+                        febs.alert.warn('只能选择一个节点作为父级！');
+                        return;
+                    }
+                    console.log(JSON.stringify(selected[0])+"1111111");
+                    form.val("area-form", {
+                        "parentId": selected[0] ? selected[0].id : ''
+                    });
+                }
+                if (name === 'delete') {
+                    var checked = _areaTree.getChecked(false, true);
+                    if (checked.length < 1) {
+                        febs.alert.warn('请勾选需要删除的部门');
+                        return;
+                    }
+                    var areaIds = [];
+                    layui.each(checked, function (key, item) {
+                        areaIds.push(item.id)
+                    });
+                    febs.modal.confirm('提示', '当您点击确定按钮后，这些记录将会被彻底删除，如果其包含子记录，也将一并删除！', function () {
+                        febs.get(ctx + 'NytArea/delByIds/' + areaIds.join(','), null, function () {
+                            febs.alert.success('删除成功！');
+                            reloadAreaTree();
+                            reset();
+                        })
+                    });
+                }
+                if (name === 'export') {
+                    febs.download(ctx + 'NytArea/excel', getQueryParams(), '地区信息表.xlsx');
+                }
+            },
+            options: [{
+                name: 'save',
+                title: '新增地区',
+                perms: 'area:add'
+            },{
+                name: 'delete',
+                title: '删除地区',
+                perms: 'area:delete'
+            }/*, {
+                name: 'export',
+                title: '导出Excel',
+                perms: 'area:export'
+            }*/]
+        });
+
+        $view.on('click', '#submit', function () {
+            $view.find('#submit-form').trigger('click');
+        });
+
+        $reset.on('click', function () {
+            $areaName.val('');
+            reloadAreaTree();
+            reset();
+        });
+
+        $query.on('click', function () {
+            reloadAreaTree();
+        });
+
+        function getQueryParams() {
+            return {
+                "areaName": $areaName.val().trim()
+            }
+        }
+
+        function reset() {
+            $header.text('新增部门');
+            $view.find('#reset-form').trigger('click');
+        }
+
+        function renderAreaTree() {
+            _areaTree = eleTree.render({
+                elem: '.area-tree',
+                url: ctx + 'NytArea/treeList',
+                accordion: true,
+                highlightCurrent: true,
+                showCheckbox: true,
+                checkStrictly: true,
+                renderAfterExpand: false,
+                where: {
+                    "areaName": $areaName.val().trim(),
+                    "invalidate_ie_cache": new Date()
+                },
+                request: {
+                    name: "name",
+                    key: "id",
+                    children: "childs",
+                    checked: "checked",
+                    data: "data"
+                },
+                response: {
+                    statusName: "code",
+                    statusCode: 200,
+                    dataName: "data"
+                }
+            });
+            return _areaTree;
+        }
+
+        function reloadAreaTree() {
+            _areaTree = renderAreaTree();
+        }
+
+        form.on('submit(area-form-submit)', function (data) {
+            if (data.field.id && $header.text().indexOf('修改') !== -1) {
+                if (febs.nativeEqual(data.field, _currentAreaData)) {
+                    febs.alert.warn('数据未作任何修改！');
+                    return false;
+                }
+                febs.post(ctx + 'NytArea/update', data.field, function () {
+                    febs.alert.success('修改成功');
+                    reloadAreaTree();
+                    reset();
+                })
+            } else {
+                febs.post(ctx + 'NytArea/save', data.field, function () {
+                    febs.alert.success('新增成功');
+                    reloadAreaTree();
+                    reset();
+                })
+            }
+            return false;
+        });
+    });
+</script>

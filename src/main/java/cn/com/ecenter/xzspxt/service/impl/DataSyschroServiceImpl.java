@@ -51,23 +51,22 @@ public class DataSyschroServiceImpl implements DataSyschroService {
      */
     @Override
     public void dataSyschro(String size) {
-        int total = 327320;//qltQlsxService.fingTotal();
+        int total = 327196;//qltQlsxService.fingTotal();
         int pageIndex = 0;
         int pageSize = size.isEmpty() ? 1000 : Integer.valueOf(size);
         do{
             List<QltQlsxEntity> result = qltQlsxService.findQlsx(pageIndex * pageSize, pageSize);
             pageIndex++;
             for (QltQlsxEntity ql : result) {
-                List<NytQlsxEntity> qls = new ArrayList<NytQlsxEntity>();
-                qls.add(oldToNew(ql));
-                if (qls.size() > 0) {
-                    nytQlsxService.addList(qls);
-                }
-                String rowGuid = ql.getRowguid(); // 主键和子表的外键关联
+                // 主表数据转换与写入
+                NytQlsxEntity qls = oldToNew(ql);
+                nytQlsxService.add(qls);
+                String rowGuid = qls.getRowguid() + "_" +qls.getId(); // 主键和子表的外键关联
+                Long tongid = qls.getTongid();
                 // 解析内部流程信息格式XML并保存到子表
                 String flowInfoXmlStr = ql.getInFlowInfo();
                 if (null != flowInfoXmlStr) {
-                    Map<String, Object> map = qltQlsxService.flowAnalytical(flowInfoXmlStr, rowGuid);
+                    Map<String, Object> map = qltQlsxService.flowAnalytical(flowInfoXmlStr, rowGuid, tongid);
                     List<NytFlowInfoEntity> flowList = (List<NytFlowInfoEntity>) map.get("flowList");
                     List<NytFileInfoEntity> fileList = (List<NytFileInfoEntity>) map.get("fileList");
                     if (flowList.size() > 0) {
@@ -80,7 +79,7 @@ public class DataSyschroServiceImpl implements DataSyschroService {
                 // 申报材料格式XML并保存到子表
                 String materalInfoXmlStr = ql.getMaterialInfo();
                 if (null != materalInfoXmlStr) {
-                    List<NytMateralInfoEntity> materalList = qltQlsxService.materalAnalytical(materalInfoXmlStr, rowGuid);
+                    List<NytMateralInfoEntity> materalList = qltQlsxService.materalAnalytical(materalInfoXmlStr, rowGuid, tongid);
                     if (materalList.size() > 0) {
                         nytMateralInfoService.add(materalList);
                     }
@@ -89,7 +88,7 @@ public class DataSyschroServiceImpl implements DataSyschroService {
                 // 收费项目格式XML并保存到子表
                 String chargeitemInfoXmlStr = ql.getChargeitemInfo();
                 if (null != chargeitemInfoXmlStr) {
-                    List<NytChargeitemInfoEntity> chargeitemList = qltQlsxService.chargeitmeAnalytical(chargeitemInfoXmlStr, rowGuid);
+                    List<NytChargeitemInfoEntity> chargeitemList = qltQlsxService.chargeitmeAnalytical(chargeitemInfoXmlStr, rowGuid, tongid);
                     if (chargeitemList.size() > 0) {
                         nytChargeitemInfoService.add(chargeitemList);
                     }
@@ -97,7 +96,7 @@ public class DataSyschroServiceImpl implements DataSyschroService {
                 // 解析常见问题解答格式XML并保存到子表
                 String qaInfoXmlStr = ql.getQaInfo();
                 if (null != qaInfoXmlStr) {
-                    List<NytQaInfoEntity> qaList = qltQlsxService.qaAnalytical(qaInfoXmlStr, rowGuid);
+                    List<NytQaInfoEntity> qaList = qltQlsxService.qaAnalytical(qaInfoXmlStr, rowGuid, tongid);
                     if (qaList.size() > 0) {
                         nytQaInfoService.add(qaList);
                     }
@@ -105,7 +104,7 @@ public class DataSyschroServiceImpl implements DataSyschroService {
                 // 自由裁量格式XML并保存到子表
                 String factXmlStr = ql.getFactInfo();
                 if (null != factXmlStr) {
-                    List<NytFactInfoEntity> factList = qltQlsxService.factAnalytical(factXmlStr, rowGuid);
+                    List<NytFactInfoEntity> factList = qltQlsxService.factAnalytical(factXmlStr, rowGuid, tongid);
                     if (factList.size() > 0) {
                         nytFactInfoService.add(factList);
                     }
@@ -113,7 +112,7 @@ public class DataSyschroServiceImpl implements DataSyschroService {
                 // 受理地点XML并保存到子表
                 String addressXmlStr = ql.getAcceptAddressInfo();
                 if (null != addressXmlStr) {
-                    List<NytAddressInfoEntity> addressList = qltQlsxService.addressAnalytical(addressXmlStr, rowGuid);
+                    List<NytAddressInfoEntity> addressList = qltQlsxService.addressAnalytical(addressXmlStr, rowGuid, tongid);
                     if (addressList.size() > 0) {
                         nytAddressInfoService.add(addressList);
                     }
@@ -121,7 +120,7 @@ public class DataSyschroServiceImpl implements DataSyschroService {
                 // 相关附件信息格式表XML并保存到子表
                 String relatedXmlStr = ql.getRelated();
                 if (null != relatedXmlStr) {
-                    List<NytRelatedInfoEntity> relatedList = qltQlsxService.relatedAnalytical(relatedXmlStr, rowGuid);
+                    List<NytRelatedInfoEntity> relatedList = qltQlsxService.relatedAnalytical(relatedXmlStr, rowGuid, tongid);
                     if (relatedList.size() > 0) {
                         nytRelatedInfoService.add(relatedList);
                     }

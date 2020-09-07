@@ -24,11 +24,11 @@
                         pid,
                         AdCode,
             </sql>
-
+    <!--查询所有的市一级-->
     <select id="selectAll" resultMap="BaseResultMap">
         select * from (select * from zwfw_region_new WHERE LENGTH(regioncode)=6 and length(uniquecoding)=6  ORDER BY adcode) re GROUP BY substr(adcode,1,4)
     </select>
-
+    <!--以市级编码为开头查询县（区）一级-->
     <select id="selectAllBycode" resultMap="BaseResultMap" parameterType="java.lang.String">
         select * from zwfw_region_new WHERE LENGTH(regioncode)=6 and length(uniquecoding)=6 and adcode LIKE CONCAT(CONCAT(#{param1},'%')) and uniquecoding != #{param1}
     </select>
@@ -37,6 +37,31 @@
 
         SELECT * FROM zwfw_region_new
         where uniquecoding NOT IN (select uniquecoding from zwfw_region_new  where LENGTH(regioncode)=6 and length(uniquecoding)=6)
+    </select>
+
+    <!--查询镇一级-->
+    <select id="selectTownBycode" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT * from zwfw_region_new
+        where LENGTH(adcode)=12
+        and uncode is not null
+        and adcode LIKE CONCAT(CONCAT(#{param1},'%'))
+        and SUBSTR(adcode,10,3) = '000'
+        GROUP BY SUBSTR(orgcoding,1,15)
+    </select>
+
+    <!--查询村一级-->
+    <select id="selectVillageBycode" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT * from zwfw_region_new where LENGTH(adcode)=12 and uncode is not null and adcode LIKE CONCAT(CONCAT(#{param1},'%')) and SUBSTR(adcode,10,3) != '000'
+    </select>
+
+    <!--关联区域查询部门-->
+    <select id="selectDept" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select z.* from nyt_area n left join  zwfw_region_new z
+		    on n.AdCode = z.AdCode
+	    where n.level = #{level}
+		    and z.name like '%农业农村%'
+		    and length(z.orgcoding)=15
+		    and n.parent_id = #{parentId}
     </select>
 
 

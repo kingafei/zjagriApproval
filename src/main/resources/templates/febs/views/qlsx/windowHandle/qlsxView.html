@@ -1,0 +1,157 @@
+<!--事项详情弹框-->
+<div class="site-text" style="" id="qlsxform">
+    <div class="layui-tab-content">
+        <div class="layui-tab-item layui-show">
+            <form class="layui-form" lay-filter="particulars" id="particulars">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">事项名称：</label>
+                    <div class="layui-input-block">
+                        <input id="qlName" type="text" name="qlName" required lay-verify="required"
+                            style="border:none; border-bottom:2px solid #eee;outline: none;" autocomplete="off"
+                            class="layui-input" disabled="disabled">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">事项编码：</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="rowguid" name="rowguid" required lay-verify="required"
+                            style="border:none; border-bottom:2px solid #eee;outline: none;" autocomplete="off"
+                            class="layui-input" disabled="disabled">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">审批类型：</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="bjType1" name="bjType1" required lay-verify="required"
+                            style="border:none; border-bottom:2px solid #eee;outline: none;" autocomplete="off"
+                            class="layui-input" disabled="disabled">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">许可依据：</label>
+                    <div class="layui-input-block">
+
+                        <input type="text" name="lawbasis" id="lawbasis" required lay-verify="required"
+                            style="border:none; border-bottom:2px solid #eee;outline: none;" autocomplete="off"
+                            class="layui-input" disabled="disabled">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">申请条件：</label>
+                    <div class="layui-input-block">
+                        <textarea name="applyCondition" id="applyCondition" lay-verify="required" style=";"
+                                  autocomplete="off" class="layui-textarea"></textarea>
+<!--                        <input type="text" name="applyCondition" id="applyCondition" required lay-verify="required"-->
+<!--                            style="border:none; border-bottom:2px solid #eee;outline: none;" autocomplete="off"-->
+<!--                            class="layui-input" disabled="disabled">-->
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">承诺期限：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="promiseDay" id="promiseDay" required lay-verify="required"
+                            style="border:none; border-bottom:2px solid #eee;outline: none;" autocomplete="off"
+                            class="layui-input" disabled="disabled">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">所需材料：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="title" required lay-verify="required"
+                            style="border:none; border-bottom:2px solid #eee;outline: none;" autocomplete="off"
+                            class="layui-input" disabled="disabled">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">经办人</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="title" required lay-verify="required"
+                            style="border:none; border-bottom:2px solid #eee;outline: none;" autocomplete="off"
+                            class="layui-input" disabled="disabled">
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</div>
+<input type="hidden" th:value="${tongid}" id="qlsxtongid" name="qlsxtongid"/>
+
+<!--事项详情弹框结束-->
+
+
+<script data-th-inline="none" type="text/javascript">
+
+    layui.use([ 'jquery', 'form', 'febs'], function () {
+        var $ = layui.jquery,
+            febs = layui.febs,
+            form = layui.form,
+            $view = $('#qlsxform'),
+            $searchForm = $view.find('form'),
+            tableIns;
+
+        form.render();
+        
+        particulars();
+
+        // 事项详情
+        function particulars() {
+            $.ajax({
+                type: 'get',
+                url: ctx + 'nytQlsx/selByTongId?tongId=' + $('#qlsxtongid').val(),  //数据接口
+                dataType: 'json',
+                success: function (result) {
+                	console.log(result);
+                    // 基本信息
+                    var apasin = result.data;
+                    
+                    $("#qlName").val(apasin.qlName);
+                    $("#rowguid").val(apasin.rowguid);
+                    $("#applyCondition").val(apasin.applyCondition);
+                    $("#bjType1").val(apasin.bjtype1);
+                    $("#lawbasis").val(apasin.lawbasis);
+                    $("#promiseDay").val(apasin.promiseDay);
+                    
+                    return false;
+                }
+            });
+        }
+      
+    })
+
+</script>
+
+
+<style>
+    .layui-table-cell {
+        font-size: 14px;
+        padding: 0 5px;
+        height: auto;
+        overflow: visible;
+        text-overflow: inherit;
+        white-space: normal;
+        word-break: break-all;
+        border-color: #000000;
+    }
+
+    .layui-table {
+        border-color: #000000;
+    }
+
+    .layui-input,
+    .layui-input-block,
+    .layui-textarea {
+        border-color: #ffffff
+    }
+
+    .layui-input layui-unselect {
+        hight: 22px;
+    }
+</style>

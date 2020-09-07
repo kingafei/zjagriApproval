@@ -1,0 +1,254 @@
+<div class="layui-fluid layui-anim febs-anim" id="febs-dict" lay-title="字典管理">
+    <div class="layui-row layui-col-space8 febs-container">
+        <div class="layui-col-md6 layui-col-sm6 layui-col-xs12">
+            <div class="layui-card">
+                <div class="layui-card-body febs-table-full">
+                    <form class="layui-form layui-table-form" lay-filter="dict-table-form" id="dict-table-form">
+                        <div class="layui-row">
+                            <div class="layui-col-md8 layui-col-sm9 layui-col-xs9">
+                                <div class="layui-form-item">
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">名称</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="dictName" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-col-md4 layui-col-sm12 layui-col-xs12 table-action-dict">
+                                <div class="layui-btn layui-btn-sm layui-btn-primary febs-button-blue-plain  table-action" id="query">
+                                    <i class="layui-icon">&#xe848;</i>
+                                </div>
+                                <div class="layui-btn layui-btn-sm layui-btn-primary febs-button-green-plain  table-action" id="reset">
+                                    <i class="layui-icon">&#xe79b;</i>
+                                </div>
+                                <div class="layui-btn layui-btn-sm layui-btn-primary table-action action-more"
+                                     shiro:hasAnyPermissions="dict:add,dict:delete,dict:export">
+                                    <i class="layui-icon">&#xe875;</i>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="dict-tree" lay-filter="dictTree" style="margin-left: 1rem"></div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-md6 layui-col-sm6 layui-col-xs12">
+            <div class="layui-card">
+                <div class="layui-card-header" id="form-header">新增字典</div>
+                <div class="layui-card-body febs-table-full">
+                    <form class="layui-form layui-table-form" action="" lay-filter="dict-form">
+                        <div class="layui-form-item febs-hide">
+                            <label class="layui-form-label febs-form-item-require">ID：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="pkId" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">上级ID：</label>
+                            <div class="layui-input-block">
+                                <input type="text" value="" name="fkUid" readonly autocomplete="off"
+                                       class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label febs-form-item-require">字典类型：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="comment" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label febs-form-item-require">字典编码：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="dictSign" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label febs-form-item-require">字典名称：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="valueComment" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label febs-form-item-require">字典值：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="dictValue" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">字典排序：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="valueSort" autocomplete="off" class="layui-input"
+                                       lay-verify="number">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">字典状态：</label>
+                            <div class="layui-input-block">
+                                <select name="state" class="me-input" lay-verify="required">
+                                    <option value="0" selected>显示</option>
+                                    <option value="1">隐藏</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="reset" class="layui-btn febs-hide" id="reset-form"></button>
+                        <button class="layui-btn febs-hide" lay-submit="" lay-filter="dict-form-submit"
+                                id="submit-form"></button>
+                    </form>
+                </div>
+                <div class="layui-card-footer">
+                    <button class="layui-btn layui-btn-normal" id="submit">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script data-th-inline="javascript" type="text/javascript">
+    layui.use(['dropdown', 'jquery', 'validate', 'febs', 'form', 'eleTree'], function () {
+        var $ = layui.jquery,
+            febs = layui.febs,
+            form = layui.form,
+            validate = layui.validate,
+            eleTree = layui.eleTree,
+            dropdown = layui.dropdown,
+            $view = $('#febs-dict'),
+            $query = $view.find('#query'),
+            $reset = $view.find('#reset'),
+            $submit = $view.find('#submit'),
+            $header = $view.find('#form-header'),
+            $searchForm = $view.find('#dict-table-form'),
+            $dictName = $searchForm.find('input[name="dictName"]'),
+            _currentdictData,
+            _dictTree;
+
+        form.verify(validate);
+        form.render();
+
+        renderdictTree();
+
+        eleTree.on("nodeClick(dictTree)", function (d) {
+            $header.text('修改字典');
+            var data = d.data.currentData.data;
+            _currentdictData = data;
+            form.val("dict-form", {
+                "pkId": data.pkId,
+                "fkUid": data.fkUid,
+                "comment": data.comment,
+                "valueComment": data.valueComment,
+                "dictSign": data.dictSign,
+                "dictValue": data.dictValue,
+                "state": data.state,
+                "valueSort": data.valueSort
+
+
+            });
+        });
+
+        dropdown.render({
+            elem: $view.find('.action-more'),
+            click: function (name, elem, event) {
+                if (name === 'save') {
+                    reset();
+                    var selected = _dictTree.getChecked(false, true);
+                    if (selected.length < 1) {
+                        febs.alert.warn('请选择一个节点作为父级');
+                        return;
+                    }
+                    if (selected.length > 1) {
+                        febs.alert.warn('只能选择一个节点作为父级！');
+                        return;
+                    }
+                    form.val("dict-form", {
+                        "fkUid": selected[0] ? selected[0].id : '',
+                        "comment": selected[0] ? selected[0].name : ''
+                    });
+                }
+            },
+            options: [{
+                name: 'save',
+                title: '新增字典',
+                perms: 'dict:add'
+            }]
+        });
+
+        $view.on('click', '#submit', function () {
+            $view.find('#submit-form').trigger('click');
+        });
+
+        $reset.on('click', function () {
+            $dictName.val('');
+            reloaddictTree();
+            reset();
+        });
+
+        $query.on('click', function () {
+            reloaddictTree();
+        });
+
+        function getQueryParams() {
+            return {
+                "dictName": $dictName.val().trim()
+            }
+        }
+
+        function reset() {
+            $header.text('新增字典');
+            $view.find('#reset-form').trigger('click');
+        }
+
+        function renderdictTree() {
+          
+            _dictTree = eleTree.render({
+                elem: '.dict-tree',
+                url: ctx + 'NytDataDict/selectTree',
+                accordion: true,
+                highlightCurrent: true,
+                showCheckbox: true,
+                checkStrictly: true,
+                renderAfterExpand: false,
+                where: {
+                    "dictName": $dictName.val().trim(),
+                    "invalidate_ie_cache": new Date()
+                },
+                request: {
+                    name: "name",
+                    key: "id",
+                    children: "children",
+                    checked: "checked",
+                    data: "data"
+                },
+                response: {
+                    statusName: "code",
+                    statusCode: 200,
+                    dataName: "data"
+                }
+            });
+            return _dictTree;
+        }
+
+        function reloaddictTree() {
+            _dictTree = renderdictTree();
+        }
+
+        form.on('submit(dict-form-submit)', function (data) {
+            if (data.field.pkId && $header.text().indexOf('修改') !== -1) {
+                if (febs.nativeEqual(data.field, _currentdictData)) {
+                    febs.alert.warn('数据未作任何修改！');
+                    return false;
+                }
+                febs.post(ctx + 'NytDataDict/update', data.field, function () {
+                    febs.alert.success('修改成功');
+                    reloaddictTree();
+                    reset();
+                })
+            } else {
+                febs.post(ctx + 'NytDataDict/save', data.field, function () {
+                    febs.alert.success('新增成功');
+                    reloaddictTree();
+                    reset();
+                })
+            }
+            return false;
+        });
+    });
+</script>

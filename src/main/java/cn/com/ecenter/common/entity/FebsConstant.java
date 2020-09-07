@@ -51,4 +51,18 @@ public interface FebsConstant {
      * Windows 操作系统
      */
     String SYSTEM_WINDOWS = "windows";
+
+    /**
+     * pre_node办件环节业务动作
+     */
+    String NODE_SUBMIT = "提交";
+    String NODE_BACK = "退回";
+
+    /**
+     * 承诺时间单位
+     */
+    String CN_WORK_DAY = "1"; // 工作日
+    String CN_DAY = "4"; // 天
+    String CN_MONTH = "2"; // 天
+    String CN_YEAR = "3"; // 年
 }

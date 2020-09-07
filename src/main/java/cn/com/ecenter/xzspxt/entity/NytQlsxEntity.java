@@ -568,6 +568,8 @@ private String nosuitReasondesc;
 	 */
 private String businessRegulate;
 
+private  String bjtype1;
+
 	public Integer getId() {
 		return id;
 	}

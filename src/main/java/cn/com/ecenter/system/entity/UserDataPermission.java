@@ -1,7 +1,7 @@
 package cn.com.ecenter.system.entity;
 
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+
 import lombok.Data;
 
 /**
@@ -11,9 +11,9 @@ import lombok.Data;
 @TableName("t_user_data_permission")
 public class UserDataPermission {
 
-    @TableId("USER_ID")
+//    @TableId("USER_ID")
     private Long userId;
-    @TableId("DEPT_ID")
+//    @TableId("DEPT_ID")
     private Long deptId;
 
 }

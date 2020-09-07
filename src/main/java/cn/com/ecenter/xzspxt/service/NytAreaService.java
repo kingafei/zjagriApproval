@@ -1,6 +1,7 @@
 package cn.com.ecenter.xzspxt.service;
 
 
+import cn.com.ecenter.common.entity.AreaTree;
 import cn.com.ecenter.xzspxt.entity.NytAreaEntity;
 import cn.com.ecenter.xzspxt.entity.ResultData;
 
@@ -10,9 +11,9 @@ import java.util.Map;
 public interface NytAreaService {
 
     /**
-     * 列表
+     * 树形列表
      */
-    ResultData<List<NytAreaEntity>> treeList(Integer parentId);
+    List<AreaTree<NytAreaEntity>> treeList(NytAreaEntity NytArea);
     /**
      * 查找单个信息
      */
@@ -20,15 +21,27 @@ public interface NytAreaService {
     /**
      * 保存
      */
-    ResultData<NytAreaEntity> save(NytAreaEntity record);
+    void save(NytAreaEntity record);
     /**
      * 修改
      */
-    ResultData<NytAreaEntity> update(NytAreaEntity record);
+    void update(NytAreaEntity record);
     /**
      * 批量软删除
      */
-    ResultData<String> delByIds(String ids);
+    void delByIds(String ids);
+
+    /**
+     * 根据父id查询子级
+     */
+    ResultData<List<NytAreaEntity>> getByParent(Integer parentId);
+
+    /**
+     * 根据当前用户获取其所在地区树
+     */
+    List<AreaTree<NytAreaEntity>> userTree();
+
+    NytAreaEntity queryByAdcode(String adcode);
 
 }
 

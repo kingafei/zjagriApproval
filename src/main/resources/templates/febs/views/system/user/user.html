@@ -7,18 +7,28 @@
                         <div class="layui-row">
                             <div class="layui-col-md10">
                                 <div class="layui-form-item">
+                                    
+                                    <!-- <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">创建时间</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="time" id="user-createTime" class="layui-input">
+                                        </div>
+                                    </div> -->
+                                    
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-sm">姓名</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="name" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    
                                     <div class="layui-inline">
                                         <label class="layui-form-label layui-form-label-sm">用户名</label>
                                         <div class="layui-input-inline">
                                             <input type="text" name="username" autocomplete="off" class="layui-input">
                                         </div>
                                     </div>
-                                    <div class="layui-inline">
-                                        <label class="layui-form-label layui-form-label-sm">创建时间</label>
-                                        <div class="layui-input-inline">
-                                            <input type="text" name="time" id="user-createTime" class="layui-input">
-                                        </div>
-                                    </div>
+                                    
                                     <div class="layui-inline">
                                         <label class="layui-form-label layui-form-label-sm">状态</label>
                                         <div class="layui-input-inline">
@@ -29,12 +39,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="layui-inline">
-                                        <label class="layui-form-label layui-form-label-sm">手机</label>
-                                        <div class="layui-input-inline">
-                                            <input type="text" name="mobile" autocomplete="off" class="layui-input">
-                                        </div>
-                                    </div>
+                                    
                                     <div class="layui-inline">
                                         <label class="layui-form-label layui-form-label-sm">部门</label>
                                         <div class="layui-input-inline">
@@ -98,11 +103,11 @@
     <span shiro:lacksPermission="user:view,user:update,user:delete">
         <span class="layui-badge-dot febs-bg-orange"></span> 无权限
     </span>
-    <a lay-event="detail" shiro:hasPermission="user:view"><i
+    <a lay-event="detail" shiro:hasPermission="user:view" title="用户查看"><i
             class="layui-icon febs-edit-area febs-green">&#xe7a5;</i></a>
-    <a lay-event="edit" shiro:hasPermission="user:update"><i
+    <a lay-event="edit" shiro:hasPermission="user:update" title="用户编辑"><i
             class="layui-icon febs-edit-area febs-blue">&#xe7a4;</i></a>
-    <a lay-event="del" shiro:hasPermission="user:delete"><i class="layui-icon febs-edit-area febs-red">&#xe7f9;</i></a>
+    <a lay-event="del" shiro:hasPermission="user:delete" title="用户删除"><i class="layui-icon febs-edit-area febs-red">&#xe7f9;</i></a>
 </script>
 <script data-th-inline="none" type="text/javascript">
     layui.use(['dropdown', 'jquery', 'laydate', 'form', 'table', 'febs', 'treeSelect'], function () {
@@ -270,14 +275,16 @@
                 url: ctx + 'user/list',
                 cols: [[
                     {type: 'checkbox'},
-                    {field: 'username', title: '用户名', minWidth: 100},
-                    {title: '性别', templet: '#user-sex'},
-                    {field: 'deptName', title: '部门'},
-                    {field: 'mobile', title: '手机', minWidth: 165},
-                    {field: 'email', title: '邮箱', minWidth: 180},
-                    {title: '状态', templet: '#user-status'},
-                    {field: 'createTime', title: '创建时间', minWidth: 180, sort: true},
-                    {title: '操作', toolbar: '#user-option', minWidth: 140}
+                    {type: 'numbers', title: '<strong>序号</strong>',width:'5%'},
+                    {field: 'name', title: '<strong>姓名</strong>', width: 100, align:'center'},
+                    {field: 'username', title: '<strong>用户名</strong>', width: 100, align:'center'},
+                   // {title: '性别', templet: '#user-sex'},
+                    {field: 'deptName', title: '<strong>部门</strong>'},
+                    //{field: 'mobile', title: '手机', minWidth: 165},
+                    //{field: 'email', title: '邮箱', minWidth: 180},
+                    {title: '<strong>状态</strong>', templet: '#user-status', align:'center', width: 80},
+                    {field: 'createTime', title: '<strong>创建时间</strong>', width: 200, sort: true, align:'center'},
+                    {title: '<strong>操作</strong>', toolbar: '#user-option', width: 150, align:'center'}
                 ]]
             });
         }

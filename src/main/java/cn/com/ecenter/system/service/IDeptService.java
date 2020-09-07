@@ -56,4 +56,11 @@ public interface IDeptService extends IService<Dept> {
      * @param deptIds 部门 ID集合
      */
     void deleteDepts(String[] deptIds);
+
+    /**
+     * 通过ID查询部门
+     * @param deptId
+     * @return
+     */
+    List<Dept> selectById(String deptId);
 }

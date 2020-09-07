@@ -46,6 +46,10 @@ private Date updateTime;
 	 */
 private String remarks;
 	/**
+	 * tongID
+	 */
+private Long tongid;
+	/**
 	 * 环节名称（环节流转关系的）
 	 */
 private String isDelete;

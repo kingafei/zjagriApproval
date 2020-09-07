@@ -1,0 +1,321 @@
+<div class="site-text" style="" id="bebeingWindow">
+    <div class="layui-tab">
+        <ul class="layui-tab-title">
+            <li class="layui-this">基本信息</li>
+            <li>材料列表</li>
+            <li class="remove">意见列表</li>
+            <li>申报历史记录</li>
+            <li class="remove">流转日志</li>
+        </ul>
+        <div class="layui-tab-content">
+            <!--基本信息-->
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form" method="post" lay-filter="apasinfo" id="apasinfo">
+                    <fieldset class="layui-elem-field site-demo-button"
+                              style="margin: 2px; padding:10px; border-color: #000;">
+                        <legend style="font-size: 18px">办件基本信息</legend>
+                        <table class="layui-table" style="border-color: #1c1f27;">
+                            <input type="hidden" name="projid" lay-verify="title" autocomplete="off"
+                                   class="layui-input">
+                            <input type="hidden" name="createTime" lay-verify="title" autocomplete="off"
+                                   class="layui-input">
+                            <input type="hidden" name="syncStatus" lay-verify="title" autocomplete="off"
+                                   class="layui-input">
+                            <input type="hidden" name="dataversion" lay-verify="title" autocomplete="off"
+                                   class="layui-input">
+                            <input type="hidden" name="servicecode" lay-verify="title" autocomplete="off"
+                                   class="layui-input">
+                            <input type="hidden" name="serviceDeptid" lay-verify="title" autocomplete="off"
+                                   class="layui-input">
+                            <input type="hidden" name="xkLydw" lay-verify="title" autocomplete="off"
+                                   class="layui-input">
+                            <input type="hidden" name="xkLydwdm" lay-verify="title" autocomplete="off"
+                                   class="layui-input">
+                            <input type="hidden" name="tongid" lay-verify="title" autocomplete="off"
+                                   class="layui-input">
+                            <input type="hidden" name="applyCardtype" lay-verify="title" autocomplete="off"
+                                   class="layui-input">
+                            <tbody>
+                            <tr>
+                                <td class="me-td-head">事项名称：</td>
+                                <td><input type="text" lay name="servicename" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                                <td class="me-td-head">事项编码：</td>
+                                <td><input type="text" name="servicecode" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                            </tr>
+                            <tr>
+                                <td class="me-td-head">申报号：</td>
+                                <td><input type="text" name="projid" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                                <td class="me-td-head">查询密码：</td>
+                                <td><input type="text" name="projid" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                            </tr>
+                            <tr>
+                                <td class="me-td-head">办件名称：</td>
+                                <td><input type="text" name="projid" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                                <td class="me-td-head">办件申请方式：</td>
+                                <td>
+                                    <input type="hidden" name="applyfrom" lay-verify="title" autocomplete="off"
+                                           class="me-input">
+                                    <select name="applyfrom" class="me-input selDict" dict="258" lay-verify="required" disabled></select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="me-td-head">是否有准予许可决定书：</td>
+                                <td colspan="3"><input type="text" name="temp" lay-verify="title" autocomplete="off"
+                                                       class="me-input" readonly></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"><strong style="color: #0000FF; font-size: 15px">申请者/申请对象信息</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="me-td-head">对象名称：</td>
+                                <td><input type="text" name="applyname" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                                <td class="me-td-head">法定代表人：</td>
+                                <td><input type="text" name="legalman" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                            </tr>
+                            <tr>
+                                <td class="me-td-head">证件类型：</td>
+                                <td>
+                                    <input type="hidden" name="applyCardtype" lay-verify="title" autocomplete="off"
+                                           class="me-input">
+                                    <select name="applyCardtype" class="me-input selDict" dict="232" lay-verify="required" disabled>
+                                    </select>
+                                </td>
+                                <td class="me-td-head">证件号码：</td>
+                                <td><input type="text" name="applyCardnumber" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                            </tr>
+                            <tr>
+                                <td class="me-td-head">地址：</td>
+                                <td><input type="text" name="address" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                                <td class="me-td-head">邮编：</td>
+                                <td><input type="text" name="postcode" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"><strong style="color: #0000FF; font-size: 15px">联系人/代理人信息</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="me-td-head">姓名：</td>
+                                <td colspan="3"><input type="text" name="contactman" lay-verify="title"
+                                                       autocomplete="off" class="me-input" readonly></td>
+                            </tr>
+                            <tr>
+                                <td class="me-td-head">手机：</td>
+                                <td><input type="text" name="telphone" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                                <td class="me-td-head">电话号码：</td>
+                                <td><input type="text" name="dtelphone" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                            </tr>
+                            <tr>
+                                <td class="me-td-head">证件类型：</td>
+                                <td>
+                                    <input type="hidden" name="contactmanCardtype" lay-verify="title" autocomplete="off"
+                                           class="me-input">
+                                    <select name="contactmanCardtype" class="me-input selDict" dict="232" lay-verify="required" disabled>
+                                    </select>
+                                </td>
+                                <td class="me-td-head">证件号码：</td>
+                                <td><input type="text" name="contactmanCardnumber" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                            </tr>
+                            <tr>
+                                <td class="me-td-head">备注：</td>
+                                <td colspan="3"><input type="text" name="extend2" lay-verify="title" autocomplete="off"
+                                                       class="me-input" readonly></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </fieldset>
+                    <fieldset class="layui-elem-field site-demo-button"
+                              style="margin: 2px; padding:10px; border-color: #000;">
+                        <legend style="font-size: 18px">项目办理信息</legend>
+                        <table class="layui-table" style="border-color: #1c1f27;">
+                            <tbody>
+                            <tr>
+                                <td class="me-td-head">办理部门：</td>
+                                <td><input type="text" lay name="handerDeptname" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                                <td class="me-td-head">收件人：</td>
+                                <td><input type="text" name="acceptMan" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                            </tr>
+                            <tr>
+                                <td class="me-td-head">办件申请时间：</td>
+                                <td><input type="text" lay name="receivetime" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                                <td class="me-td-head">处理时间：</td>
+                                <td><input type="text" name="acceptTime" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                            </tr>
+                            <tr>
+                                <td class="me-td-head">办件承诺期限：</td>
+                                <td><input type="text" lay name="promisevalue" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                                <td class="me-td-head">承诺办结时间：</td>
+                                <td><input type="text" name="promiseEtime" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                            </tr>
+                            <tr>
+                                <td class="me-td-head">承诺期限单位：</td>
+                                <td><input type="text" lay name="promisetype" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                                <td class="me-td-head">实际办结时间：</td>
+                                <td><input type="text" name="temp" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </fieldset>
+                    <fieldset class="layui-elem-field site-demo-button remove"
+                              style="margin: 2px; padding:50px;padding-top:100px;  border-color: #000;" id="showNode">
+                        <legend style="font-size: 18px">办理情况</legend>
+                        <div style="text-align: center;" id="flows"></div>
+                        <div style=" margin-bottom: -30px;margin-left: -30px;">
+                            <p>
+                                <strong style="color: #1e51c7;">蓝色：已办理</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <strong style="color: #F5081B;">红色：当前办理</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <strong style="color: #909399;">灰色：未办理</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </p>
+                        </div>
+                    </fieldset>
+                    <fieldset class="layui-elem-field site-demo-button"
+                              style="margin: 2px; padding:50px;  border-color: #000;">
+                        <legend style="font-size: 18px">办理意见</legend>
+                        <textarea name="opinion" placeholder="请输入办理意见" class="layui-textarea"
+                                  style="width: 100%;height: 100%"></textarea>
+                        <input type="hidden" lay name="nodeFile" id="nodeFile" lay-verify="title" autocomplete="off" class="me-input">
+                        <div class="layui-upload">
+                            <button type="button" class="layui-btn layui-btn-normal" id="testList">选择附件</button>
+                            <button type="button" class="layui-btn" id="testListAction">开始上传</button>
+                            <div class="layui-upload-list">
+                                <table class="layui-table">
+                                    <thead>
+                                    <tr><th>文件名</th>
+                                        <th>大小</th>
+                                        <th>状态</th>
+                                        <th>操作</th>
+                                    </tr></thead>
+                                    <tbody id="demoList"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <!--材料列表-->
+            <div class="layui-tab-item">
+                <table class="layui-table" lay-data="{id:'configureAttr'}" id="configureAttr"
+                       lay-filter="configureAttr"></table>
+            </div>
+            <!--意见列表-->
+            <div class="layui-tab-item remove">
+                <table class="layui-table" lay-data="{id:'opinionList'}" id="opinionList"
+                       lay-filter="opinionList"></table>
+            </div>
+            <!--申报历史记录-->
+            <div class="layui-tab-item">
+                <div class="layui-form">
+                    <table class="layui-table" id="history" lay-filter="history"></table>
+                </div>
+            </div>
+            <!--流转日志-->
+            <div class="layui-tab-item remove">
+                <table class="layui-table" lay-data="{id:'flowLog'}" id="flowLog"
+                       lay-filter="flowLog"></table>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" th:value="${projid}" id="projid" name="projid"/>
+<input type="hidden" th:value="${tongid}" id="tongid" name="tongid"/>
+<input type="hidden" th:value="${handlestart}" id="handlestart" name="handlestart"/>
+
+<script data-th-inline="none" type="text/javascript">
+    layui.use(['jquery','nodeopen','upload','form','dict'], function () {
+        var $ = layui.jquery,
+            upload = layui.upload,
+            form = layui.form,
+            dict = layui.dict,
+            nodeopen = layui.nodeopen;
+        dict.renderDictAll(); //渲染字典下拉框
+        nodeopen.openSuccess($('#projid').val(), $('#tongid').val());
+
+        // 环节附件上传
+        var demoListView = $('#demoList')
+            ,uploadListIns = upload.render({
+            elem: '#testList'
+            ,url: 'formfile/upload' //改成您自己的上传接口
+            ,accept: 'file'
+            ,multiple: true
+            ,auto: false
+            ,bindAction: '#testListAction'
+            ,choose: function(obj){
+                var files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
+                //读取本地文件
+                obj.preview(function(index, file, result){
+                    var tr = $(['<tr id="upload-'+ index +'">'
+                        ,'<td>'+ file.name +'</td>'
+                        ,'<td>'+ (file.size/1024).toFixed(1) +'kb</td>'
+                        ,'<td>等待上传</td>'
+                        ,'<td>'
+                        ,'<button class="layui-btn layui-btn-xs demo-reload layui-hide">重传</button>'
+                        ,'<button class="layui-btn layui-btn-xs layui-btn-danger demo-delete">删除</button>'
+                        ,'</td>'
+                        ,'</tr>'].join(''));
+
+                    //单个重传
+                    tr.find('.demo-reload').on('click', function(){
+                        obj.upload(index, file);
+                    });
+
+                    //删除
+                    tr.find('.demo-delete').on('click', function(){
+                        delete files[index]; //删除对应的文件
+                        tr.remove();
+                        uploadListIns.config.elem.next()[0].value = ''; //清空 input file 值，以免删除后出现同名文件不可选
+                    });
+                    if ((file.size/1024/1024) > 2) {
+                        layer.msg(file.name + "文件过大，最大为2M");
+                    } else {
+                        demoListView.append(tr);
+                    }
+                });
+            }
+            ,done: function(res, index, upload){
+                var urls = $('#nodeFile').val();
+                if (urls == null || urls == '') {
+                    form.val("apasinfo", {
+                        "nodeFile": res.id
+                    })
+                } else {
+                    form.val("apasinfo", {
+                        "nodeFile": urls + ',' + res.id
+                    })
+                }
+                if(res.id != null){ //上传成功
+                    var tr = demoListView.find('tr#upload-'+ index)
+                        ,tds = tr.children();
+                    tds.eq(2).html('<span style="color: #5FB878;">上传成功</span>');
+                    tds.eq(3).html(''); //清空操作
+                    return delete this.files[index]; //删除文件队列已经上传成功的文件
+                }
+                this.error(index, upload);
+            }
+            ,error: function(index, upload){
+                var tr = demoListView.find('tr#upload-'+ index)
+                    ,tds = tr.children();
+                tds.eq(2).html('<span style="color: #FF5722;">上传失败</span>');
+                tds.eq(3).find('.demo-reload').removeClass('layui-hide'); //显示重传
+            }
+        });
+    })
+</script>

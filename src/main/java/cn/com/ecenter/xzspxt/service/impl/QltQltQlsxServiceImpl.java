@@ -49,7 +49,7 @@ public class QltQltQlsxServiceImpl implements QltQlsxService {
      * @return
      */
     @Override
-    public Map<String, Object> flowAnalytical(String strXml, String pid) {
+    public Map<String, Object> flowAnalytical(String strXml, String pid, Long tongid) {
         String replace = strXml.replace("<农村工作办公室>", "&lt;农村工作办公室&gt;");
         SAXReader reader = new SAXReader();
         Document document = null;
@@ -96,6 +96,7 @@ public class QltQltQlsxServiceImpl implements QltQlsxService {
             for (Element e : positions) {
                 NytFlowInfoEntity flow = new NytFlowInfoEntity();
                 flow.setpId(pid);
+                flow.setTongid(tongid);
                 flow.setChangeFlagP(changeFlagP);
                 flow.setChangeFlagA(changeFlagA);
                 flow.setFlowId(flowId);
@@ -122,6 +123,7 @@ public class QltQltQlsxServiceImpl implements QltQlsxService {
                     List<Element> fileElement = e1.element("FILES").elements();
                     for (Element fel : fileElement) {
                         NytFileInfoEntity file = new NytFileInfoEntity();
+                        file.setTongid(tongid);
                         file.setpId(e1.element("ACTIVITY_ID").getTextTrim());
                         file.setFilename(fel.element("FILENAME").getTextTrim());
                         file.setFilekind(fel.element("FILEKIND").getTextTrim());
@@ -154,6 +156,7 @@ public class QltQltQlsxServiceImpl implements QltQlsxService {
             for (Element e : flowActivitys) {
                 NytFlowInfoEntity flow = new NytFlowInfoEntity();
                 flow.setpId(pid);
+                flow.setTongid(tongid);
                 flow.setChangeFlagP(changeFlagP);
                 flow.setChangeFlagA(changeFlagA);
                 flow.setFlowId(flowId);
@@ -169,6 +172,7 @@ public class QltQltQlsxServiceImpl implements QltQlsxService {
                 List<Element> fileElement = e.element("FILES").elements();
                 for (Element fel : fileElement) {
                     NytFileInfoEntity file = new NytFileInfoEntity();
+                    file.setTongid(tongid);
                     file.setpId(e.element("ACTIVITY_ID").getTextTrim());
                     file.setFilename(fel.element("FILENAME").getTextTrim());
                     file.setFilekind(fel.element("FILEKIND").getTextTrim());
@@ -212,6 +216,7 @@ public class QltQltQlsxServiceImpl implements QltQlsxService {
             for (Element e : transations) {
                 NytFlowInfoEntity flow = new NytFlowInfoEntity();
                 flow.setpId(pid);
+                flow.setTongid(tongid);
                 flow.setChangeFlagP(changeFlagP);
                 flow.setChangeFlagA(changeFlagA);
                 flow.setFlowId(flowId);
@@ -227,7 +232,7 @@ public class QltQltQlsxServiceImpl implements QltQlsxService {
                     }
                     flow.setActivityId(e1.element("ACTIVITY_ID").getTextTrim());
                     flow.setActivityType(e1.element("TYPE").getTextTrim());
-                    flow.setActivityId(e1.element("TITLE").getTextTrim());
+                    flow.setActivityTitle(e1.element("TITLE").getTextTrim());
                     positionId = e1.element("POSITION_ID").getTextTrim();
                     flow.setPositionId(e1.element("POSITION_ID").getTextTrim());
                     flow.setHandleTimelimt(e1.element("HANDLE_TIMELIMIT").getTextTrim());
@@ -235,6 +240,7 @@ public class QltQltQlsxServiceImpl implements QltQlsxService {
                     List<Element> fileElement = e1.element("FILES").elements();
                     for (Element fel : fileElement) {
                         NytFileInfoEntity file = new NytFileInfoEntity();
+                        file.setTongid(tongid);
                         file.setpId(e1.element("ACTIVITY_ID").getTextTrim());
                         file.setFilename(fel.element("FILENAME").getTextTrim());
                         file.setFilekind(fel.element("FILEKIND").getTextTrim());
@@ -278,7 +284,8 @@ public class QltQltQlsxServiceImpl implements QltQlsxService {
      * @return
      */
     @Override
-    public List<NytMateralInfoEntity> materalAnalytical(String strXml, String pid) {
+    public List<NytMateralInfoEntity> materalAnalytical(String strXml, String pid, Long tongid) {
+        String replace = strXml.replace("<生猪屠宰管理条例>", "&lt;生猪屠宰管理条例&gt;");
         //定义变量
         List<NytMateralInfoEntity> resultList = new ArrayList<NytMateralInfoEntity>();
         if (strXml.isEmpty()){
@@ -287,7 +294,7 @@ public class QltQltQlsxServiceImpl implements QltQlsxService {
         SAXReader reader = new SAXReader();
         Document document = null;
         try {
-            document = reader.read(new ByteArrayInputStream(strXml.getBytes()));
+            document = reader.read(new ByteArrayInputStream(replace.getBytes()));
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -308,6 +315,7 @@ public class QltQltQlsxServiceImpl implements QltQlsxService {
         for (Element e : materals){
             NytMateralInfoEntity materal = new NytMateralInfoEntity();
             materal.setpId(pid);
+            materal.setTongid(tongid);
             materal.setChangeFlag(changeFlag);
             materal.setPopulartypes(populartypes);
             materal.setConditions(conditions);
@@ -350,7 +358,7 @@ public class QltQltQlsxServiceImpl implements QltQlsxService {
      * @return
      */
     @Override
-    public List<NytChargeitemInfoEntity> chargeitmeAnalytical(String strXml, String pid) {
+    public List<NytChargeitemInfoEntity> chargeitmeAnalytical(String strXml, String pid, Long tongid) {
         //定义变量
         List<NytChargeitemInfoEntity> resultList = new ArrayList<NytChargeitemInfoEntity>();
         if (strXml.isEmpty()){
@@ -375,6 +383,7 @@ public class QltQltQlsxServiceImpl implements QltQlsxService {
         for (Element e : chargeitems){
             NytChargeitemInfoEntity chargeitem = new NytChargeitemInfoEntity();
             chargeitem.setpId(pid);
+            chargeitem.setTongid(tongid);
             chargeitem.setChangeFlag(changeFlag);
             chargeitem.setChargeitemGuid(e.element("CHARGEITEMGUID").getTextTrim());
             chargeitem.setChargeitemName(e.element("NAME").getTextTrim());
@@ -395,7 +404,7 @@ public class QltQltQlsxServiceImpl implements QltQlsxService {
      * @return
      */
     @Override
-    public List<NytQaInfoEntity> qaAnalytical(String strXml, String pid) {
+    public List<NytQaInfoEntity> qaAnalytical(String strXml, String pid, Long tongid) {
         //定义变量
         List<NytQaInfoEntity> resultList = new ArrayList<NytQaInfoEntity>();
         if (strXml.isEmpty()){
@@ -420,6 +429,7 @@ public class QltQltQlsxServiceImpl implements QltQlsxService {
         for (Element e : qas){
             NytQaInfoEntity qa = new NytQaInfoEntity();
             qa.setpId(pid);
+            qa.setTongid(tongid);
             qa.setChangeFlag(changeFlag);
             qa.setQuestion(e.element("QUESTION").getTextTrim());
             qa.setAnswer(e.element("ANSWER").getTextTrim());
@@ -439,7 +449,7 @@ public class QltQltQlsxServiceImpl implements QltQlsxService {
      * @return
      */
     @Override
-    public List<NytFactInfoEntity> factAnalytical(String strXml, String pid) {
+    public List<NytFactInfoEntity> factAnalytical(String strXml, String pid, Long tongid) {
         //定义变量
         List<NytFactInfoEntity> resultList = new ArrayList<NytFactInfoEntity>();
         if (strXml.isEmpty()){
@@ -466,6 +476,7 @@ public class QltQltQlsxServiceImpl implements QltQlsxService {
         for (Element e : facts){
             NytFactInfoEntity fact = new NytFactInfoEntity();
             fact.setpId(pid);
+            fact.setTongid(tongid);
             fact.setChangeFlag(changeFlag);
             fact.setFactdescription(e.element("FACTDESCRIPTION").getTextTrim());
             fact.setLaw(e.element("LAW").getTextTrim());
@@ -483,7 +494,7 @@ public class QltQltQlsxServiceImpl implements QltQlsxService {
      * @return
      */
     @Override
-    public List<NytAddressInfoEntity> addressAnalytical(String strXml, String pid) {
+    public List<NytAddressInfoEntity> addressAnalytical(String strXml, String pid, Long tongid) {
         //定义变量
         List<NytAddressInfoEntity> resultList = new ArrayList<NytAddressInfoEntity>();
         if (strXml.isEmpty()){
@@ -508,6 +519,7 @@ public class QltQltQlsxServiceImpl implements QltQlsxService {
         for (Element e : addresss){
             NytAddressInfoEntity address = new NytAddressInfoEntity();
             address.setpId(pid);
+            address.setTongid(tongid);
             address.setChangeFlag(changeFlag);
             address.setAddress(e.element("ADDRESS").getTextTrim());
             address.setAddressKind(e.element("ADDRESS_KIND").getTextTrim());
@@ -528,7 +540,7 @@ public class QltQltQlsxServiceImpl implements QltQlsxService {
      * @return
      */
     @Override
-    public List<NytRelatedInfoEntity> relatedAnalytical(String strXml, String pid) {
+    public List<NytRelatedInfoEntity> relatedAnalytical(String strXml, String pid, Long tongid) {
         //定义变量
         List<NytRelatedInfoEntity> resultList = new ArrayList<NytRelatedInfoEntity>();
         if (strXml.isEmpty()){
@@ -551,6 +563,7 @@ public class QltQltQlsxServiceImpl implements QltQlsxService {
         for (Element e : relateds){
             NytRelatedInfoEntity related = new NytRelatedInfoEntity();
             related.setpId(pid);
+            related.setTongid(tongid);
             related.setFilename(e.element("FILENAME").getTextTrim());
             related.setFileurl(e.element("FILEURL").getTextTrim());
             related.setCreateTime(new Date());

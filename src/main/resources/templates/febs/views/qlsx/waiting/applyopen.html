@@ -1,0 +1,485 @@
+<div class="site-text" style="" id="waitWindow">
+    <div class="layui-tab">
+        <ul class="layui-tab-title">
+            <li class="layui-this">基本信息</li>
+            <li>材料列表</li>
+            <li>申报历史记录</li>
+        </ul>
+        <div class="layui-tab-content">
+            <!--基本信息-->
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form" method="post" lay-filter="apasinfo" id="apasinfo">
+                    <fieldset class="layui-elem-field site-demo-button"
+                              style="margin: 2px; padding:10px; border-color: #000;">
+                        <legend style="font-size: 18px">办件基本信息</legend>
+                        <table class="layui-table" style="border-color: #1c1f27;">
+                            <input type="hidden" name="projid" lay-verify="title" autocomplete="off"
+                                   class="layui-input">
+                            <input type="hidden" name="createTime" lay-verify="title" autocomplete="off"
+                                   class="layui-input">
+                            <input type="hidden" name="syncStatus" lay-verify="title" autocomplete="off"
+                                   class="layui-input">
+                            <input type="hidden" name="dataversion" lay-verify="title" autocomplete="off"
+                                   class="layui-input">
+                            <input type="hidden" name="servicecode" lay-verify="title" autocomplete="off"
+                                   class="layui-input">
+                            <input type="hidden" name="serviceDeptid" lay-verify="title" autocomplete="off"
+                                   class="layui-input">
+                            <input type="hidden" name="xkLydw" lay-verify="title" autocomplete="off"
+                                   class="layui-input">
+                            <input type="hidden" name="xkLydwdm" lay-verify="title" autocomplete="off"
+                                   class="layui-input">
+                            <input type="hidden" name="tongid" lay-verify="title" autocomplete="off"
+                                   class="layui-input">
+                            <input type="hidden" name="applyCardtype" lay-verify="title" autocomplete="off"
+                                   class="layui-input">
+                            <tbody>
+                            <tr>
+                                <td class="me-td-head">事项名称：</td>
+                                <td><input type="text" lay name="servicename" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                                <td class="me-td-head">事项编码：</td>
+                                <td><input type="text" name="servicecode" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                            </tr>
+                            <tr>
+                                <td class="me-td-head">申报号：</td>
+                                <td><input type="text" name="projid" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                                <td class="me-td-head">查询密码：</td>
+                                <td><input type="text" name="projid" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                            </tr>
+                            <tr>
+                                <td class="me-td-head">办件名称：</td>
+                                <td><input type="text" name="projid" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                                <td class="me-td-head">办件申请方式：</td>
+                                <td>
+                                    <input type="hidden" name="applyfrom" lay-verify="title" autocomplete="off"
+                                           class="me-input">
+                                    <select name="applyfrom" class="me-input selDict" dict="258" lay-verify="required" disabled></select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="me-td-head">是否有准予许可决定书：</td>
+                                <td colspan="3"><input type="text" name="temp" lay-verify="title" autocomplete="off"
+                                                       class="me-input" readonly></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"><strong style="color: #0000FF; font-size: 15px">申请者/申请对象信息</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="me-td-head">对象名称：</td>
+                                <td><input type="text" name="applyname" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                                <td class="me-td-head">法定代表人：</td>
+                                <td><input type="text" name="legalman" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                            </tr>
+                            <tr>
+                                <td class="me-td-head">证件类型：</td>
+                                <td>
+                                    <input type="hidden" name="applyCardtype" lay-verify="title" autocomplete="off"
+                                           class="me-input">
+                                    <select name="applyCardtype" class="me-input selDict" dict="232" lay-verify="required" disabled>
+                                    </select>
+                                </td>
+                                <td class="me-td-head">证件号码：</td>
+                                <td><input type="text" name="applyCardnumber" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                            </tr>
+                            <tr>
+                                <td class="me-td-head">地址：</td>
+                                <td><input type="text" name="address" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                                <td class="me-td-head">邮编：</td>
+                                <td><input type="text" name="postcode" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"><strong style="color: #0000FF; font-size: 15px">联系人/代理人信息</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="me-td-head">姓名：</td>
+                                <td colspan="3"><input type="text" name="contactman" lay-verify="title"
+                                                       autocomplete="off" class="me-input" readonly></td>
+                            </tr>
+                            <tr>
+                                <td class="me-td-head">手机：</td>
+                                <td><input type="text" name="telphone" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                                <td class="me-td-head">电话号码：</td>
+                                <td><input type="text" name="dtelphone" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                            </tr>
+                            <tr>
+                                <td class="me-td-head">证件类型：</td>
+                                <td>
+                                    <input type="hidden" name="contactmanCardtype" lay-verify="title" autocomplete="off"
+                                           class="me-input">
+                                    <select name="contactmanCardtype" class="me-input selDict" dict="232" lay-verify="required" disabled>
+                                    </select>
+                                </td>
+                                <td class="me-td-head">证件号码：</td>
+                                <td><input type="text" name="contactmanCardnumber" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                            </tr>
+                            <tr>
+                                <td class="me-td-head">备注：</td>
+                                <td colspan="3"><input type="text" name="extend2" lay-verify="title" autocomplete="off"
+                                                       class="me-input" readonly></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </fieldset>
+                    <fieldset class="layui-elem-field site-demo-button"
+                              style="margin: 2px; padding:10px; border-color: #000;">
+                        <legend style="font-size: 18px">项目办理信息</legend>
+                        <table class="layui-table" style="border-color: #1c1f27;">
+                            <tbody>
+                            <tr>
+                                <td class="me-td-head">办理部门：</td>
+                                <td><input type="text" lay name="handerDeptname" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                                <td class="me-td-head">收件人：</td>
+                                <td><input type="text" name="acceptMan" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                            </tr>
+                            <tr>
+                                <td class="me-td-head">办件申请时间：</td>
+                                <td><input type="text" lay name="receivetime" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                                <td class="me-td-head">处理时间：</td>
+                                <td><input type="text" name="acceptTime" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                            </tr>
+                            <tr>
+                                <td class="me-td-head">办件承诺期限：</td>
+                                <td><input type="text" lay name="promisevalue" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                                <td class="me-td-head">承诺办结时间：</td>
+                                <td><input type="text" name="promiseEtime" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                            </tr>
+                            <tr>
+                                <td class="me-td-head">承诺期限单位：</td>
+                                <td><input type="text" lay name="promisetype" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                                <td class="me-td-head">实际办结时间：</td>
+                                <td><input type="text" name="temp" lay-verify="title" autocomplete="off"
+                                           class="me-input" readonly></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </fieldset>
+                    <fieldset class="layui-elem-field site-demo-button"
+                              style="margin: 2px; padding:50px;padding-top:150px;  border-color: #000;">
+                        <legend style="font-size: 18px">办理情况</legend>
+                        <div style="text-align: center" id="flows"></div>
+                    </fieldset>
+                    <fieldset class="layui-elem-field site-demo-button"
+                              style="margin: 2px; padding:50px;  border-color: #000;">
+                        <legend style="font-size: 18px">办理意见</legend>
+                        <textarea name="opinion" placeholder="请输入办理意见" class="layui-textarea"
+                                  style="width: 100%;height: 100%"></textarea>
+                        <input type="hidden" lay name="nodeFile" id="nodeFile" lay-verify="title" autocomplete="off" class="me-input">
+                        <span class="sl-custom-file">
+                            <input type="file" name="mFile" class="layui-btn layui-btn-normal ui-input-file" id="mFile">
+                            <button type="button" class="layui-btn layui-btn-normal btn-file">上传附件</button>
+                        </span>
+                    </fieldset>
+                </form>
+            </div>
+            <!--材料列表-->
+            <div class="layui-tab-item">
+                <table class="layui-table" lay-data="{id:'configureAttr'}" id="configureAttr"
+                       lay-filter="configureAttr"></table>
+            </div>
+            <!--申报历史记录-->
+            <div class="layui-tab-item">
+                <div class="layui-form">
+                    <table class="layui-table" id="history" lay-filter="history"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" th:value="${projid}" id="projid" name="projid"/>
+<input type="hidden" th:value="${tongid}" id="tongid" name="tongid"/>
+
+<script data-th-inline="none" type="text/javascript">
+    layui.use(['jquery', 'form', 'table', 'febs', 'laydate', 'layer', 'upload','dict'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            table = layui.table,
+            febs = layui.febs,
+            $view = $('#febs-apasinfo'),
+            $searchForm = $view.find('form'),
+            $query = $view.find('#query'),
+            sortObject = {field: 'createTime', type: null},
+            createTimeFrom,
+            createTimeTo,
+            tableIns,
+            attrIns,
+            dict = layui.dict,
+            historyIns;
+        dict.renderDictAll(); //渲染字典下拉框
+        form.render();
+        form.render('select');
+        openSuccess();
+
+        /* 打开弹窗成功加载事件*/
+        function openSuccess(projid, tongid) {
+            // 加载基本信息
+            $.ajax({
+                type: 'get',
+                url: ctx + 'apasinfo/getById?projid=' + $('#projid').val(),
+                dataType: 'json',
+                success: function (result) {
+                    // 基本信息
+                    var apasin = result.data;
+                    form.val("apasinfo", {
+                        "projid": apasin.projid,
+                        "createTime": apasin.createTime,
+                        "syncStatus": apasin.syncStatus,
+                        "dataversion": apasin.dataversion,
+                        "servicecode": apasin.servicecode,
+                        "serviceDeptid": apasin.serviceDeptid,
+                        "xkLydw": apasin.xkLydw,
+                        "xkLydwdm": apasin.xkLydwdm,
+                        "tongid": apasin.tongid,
+                        "busType": apasin.busType,
+                        "deptname": apasin.deptname,
+                        "applyPropertiy": apasin.applyPropertiy,
+                        "applyfrom": apasin.applyfrom,
+                        "servicename": apasin.servicename,
+                        "projectname": apasin.projectname,
+                        "applyname": apasin.applyname,
+                        "approveType": apasin.approveType,
+                        "applyCardtype": apasin.applyCardtype,
+                        "applyCardnumber": apasin.applyCardnumber,
+                        "legalman": apasin.legalman,
+                        "xkFrSfzh": apasin.xkFrSfzh,
+                        "contactman": apasin.contactman,
+                        "telphone": apasin.telphone,
+                        "dtelphone": apasin.dtelphone,
+                        "contactmanCardnumber": apasin.contactmanCardnumber,
+                        "contactmanCardtype": apasin.contactmanCardtype,
+                        "postcode": apasin.postcode,
+                        "address": apasin.address,
+                        "extend2": apasin.extend2,
+                        "projnum": apasin.projnum,
+                        "applyType": apasin.applyType,
+                        "isTouzip": apasin.isTouzip,
+                        "receivetime": apasin.receivetime,
+                        "promiseDay": apasin.promiseDay + getDayType(apasin.anticipateType),
+                    });
+                    // 材料列表
+                    initAttr(apasin.tongid, apasin.projid);
+                    // 申报历史记录
+                    initHistory(apasin.applyCardnumber);
+                }
+            });
+            // 加载项目办理信息
+            $.ajax({
+                type: 'post',
+                url: ctx + 'accept/getByProjid?projid=' + $('#projid').val(),
+                dataType: 'json',
+                success: function (result) {
+                    // 基本信息
+                    var accept = result.data;
+                    form.val("apasinfo", {
+                        "handerDeptname": accept.handerDeptname,
+                        "acceptMan": accept.acceptMan,
+                        "acceptTime": accept.acceptTime,
+                        "promisevalue": accept.promisevalue,
+                        "promisetype": getDayType(accept.promisetype),
+                        "promiseEtime": accept.promiseEtime,
+                    });
+                }
+            });
+
+            // 加载环节信息
+            $.ajax({
+                type: 'post',
+                url: ctx + 'node/getByProjid?tongid=' + $('#tongid').val() + '&projid=' + $('#projid').val(),
+                dataType: 'json',
+                success: function (result) {
+                    var nodes = result.data.nodes;
+                    var flows = result.data.flows;
+                    var html = '<input type="hidden" name="nodeIndex" value="' + nodes.length + '" lay-verify="title" autocomplete="off"  class="layui-input">';
+                    $.each(flows, function (index, item) {
+                        if (index < nodes.length) {
+                            html += '<button class="layui-btn" style="background-color: #1e51c7;">' + item.note + '</button>';
+                        } else if (index == nodes.length) {
+                            html += '<button class="layui-btn" style="background-color: #f5222d;">' + item.note + '</button>';
+                        } else {
+                            html += '<button class="layui-btn" style="background-color: #909399;">' + item.note + '</button>';
+                        }
+                    })
+                    $('#flows').html(html);
+                }
+            });
+            // 上传环节附件
+            $('.layui-form').on('change','#mFile',function () {
+                var formData = new FormData();
+                formData.append('file',this.files[0]);
+                $.ajax({
+                    url: 'formfile/upload',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType:false,
+                    success : function(res) {
+                        var urls = $('#nodeFile').val();
+                        if (urls == null || urls == '') {
+                            form.val("apasinfo", {
+                                "nodeFile": res.id
+                            })
+                        } else {
+                            form.val("apasinfo", {
+                                "nodeFile": urls + ',' + res.id
+                            })
+                        }
+                    }
+                });
+            })
+        }
+
+        function getDayType(type) {
+            switch (type) {
+                case '1':
+                    return '工作日';
+                    break;
+                case '2':
+                    return '月';
+                    break;
+                case '3':
+                    return '年';
+                    break;
+                case '4':
+                    return '天';
+                    break;
+                default:
+                    return '';
+                    break;
+            }
+        }
+
+
+        /*加载材料列表*/
+        function initAttr(tongId, projid) {
+            attrIns = febs.table.init({
+                elem: '#configureAttr',
+                id: "configureAttr",
+                url: ctx + 'attr/getByTongId?tongId=' + tongId + '&projid=' + projid,
+                cellMinWidth: 80,
+                page: false,
+                cols: [[
+                    {field: 'unid', title: '<strong>主键</strong>', hide: true},
+                    {type: 'numbers', title: '<strong>序号</strong>', width: 70, align: 'center'},
+                    {field: 'attrname', title: '<strong>材料名称</strong>', width: 250},
+                    {field: 'amount', title: '<strong>份数</strong>', width: 70},
+                    {field: 'memo', title: '<strong>备注</strong>', width: 150},
+                    {
+                        field: 'taketype', title: '<strong>收取方式</strong>', width: 100, templet: function (d) {
+                            switch (d.taketype) {
+                                case "1":
+                                    return "附件上传";
+                                    break;
+                                case "2":
+                                    return "纸质收取";
+                                    break;
+                                case "3":
+                                    return "电子证照库";
+                                    break;
+                                default:
+                                    return "其他";
+                                    break;
+                            }
+                        }
+                    },
+                    {
+                        field: 'istake', title: '<strong>状态</strong>', width: 100, templet: function (d) {
+                            switch (d.sitake) {
+                                case "1":
+                                    return "已收取";
+                                    break;
+                                case "2":
+                                    return "未收取";
+                                    break;
+                                default:
+                                    return "其他";
+                                    break;
+                            }
+                        }
+                    },
+                    {
+                        field: 'attrname', title: '<strong>文件</strong>', width: 350, templet: function (d) {
+                            var list = d.list;
+                            var html = '';
+                            html += '   <table class="layui-table" style="width: 100%">';
+                            html += '       <tbody>';
+                            for (var i in list) {
+                                html += '           <tr id="upload-' + list[i].unid + '">'
+                                html += '               <td><a href="' + list[i].filepath + '">' + list[i].name + '</a></td>';
+                                html += '           </tr>';
+                            }
+                            html += '       </tbody>';
+                            html += '   </table>';
+                            return html;
+                        }
+                    }
+                ]]
+            });
+        }
+
+
+        /*加载申报历史记录数据*/
+        function initHistory(cardId) {
+            historyIns = febs.table.init({
+                elem: '#history',
+                id: "history",
+                url: ctx + 'apasinfo/getByCardId?cardId=' + cardId,
+                page: false,
+                cols: [[
+                    {type: 'numbers', title: '<strong>序号</strong>', width: 60},
+                    {field: 'projectname', title: '<strong>项目名称</strong>', width: 260},
+                    {field: 'servicename', title: '<strong>审批事项</strong>', width: 260},
+                    {field: 'projid', title: '<strong>申报号</strong>', width: 125},
+                    {field: 'receivetime', title: '<strong>申报时间</strong>', width: 160},
+                    {
+                        title: '操作', width: 100, templet: function (d) {
+                            return "<a onclick=\"look('" + d.projid + "')\" class=\"layui-btn layui-btn-xs\"> 查看</a>";
+                        }
+                    }
+                ]]
+            });
+        }
+
+        // 办件列表条件查询
+        $query.on('click', function () {
+            var params = $.extend(getQueryParams(), {field: sortObject.field, order: sortObject.type});
+            tableIns.reload({where: params, page: {curr: 1}});
+        });
+
+        function getQueryParams() {
+            var params = $searchForm.serializeJson();
+            var createTime = params.time;
+            if (createTime) {
+                createTimeFrom = createTime.split(' - ')[0];
+                createTimeTo = createTime.split(' - ')[1];
+            }
+            params.invalidate_ie_cache = new Date();
+            params.createTimeFrom = createTimeFrom;
+            params.createTimeTo = createTimeTo;
+            return params;
+        }
+
+        look = function (projid) {
+            layer.msg("查看历史记录详情" + projid);
+        }
+    })
+</script>

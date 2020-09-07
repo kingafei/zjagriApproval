@@ -1,0 +1,44 @@
+<div class="layui-fluid layui-anim febs-anim" id="febs-apasinfo" lay-title="待办业务">
+    <div class="layui-row febs-container">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-body febs-table-full">
+                    <form class="layui-form layui-table-form" lay-filter="user-table-form">
+                        <div class="layui-row">
+                            <div class="layui-col-md10">
+                                <div class="layui-form-item">
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-xm">事项名称：</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="param" autocomplete="off" class="layui-input">
+                                        </div>
+                                        <div class="layui-btn layui-btn-sm layui-btn-primary febs-button-blue-plain table-action"
+                                             id="query">
+                                            <i class="layui-icon">&#xe848;</i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <table lay-filter="configureApasinfo" id="configureApasinfo"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script data-th-inline="none" type="text/javascript">
+    layui.use(['jquery','waiting'], function () {
+        var $ = layui.jquery,
+            waiting = layui.waiting;
+        waiting.initTable();
+    })
+</script>
+
+<!--页面按钮-->
+<script type="text/html" id="applyopen">
+    <span shiro:lacksPermission="user:view">
+        <span class="layui-badge-dot febs-bg-orange"></span> 无权限
+    </span>
+    <button type="button" class="layui-btn" lay-event="applyopen" shiro:hasPermission="user:view">办理</button>
+</script>

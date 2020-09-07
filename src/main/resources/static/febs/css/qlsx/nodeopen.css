@@ -1,0 +1,54 @@
+.layui-table-cell {
+    font-size: 14px;
+    padding: 0 5px;
+    height: auto;
+    overflow: visible;
+    text-overflow: inherit;
+    white-space: normal;
+    word-break: break-all;
+    border-color: #000000;
+}
+.me-input {
+    width: 100%;
+    height: 100%;
+    border-style: none;
+    border: none;
+    border-color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+.me-td-head {
+    color:#75409A;
+    font-weight:bold;
+}
+/*上传附件按钮样式----START*/
+.sl-custom-file {
+    position: relative;
+    display: inline-block;
+    zoom: 1;
+    cursor: pointer;
+    overflow: hidden;
+    vertical-align: middle;
+}
+.btn-file{
+    background-color: #1E9FFF !important;
+    color: #fff !important;
+    border: 1px solid #1E9FFF !important;
+    width: 150px !important;
+    border-radius: 0 !important;
+    margin-left: 0 !important;
+}
+.sl-custom-file .ui-input-file {
+    position: absolute;
+    right: 0;
+    top: 0;
+    _zoom: 30;
+    font-size: 300px \9;
+    height: 100%;
+    _height: auto;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    -ms-filter: "alpha(opacity=0)";
+    cursor: pointer;
+}
+/*上传附件按钮样式----END*/

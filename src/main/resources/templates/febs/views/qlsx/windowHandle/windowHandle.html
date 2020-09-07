@@ -1,0 +1,328 @@
+<div class="layui-fluid layui-anim febs-anim" id="febs-qlsx" lay-title="事项列表">
+    <div class="layui-row febs-container">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-body febs-table-full">
+                    <form class="layui-form layui-table-form" lay-filter="user-table-form">
+                        <div class="layui-row">
+                            <div class="layui-col-md10">
+                                <div class="layui-form-item">
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label layui-form-label-xm">事项名称：</label>
+                                        <div class="layui-input-inline">
+                                            <input type="text" name="param" autocomplete="off" class="layui-input">
+                                        </div>
+
+                                        <div class="layui-btn layui-btn-sm layui-btn-primary febs-button-blue-plain table-action"
+                                            id="query">
+                                            <i class="layui-icon">&#xe848;</i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                    <table lay-filter="qlsxTable" lay-data="{id: 'qlsxTable'}"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script data-th-inline="none" type="text/javascript">
+
+    layui.use([ 'upload','dropdown', 'jquery', 'laydate', 'form', 'table', 'febs', 'treeSelect'], function () {
+        var $ = layui.jquery,
+            laydate = layui.laydate,
+            febs = layui.febs,
+            form = layui.form,
+            table = layui.table,
+            treeSelect = layui.treeSelect,
+            dropdown = layui.dropdown,
+            $view = $('#febs-qlsx'),
+            $query = $view.find('#query'),
+            $reset = $view.find('#reset'),
+            $searchForm = $view.find('form'),
+            sortObject = {field: 'createTime', type: null},
+            tableIns,
+            createTimeFrom,
+            createTimeTo;
+
+        form.render();
+        form.render('select');
+
+        initTable();
+
+        table.on('tool(qlsxTable)', function (obj) {
+        	var data = obj.data,
+            layEvent = obj.event;
+            
+            if (layEvent === 'dojob') {//办理事件
+            	
+            	febs.modal.view('事项办理', 'qlsx/qlsxAccept/' + data.rowguid + "_" + data.id, {
+                    area: $(window).width() <= 750 ? '90%' : '1200px'
+                    ,  btn: ['提交', '关闭'],
+                    cancel: function (index, layero) {
+                        if (confirm('确定要关闭么？当前操作将不会被保存！！')) { //只有当点击confirm框的确定时，该层才会关闭
+                            layer.close(index)
+                        }
+                        return false;
+                    },
+                    success: function (layero, index) {
+                        prestrain(obj);
+                    },
+
+                    btn1: function (index, layero) {
+                        if (confirm('确认提交保存')) {
+                            // 保存办件函数
+                            save(obj);
+                            //关闭弹窗
+                            layer.close(index)
+                        }
+                        return true;
+                    }, btn2: function (index, layero) {
+                        if (confirm('确定要关闭么')) {
+                            layer.close(index)
+                        }
+                        return false;
+                    }
+                });
+
+            }
+
+        });
+        
+        
+        table.on('sort(qlsxTable)', function (obj) {
+            sortObject = obj;
+            tableIns.reload({
+                initSort: obj,
+                where: $.extend(getQueryParams(), {
+                    field: obj.field,
+                    order: obj.type
+                })
+            });
+        });
+
+        $query.on('click', function () {
+            var params = $.extend(getQueryParams(), {field: sortObject.field, order: sortObject.type});
+            tableIns.reload({where: params, page: {curr: 1}});
+        });
+
+        $reset.on('click', function () {
+            $searchForm[0].reset();
+            treeSelect.revokeNode('dept');
+            sortObject.type = 'null';
+            createTimeTo = null;
+            createTimeFrom = null;
+            tableIns.reload({where: getQueryParams(), page: {curr: 1}, initSort: sortObject});
+        });
+
+
+        function initTable() {
+            tableIns = febs.table.init({
+                elem: $view.find('table'),
+                id: 'qlsxTable',
+                url: ctx + 'nytQlsx/selQlsx',
+                cols: [[
+                    {type: 'numbers', title: '<strong>序号</strong>', width: '5%'},
+                    // {field: 'rowguid', title: '事项编码'},
+                    {field: 'qlKind', title: '<strong>事项编码</strong>', width: '20%', templet: '#sxbmTpl'},
+                    {field: 'qlName', title: '<strong>事项名称</strong>'},
+                    {title: '<strong>查看</strong>', toolbar: '#viewinfo', align: 'center', width: '15%'},
+                    {title: '<strong>操作</strong>', toolbar: '#handlejob', align: 'center', width: '10%'}
+                ]]
+            });
+        }
+
+       
+        function getQueryParams() {
+            var params = $searchForm.serializeJson();
+            var createTime = params.time;
+            if (createTime) {
+                createTimeFrom = createTime.split(' - ')[0];
+                createTimeTo = createTime.split(' - ')[1];
+            }
+            params.invalidate_ie_cache = new Date();
+            params.createTimeFrom = createTimeFrom;
+            params.createTimeTo = createTimeTo;
+            return params;
+        }
+
+        // 点击保存事件
+        function save() {
+
+            // var checkstatus = layui.table.cache['cailiao'];
+            //
+            //
+            // console.log(checkstatus)
+            //
+            //     for (let a of checkstatus) {
+            //        console.log(a); // a b c d
+            //     }
+
+            var data = table.cache.tablename
+
+            alert("1")
+
+            // 通过id获取table表格对象
+            var tab = $('#cailiao')
+            console.log(tab.tr)
+
+
+
+            $('#cailiao tr').each(function(i){
+                alert("aa")
+                console.log(i)
+            })
+
+
+
+
+            var d = {};
+            var t = $('#apasinfo [name]').serializeArray();
+
+
+            $.each(t, function () {
+                d[this.name] = this.value;
+            });
+            $.ajax({
+                type: 'POST',//方法类型
+                url: ctx + 'apasinfo/save',
+                data: d,
+                success: function (result) {
+
+                    if (result.code == 200) {
+                        layer.msg("添加成功~")
+                    } else {
+                        layer.msg("添加失败~")
+                    }
+                }
+            })
+        }
+
+
+        // 事项回显
+        function prestrain(obj) {
+
+            var apasin = obj.data;
+            form.val("apasinfo", {
+                "deptname": apasin.qlDep,
+                "s": apasin.promiseDay,
+                "servicename": apasin.banjianFinishfiles,
+                "approveType": apasin.shixiangsctype,
+                "applyPropertiy": apasin.isTouZiP,
+                "projectname": apasin.qlName,
+                "servicecode": apasin.rowguid,
+                "servicecodeId": apasin.qlMainitemId + "-" + apasin.qlSubitemId,
+                "serviceversion": apasin.versionNumber,
+                "deptid": apasin.ouguid,
+                "ssOrgcode": apasin.qlDepOrgcdoe,
+                "areacode": apasin.belongxiaqucode,
+                "tongid": apasin.tongid
+
+            });
+        }
+       
+    })
+
+
+</script>
+
+
+<!--页面按钮-->
+<script type="text/html" id="handlejob">
+    <span shiro:lacksPermission="user:view">
+        <span class="layui-badge-dot febs-bg-orange"></span> 无权限
+    </span>
+    <button type="button" class="layui-btn" lay-event="dojob" shiro:hasPermission="user:view">办理</button>
+</script>
+<script type="text/html" id="viewinfo">
+    <span shiro:lacksPermission="user:view">
+        <span class="layui-badge-dot febs-bg-orange"></span> 无权限
+    </span>
+    <button class="layui-btn layui-btn-primary layui-btn-sm" lay-event="nodedetail" shiro:hasPermission="user:update">环节详情</button>
+    <button class="layui-btn layui-btn-primary layui-btn-sm" lay-event="qldetail" shiro:hasPermission="user:update">事项详情</button>
+</script>
+
+
+<script type="text/html" id="sxbmTpl">
+{{#  if(d.qlState == '1'){ }}
+	<span class="layui-badge febs-tag-green">在用</span>
+{{#  }    }}
+
+{{#  if(d.qlState == '2'){ }}
+	<span class="layui-badge febs-tag-orange">挂起</span>
+{{#  }    }}
+
+{{#  if(d.qlState == '3'){ }}
+	<span class="layui-badge febs-tag-red">取消</span>
+{{#  }    }}
+
+
+
+{{#  if(d.qlKind == '01'){ }}
+	许可-{{ d.qlMainitemId }}-{{ d.qlSubitemId }}
+{{#  }    }}
+
+{{#  if(d.qlKind == '03'){ }}
+	处罚-{{ d.qlMainitemId }}-{{ d.qlSubitemId }}
+{{#  }    }}
+
+{{#  if(d.qlKind == '04'){ }}
+	强制-{{ d.qlMainitemId }}-{{ d.qlSubitemId }}
+{{#  }    }}
+
+{{#  if(d.qlKind == '05'){ }}
+	征收-{{ d.qlMainitemId }}-{{ d.qlSubitemId }}
+{{#  }    }}
+
+{{#  if(d.qlKind == '06'){ }}
+	给付-{{ d.qlMainitemId }}-{{ d.qlSubitemId }}
+{{#  }    }}
+
+{{#  if(d.qlKind == '07'){ }}
+	裁决-{{ d.qlMainitemId }}-{{ d.qlSubitemId }}
+{{#  }    }}
+
+{{#  if(d.qlKind == '08'){ }}
+	确认-{{ d.qlMainitemId }}-{{ d.qlSubitemId }}
+{{#  }    }}
+
+{{#  if(d.qlKind == '09'){ }}
+	奖励-{{ d.qlMainitemId }}-{{ d.qlSubitemId }}
+{{#  }    }}
+
+{{#  if(d.qlKind == '10'){ }}
+	其他-{{ d.qlMainitemId }}-{{ d.qlSubitemId }}
+{{#  }    }}
+  
+</script>
+<style>
+    .layui-table-cell {
+        font-size: 14px;
+        padding: 0 5px;
+        height: auto;
+        overflow: visible;
+        text-overflow: inherit;
+        white-space: normal;
+        word-break: break-all;
+        border-color: #000000;
+    }
+
+    .layui-table {
+        border-color: #000000;
+    }
+
+    .layui-input,
+    .layui-input-block,
+    .layui-textarea {
+        border-color: #ffffff
+    }
+
+    .layui-input layui-unselect {
+        hight: 22px;
+    }
+</style>

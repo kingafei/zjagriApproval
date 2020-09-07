@@ -9,9 +9,9 @@ import java.util.List;
 public interface ZwfwRegionService {
 
     /**
-     * 查找单个信息
+     * 转移区域数据
      */
-    ResultData<String> sel(String id);
+    ResultData<String> transferData(String id);
 
 
 }

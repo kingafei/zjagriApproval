@@ -35,24 +35,19 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements ID
 
     private final IUserDataPermissionService userDataPermissionService;
 
+    private final DeptMapper deptMapper;
+
 
     @Override
     public List<DeptTree<Dept>> findDepts() {
-        List<Dept> depts = this.baseMapper.selectList(new QueryWrapper<>());
+        List<Dept> depts = deptMapper.selectAll();
         List<DeptTree<Dept>> trees = this.convertDepts(depts);
         return TreeUtil.buildDeptTree(trees);
     }
 
     @Override
     public List<DeptTree<Dept>> findDepts(Dept dept) {
-        QueryWrapper<Dept> queryWrapper = new QueryWrapper<>();
-
-        if (StringUtils.isNotBlank(dept.getDeptName())) {
-            queryWrapper.lambda().eq(Dept::getDeptName, dept.getDeptName());
-        }
-        queryWrapper.lambda().orderByAsc(Dept::getOrderNum);
-
-        List<Dept> depts = this.baseMapper.selectList(queryWrapper);
+        List<Dept> depts = deptMapper.selectAll();
         List<DeptTree<Dept>> trees = this.convertDepts(depts);
         return TreeUtil.buildDeptTree(trees);
     }
@@ -98,7 +93,11 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements ID
             DeptTree<Dept> tree = new DeptTree<>();
             tree.setId(String.valueOf(dept.getDeptId()));
             tree.setParentId(String.valueOf(dept.getParentId()));
-            tree.setName(dept.getDeptName());
+            if (StringUtils.isBlank(dept.getBik1())) {
+                tree.setName(dept.getDeptName());
+            } else {
+                tree.setName(dept.getBik1() + dept.getDeptName());
+            }
             tree.setData(dept);
             trees.add(tree);
         });
@@ -117,5 +116,15 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements ID
             depts.forEach(d -> deptIdList.add(String.valueOf(d.getDeptId())));
             this.delete(deptIdList);
         }
+    }
+
+    @Override
+    /**
+     * 通过ID查询部门
+     * @param deptId
+     * @return
+     */
+    public List<Dept> selectById(String deptId) {
+        return deptMapper.selectByID(deptId);
     }
 }

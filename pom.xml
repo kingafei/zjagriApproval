@@ -24,8 +24,15 @@
         <swagger.ui>2.9.2</swagger.ui>
         <tomcat.version>9.0.31</tomcat.version>
     </properties>
-
     <dependencies>
+<!--前端热部署-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+            <scope>true</scope>
+        </dependency>
+
         <!-- Spring系列 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -226,6 +233,12 @@
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jsr310</artifactId>
             <version>2.9.2</version>
+        </dependency>
+        <!-- json工具 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.32</version>
         </dependency>
     </dependencies>
 

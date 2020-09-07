@@ -21,4 +21,10 @@ public interface NytAreaMapper {
 
     int maxId();
 
+    List<NytAreaEntity> queryByLevel(String level);
+
+    List<NytAreaEntity> queryByUrl(String codeUrl,String level);
+
+    NytAreaEntity queryByAdcode(String adcode);
+
 }

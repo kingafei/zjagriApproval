@@ -1,0 +1,241 @@
+
+<div class="site-text" style="" id="waitHandlewindow">
+    <div class="layui-tab">
+        <ul class="layui-tab-title">
+            <li class="layui-this">基本信息</li>
+            <li>申报历史记录</li>
+        </ul>
+        <div class="layui-tab-content">
+            <!--基本信息弹框结束-->
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form"  method="post" lay-filter="apasinfo" id="apasinfo">
+                    <fieldset class="layui-elem-field site-demo-button"
+                              style="margin: 2px; padding:10px; border-color: #000;">
+                        <legend style="font-size: 18px">办件基本信息</legend>
+                        <table class="layui-table" style="border-color: #1c1f27;">
+                            <input type="hidden" name="projid" lay-verify="title" autocomplete="off"
+                                   class="layui-input">
+                            <input type="hidden" name="createTime" lay-verify="title" autocomplete="off"
+                                   class="layui-input">
+                            <input type="hidden" name="syncStatus" lay-verify="title" autocomplete="off"
+                                   class="layui-input">
+                            <input type="hidden" name="dataversion" lay-verify="title" autocomplete="off"
+                                   class="layui-input">
+                            <input type="hidden" name="servicecode" lay-verify="title" autocomplete="off"
+                                   class="layui-input">
+                            <input type="hidden" name="serviceDeptid" lay-verify="title" autocomplete="off"
+                                   class="layui-input">
+                            <input type="hidden" name="xkLydw" lay-verify="title" autocomplete="off"
+                                   class="layui-input">
+                            <input type="hidden" name="xkLydwdm" lay-verify="title" autocomplete="off"
+                                   class="layui-input">
+                            <input type="hidden" name="tongid" lay-verify="title" autocomplete="off"
+                                   class="layui-input">
+                            <input type="hidden" name="applyCardtype" lay-verify="title" autocomplete="off"
+                                   class="layui-input">
+                            <input type="hidden" name="anticipateType" lay-verify="title" autocomplete="off"
+                                   class="layui-input">
+                            <input type="hidden" name="promiseDay" lay-verify="title" autocomplete="off"
+                                   class="layui-input">
+                            <tr>
+                                <td style='color:#75409A'>申报者：</td>
+                                <td>
+                                    <input type="radio" name="applyType" value="1" title="个人">
+                                    <input type="radio" name="applyType" value="2" title="企业">
+                                    <input type="radio" name="applyType" value="3" title="非企业">
+                                </td>
+                                <td style='color:#75409A'>是否投资固定资产项目：</td>
+                                <td><input type="radio" name="isTouzip" value="1" title="是">
+                                    <input type="radio" name="isTouzip" value="0" title="否"></td>
+                            </tr>
+
+                            <tr>
+                                <td style='color:#75409A'> 事项名称：</td>
+                                <td><input type="text" lay name="servicename" lay-verify="title" autocomplete="off"
+                                           class="layui-input" style="border-color: #ffffff " readonly></td>
+                                <td style='color:#75409A'>事项编码：</td>
+                                <td><input type="text" lay name="servicecode" lay-verify="title" autocomplete="off"
+                                           class="layui-input" style="border-color: #ffffff" readonly></td>
+                            </tr>
+
+                            <tr>
+                                <td style='color:#75409A'>所属部门：</td>
+                                <td><input type="text" name="deptname" lay-verify="title" autocomplete="off"
+                                           class="layui-input"></td>
+                                <td style='color:#75409A'>申报来源：</td>
+                                <td><select name="applyfrom" lay-verify="required" class="selDict" dict="258" disabled></select></td>
+                            </tr>
+                            <tr>
+                                <td style='color:#75409A'> 申报项目名称：</td>
+                                <td ><input type="text" name="projectname" lay-verify="title" autocomplete="off"
+                                           class="layui-input"></td>
+                                <td style='color:#75409A'>审批类型：</td>
+                                <td><select name="approveType" lay-verify="required" class="selDict" dict="267"></select></td>
+                            </tr>
+                            <tr>
+                                <td style='color:#75409A'> 承诺时间：</td>
+                                <td><input type="text" name="promiseDay1" lay-verify="title" autocomplete="off"
+                                           class="layui-input" style="border-color: #ffffff" readonly></td>
+                                <td style='color:#75409A'> 申报数量：</td>
+                                <td><input type="text" name="projnum" lay-verify="title" autocomplete="off"
+                                           class="layui-input" style="border-color: #ffffff"></td>
+                            </tr>
+                        </table>
+                    </fieldset>
+
+                    <fieldset class="layui-elem-field site-demo-button"
+                              style="margin: 2px; padding:10px; border-color: #000;">
+                        <legend style="font-size: 18px">申报者信息</legend>
+                        <table class="layui-table" style="border-color: #1c1f27;">
+                            <tr>
+
+                                <td style='color:#75409A'>申报者名称：</td>
+                                <td colspan="3"><input type="text" name="applyname" lay-verify="title"
+                                                       autocomplete="off"
+                                                       placeholder="如为个人，则填写姓名；如为法人，则填写单位名称" class="layui-input"></td>
+
+                            </tr>
+                            <tr>
+                                <td style='color:#75409A'>申报者证件类型</td>
+                                <td><select name="applyCardtype" lay-verify="required" class="selDict" dict="232"></select></td>
+                                <td style='color:#75409A'>申报者证件号码</td>
+                                <td><input type="text" name="applyCardnumber" lay-verify="title" autocomplete="off" class="layui-input"></td>
+                            </tr>
+                            <tr>
+
+                                <td style='color:#75409A'>办理方式：</td>
+                                <td><select name="busMode" lay-verify="required" class="selDict" dict="283" lay-search="">
+                                </select></td>
+                                <td style='color:#75409A'>办理方式说明：</td>
+                                <td>   <textarea name="busModeDesc" lay-verify="required"
+                                                 autocomplete="off" class="layui-textarea"
+                                                 placeholder="如果办理方式指为其他，可对该办理方式进行描述"></textarea></td>
+                            </tr>
+                            <tr>
+                                <td style='color:#75409A'>办件类型 ：</td>
+                                <td><select name="infotype" class="selDict" dict="202">
+                                </select></td>
+                                <td style='color:#75409A'>业务类型：</td>
+                                <td><select name="busType" lay-filter="aihao" class="selDict" dict="277"></select></td>
+                            </tr>
+                            <tr>
+                                <td style='color:#75409A'>联系人/代理人姓名：</td>
+                                <td><input type="text" lay name="contactman" lay-verify="title" autocomplete="off"
+                                           class="layui-input"></td>
+                                <td style='color:#75409A'>联系人手机号码：</td>
+                                <td><input type="text" lay name="telphone" lay-verify="title" autocomplete="off"
+                                           class="layui-input"></td>
+                            </tr>
+                            <tr>
+                                <td style='color:#75409A'>联系人/代理人证件类型：</td>
+                                <td><select name="contactmanCardtype" lay-verify="required" class="selDict" dict="232">
+                                </select></td>
+                                <td style='color:#75409A'>联系人/代理人证件号码：</td>
+                                <td><input type="text" name="contactmanCardnumber" lay-verify="title" autocomplete="off"
+                                           class="layui-input"></td>
+                            </tr>
+                            <tr>
+                                <td style='color:#75409A'>申报者邮编：</td>
+                                <td><input type="text" name="postcode" lay-verify="title" autocomplete="off"
+                                           placeholder="申报者联系地址对应的邮政编码" class="layui-input"></td>
+                                <td style='color:#75409A'>通讯地址 ：</td>
+                                <td><input type="text" name="address" lay-verify="title" autocomplete="off"
+                                           class="layui-input" placeholder="申报者的联系地址"></td>
+                            </tr>
+                            <tr>
+                                <td style='color:#75409A'>法定代表人：</td>
+                                <td><input type="text" name="legalman" lay-verify="title" autocomplete="off"
+                                           class="layui-input"></td>
+                                <td style='color:#75409A'>法定代表人证件号码：</td>
+                                <td><input type="text" name="xkFrSfzh" lay-verify="title" autocomplete="off"
+                                           class="layui-input"></td>
+                            </tr>
+                            <tr>
+                                <td style='color:#75409A'>数据来源单位：</td>
+                                <td><input type="text" lay name="xkLydw" lay-verify="title" autocomplete="off"
+                                           class="layui-input"></td>
+                                <td style='color:#75409A'>数据来源单位统一社会信用代码：</td>
+                                <td><input type="text" lay name="xkLydwdm" lay-verify="title" autocomplete="off"
+                                           class="layui-input"></td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                    <input type="text" lay name="tongid" lay-verify="title" autocomplete="off" class="layui-input"
+                           style="border-color: #ffffff;visibility:hidden;">
+                </form>
+                <!--相关材料-->
+                <form class="layui-form"  method="post" lay-filter="attrTable" id="attrTable">
+                    <fieldset class="layui-elem-field site-demo-button"
+                              style="margin: 2px; padding:10px; border-color: #000;">
+                        <legend style="font-size: 18px">材料相关</legend>
+                        <table class="layui-table" lay-data="{id:'configureAttr'}" id="configureAttr"
+                               lay-filter="configureAttr"></table>
+                    </fieldset>
+                </form>
+            </div>
+            <!--基本信息弹框结束-->
+            <div class="layui-tab-item">
+                <div class="layui-form">
+                    <table class="layui-table" id="history" lay-filter="history"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" th:value="${projid}" id="projid" name="projid"/>
+
+
+
+
+<script data-th-inline="none" type="text/javascript">
+
+    layui.use(['jquery', 'receive','dict'], function () {
+        var $ = layui.jquery,
+            dict = layui.dict,
+            receive = layui.receive;
+        dict.renderDictAll(); //渲染字典下拉框
+        receive.openSuccess($('#projid').val());
+    })
+
+
+</script>
+
+
+<!--材料表格中的  文本框-->
+<script id="istake" type="text/html">
+    <input type="text" name="istake" value="{{ d.amount == null ?  '' : d.amount}}" lay-filter="sexAmount"
+           style="text-align: center; width: 100%;height: 40px;border: 0px;outline:none;cursor: pointer;">
+</script>
+
+<script type="text/html" id="amount">
+    <input type="text" name="amount" value="{{ d.amount == null ?  '' : d.amount}}" lay-filter="sexAmount"
+           style="text-align: center; width: 40px;height: 40px;border: 0px;outline:none;cursor: pointer;">
+</script>
+<script type="text/html" id="memo">
+    <input type="text" name="memo" value="{{ d.memo == null ?  '' : d.memo}}" lay-filter="sexMemo"
+           style="text-align: center; width: 100%;height: 40px;border: 0px;outline:none;cursor: pointer;">
+</script>
+<script type="text/html" id="taketype">
+    <select name="taketype" lay-verify="required">
+        {{ d.taketype == null ? '
+        <option value="" selected>-请选择-</option>
+        ' : '
+        <option value="">-请选择-</option>
+        '}}
+        {{ d.taketype == 1 ? '
+        <option value="1" selected>上传</option>
+        ' : '
+        <option value="1">附件上传</option>
+        '}}
+        {{ d.taketype == 2 ? '
+        <option value="2" selected>快递</option>
+        ' : '
+        <option value="2">纸质收取</option>
+        '}}
+        {{ d.taketype == 2 ? '
+        <option value="2" selected>快递</option>
+        ' : '
+        <option value="3">电子证照库</option>
+        '}}
+    </select>
+</script>

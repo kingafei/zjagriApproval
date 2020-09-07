@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.com.ecenter.pre.mapper.AttrMapper">
+    <resultMap type="cn.com.ecenter.pre.entity.AttrEntity" id="BaseResultMap">
+        <result property="unid" column="UNID"/>
+        <result property="projid" column="PROJID"/>
+        <result property="attrname" column="ATTRNAME"/>
+        <result property="attrid" column="ATTRID"/>
+        <result property="sortid" column="SORTID"/>
+        <result property="taketype" column="TAKETYPE"/>
+        <result property="istake" column="ISTAKE"/>
+        <result property="amount" column="AMOUNT"/>
+        <result property="taketime" column="TAKETIME"/>
+        <result property="memo" column="MEMO"/>
+        <result property="belongsystem" column="BELONGSYSTEM"/>
+        <result property="areacode" column="AREACODE"/>
+        <result property="extend" column="EXTEND"/>
+        <result property="createTime" column="CREATE_TIME"/>
+        <result property="fileurl" column="FILEURL"/>
+        <result property="filename" column="FILENAME"/>
+        <result property="syncStatus" column="SYNC_STATUS"/>
+        <result property="dataversion" column="DATAVERSION"/>
+        <result property="servicecode" column="SERVICECODE"/>
+        <result property="serviceDeptid" column="SERVICE_DEPTID"/>
+        <result property="xkLydw" column="XK_LYDW"/>
+        <result property="xkLydwdm" column="XK_LYDWDM"/>
+        <result property="extend2" column="EXTEND_2"/>
+        <result property="extend3" column="EXTEND_3"/>
+        <result property="extend4" column="EXTEND_4"/>
+        <result property="extend5" column="EXTEND_5"/>
+        <result property="op" column="op"/>
+        <result property="tongTime" column="tong_time"/>
+        <result property="tongid" column="tongID"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+            UNID,
+            PROJID,
+            ATTRNAME,
+            ATTRID,
+            SORTID,
+            TAKETYPE,
+            ISTAKE,
+            AMOUNT,
+            TAKETIME,
+            MEMO,
+            BELONGSYSTEM,
+            AREACODE,
+            EXTEND,
+            CREATE_TIME,
+            FILEURL,
+            FILENAME,
+            SYNC_STATUS,
+            DATAVERSION,
+            SERVICECODE,
+            SERVICE_DEPTID,
+            XK_LYDW,
+            XK_LYDWDM,
+            EXTEND_2,
+            EXTEND_3,
+            EXTEND_4,
+            EXTEND_5,
+            op,
+            tong_time,
+            tongID,
+    </sql>
+
+    <insert id="insertSelective" parameterType="cn.com.ecenter.pre.entity.AttrEntity" >
+        insert into pre_attr
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="unid != null" >
+                UNID,
+            </if>
+            <if test="projid != null" >
+                PROJID,
+            </if>
+            <if test="attrname != null" >
+                ATTRNAME,
+            </if>
+            <if test="attrid != null" >
+                ATTRID,
+            </if>
+            <if test="sortid != null" >
+                SORTID,
+            </if>
+            <if test="taketype != null" >
+                TAKETYPE,
+            </if>
+            <if test="istake != null" >
+                ISTAKE,
+            </if>
+            <if test="amount != null" >
+                AMOUNT,
+            </if>
+            <if test="taketime != null" >
+                TAKETIME,
+            </if>
+            <if test="memo != null" >
+                MEMO,
+            </if>
+            <if test="belongsystem != null" >
+                BELONGSYSTEM,
+            </if>
+            <if test="areacode != null" >
+                AREACODE,
+            </if>
+            <if test="extend != null" >
+                EXTEND,
+            </if>
+            <if test="createTime != null" >
+                CREATE_TIME,
+            </if>
+            <if test="fileurl != null" >
+                FILEURL,
+            </if>
+            <if test="filename != null" >
+                FILENAME,
+            </if>
+            <if test="syncStatus != null" >
+                SYNC_STATUS,
+            </if>
+            <if test="dataversion != null" >
+                DATAVERSION,
+            </if>
+            <if test="servicecode != null" >
+                SERVICECODE,
+            </if>
+            <if test="serviceDeptid != null" >
+                SERVICE_DEPTID,
+            </if>
+            <if test="xkLydw != null" >
+                XK_LYDW,
+            </if>
+            <if test="xkLydwdm != null" >
+                XK_LYDWDM,
+            </if>
+            <if test="extend2 != null" >
+                EXTEND_2,
+            </if>
+            <if test="extend3 != null" >
+                EXTEND_3,
+            </if>
+            <if test="extend4 != null" >
+                EXTEND_4,
+            </if>
+            <if test="extend5 != null" >
+                EXTEND_5,
+            </if>
+            <if test="op != null" >
+                op,
+            </if>
+            <if test="tongTime != null" >
+                tong_time,
+            </if>
+            <if test="tongid != null" >
+                tongID,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="unid != null" >
+                #{unid},
+            </if>
+            <if test="projid != null" >
+                #{projid},
+            </if>
+            <if test="attrname != null" >
+                #{attrname},
+            </if>
+            <if test="attrid != null" >
+                #{attrid},
+            </if>
+            <if test="sortid != null" >
+                #{sortid},
+            </if>
+            <if test="taketype != null" >
+                #{taketype},
+            </if>
+            <if test="istake != null" >
+                #{istake},
+            </if>
+            <if test="amount != null" >
+                #{amount},
+            </if>
+            <if test="taketime != null" >
+                #{taketime},
+            </if>
+            <if test="memo != null" >
+                #{memo},
+            </if>
+            <if test="belongsystem != null" >
+                #{belongsystem},
+            </if>
+            <if test="areacode != null" >
+                #{areacode},
+            </if>
+            <if test="extend != null" >
+                #{extend},
+            </if>
+            <if test="createTime != null" >
+                #{createTime},
+            </if>
+            <if test="fileurl != null" >
+                #{fileurl},
+            </if>
+            <if test="filename != null" >
+                #{filename},
+            </if>
+            <if test="syncStatus != null" >
+                #{syncStatus},
+            </if>
+            <if test="dataversion != null" >
+                #{dataversion},
+            </if>
+            <if test="servicecode != null" >
+                #{servicecode},
+            </if>
+            <if test="serviceDeptid != null" >
+                #{serviceDeptid},
+            </if>
+            <if test="xkLydw != null" >
+                #{xkLydw},
+            </if>
+            <if test="xkLydwdm != null" >
+                #{xkLydwdm},
+            </if>
+            <if test="extend2 != null" >
+                #{extend2},
+            </if>
+            <if test="extend3 != null" >
+                #{extend3},
+            </if>
+            <if test="extend4 != null" >
+                #{extend4},
+            </if>
+            <if test="extend5 != null" >
+                #{extend5},
+            </if>
+            <if test="op != null" >
+                #{op},
+            </if>
+            <if test="tongTime != null" >
+                #{tongTime},
+            </if>
+            <if test="tongid != null" >
+                #{tongid},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByUNID" parameterType="cn.com.ecenter.pre.entity.AttrEntity" >
+        update pre_attr
+        <set >
+            <if test="projid != null" >
+                PROJID = #{projid},
+            </if>
+            <if test="attrname != null" >
+                ATTRNAME = #{attrname},
+            </if>
+            <if test="attrid != null" >
+                ATTRID = #{attrid},
+            </if>
+            <if test="sortid != null" >
+                SORTID = #{sortid},
+            </if>
+            <if test="taketype != null" >
+                TAKETYPE = #{taketype},
+            </if>
+            <if test="istake != null" >
+                ISTAKE = #{istake},
+            </if>
+            <if test="amount != null" >
+                AMOUNT = #{amount},
+            </if>
+            <if test="taketime != null" >
+                TAKETIME = #{taketime},
+            </if>
+            <if test="memo != null" >
+                MEMO = #{memo},
+            </if>
+            <if test="belongsystem != null" >
+                BELONGSYSTEM = #{belongsystem},
+            </if>
+            <if test="areacode != null" >
+                AREACODE = #{areacode},
+            </if>
+            <if test="extend != null" >
+                EXTEND = #{extend},
+            </if>
+            <if test="createTime != null" >
+                CREATE_TIME = #{createTime},
+            </if>
+            <if test="fileurl != null" >
+                FILEURL = #{fileurl},
+            </if>
+            <if test="filename != null" >
+                FILENAME = #{filename},
+            </if>
+            <if test="syncStatus != null" >
+                SYNC_STATUS = #{syncStatus},
+            </if>
+            <if test="dataversion != null" >
+                DATAVERSION = #{dataversion},
+            </if>
+            <if test="servicecode != null" >
+                SERVICECODE = #{servicecode},
+            </if>
+            <if test="serviceDeptid != null" >
+                SERVICE_DEPTID = #{serviceDeptid},
+            </if>
+            <if test="xkLydw != null" >
+                XK_LYDW = #{xkLydw},
+            </if>
+            <if test="xkLydwdm != null" >
+                XK_LYDWDM = #{xkLydwdm},
+            </if>
+            <if test="extend2 != null" >
+                EXTEND_2 = #{extend2},
+            </if>
+            <if test="extend3 != null" >
+                EXTEND_3 = #{extend3},
+            </if>
+            <if test="extend4 != null" >
+                EXTEND_4 = #{extend4},
+            </if>
+            <if test="extend5 != null" >
+                EXTEND_5 = #{extend5},
+            </if>
+            <if test="op != null" >
+                op = #{op},
+            </if>
+            <if test="tongTime != null" >
+                tong_time = #{tongTime},
+            </if>
+            <if test="tongid != null" >
+                tongID = #{tongid},
+            </if>
+        </set>
+        where UNID = #{unid}
+    </update>
+
+    <!--根据申报号查询相关的申报材料-->
+    <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select * from pre_attr where PROJID = ${projid} ORDER BY SORTID
+    </select>
+
+    <select id="getByPId" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select m.MATERIAL_GUID as ATTRID,m.MATERIAL_NAME as ATTRNAME,p.* from
+        nyt_materal_info m left join pre_attr p
+        on m.MATERIAL_GUID = p.ATTRID
+        and p.PROJID = ${projid}
+        where m.p_ID = #{pid}
+    </select>
+</mapper>

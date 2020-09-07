@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="cn.com.ecenter.xzspxt.mapper.NytDataDictMapper">
-
     <resultMap type="cn.com.ecenter.xzspxt.entity.po.NytDataDictEntity" id="BaseResultMap">
         <result property="pkId" column="pk_id"/>
         <result property="comment" column="comment"/>
@@ -17,28 +16,7 @@
         <result property="updateTime" column="update_time"/>
     </resultMap>
 
-    <sql id="Base_Column_List">
-                        pk_id,
-                        comment,
-                        dict_sign,
-                        dict_value,
-                        value_comment,
-                        value_sort,
-                        fk_uid,
-                        state,
-                        is_delete,
-                        create_time,
-                        update_time,
-            </sql>
-
-    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-        select
-        *
-        from "nyt_data_dict"
-        where id = #{id,jdbcType=VARCHAR}
-    </select>
-
-    <insert id="insertSelective" parameterType="cn.com.ecenter.xzspxt.entity.po.NytDataDictEntity" >
+    <insert id="insertSelective" parameterType="cn.com.ecenter.xzspxt.entity.po.NytDataDictEntity"  useGeneratedKeys="true" keyProperty="pkId">
         insert into nyt_data_dict
         <trim prefix="(" suffix=")" suffixOverrides="," >
                         <if test="pkId != null" >
@@ -113,7 +91,7 @@
     </insert>
 
     <update id="updateByPrimaryKeySelective" parameterType="cn.com.ecenter.xzspxt.entity.po.NytDataDictEntity" >
-        update "nyt_data_dict"
+        update nyt_data_dict
         <set >
                                                             <if test="comment != null" >
                 comment = #{comment},
@@ -149,34 +127,22 @@
         where pk_id = #{pkId,jdbcType=VARCHAR}
     </update>
 
-    <select id="list" resultMap="BaseResultMap" parameterType="java.util.Map">
-        SELECT *
-        FROM
-        nyt_data_dict
-        WHERE
-        1 = 1
-        <if test="startTime != null and endTime != null">
-            and date(create_time) between #{startTime,jdbcType=VARCHAR} and #{endTime,jdbcType=VARCHAR}
-        </if>
-        ORDER BY create_time <if test="sort == 0">ASC</if><if test="sort == 1">DESC</if>
-        limit #{pageIndex}, #{pageSize};
-    </select>
 
-    <select id="count" resultType="java.lang.Integer" parameterType="java.util.Map" >
-        select COUNT(1)
-        FROM
-        nyt_data_dict
-        WHERE
-        1 = 1
-        <if test="startTime != null and endTime != null">
-            and date(create_time) between #{startTime,jdbcType=VARCHAR} and #{endTime,jdbcType=VARCHAR}
-        </if>
+
+    <select id="selectAll" resultMap="BaseResultMap" >
+        SELECT * FROM nyt_data_dict order by value_sort
     </select>
 
 
+    <select id="selectByPid" resultMap="BaseResultMap"  parameterType="java.lang.String" >
+        SELECT * FROM nyt_data_dict
+        where state = "0"
+        <if test="pid != null" >
+         and   fk_uid = #{pid}
+        </if>
+        order by value_sort
 
-
-
+    </select>
 
 
 </mapper>

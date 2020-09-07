@@ -1,0 +1,178 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background: url(/febs/images/login/bg.jpg);
+    background-size: cover;
+}
+
+.pic {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.login-wrap {
+    height: 648px;
+    position: relative;
+    top: 50%;
+    margin-top: -414px;
+}
+
+.layui-logo {
+    font: 60px/242px "Microsoft YaHei";
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+.layui-form {
+    background: #fff;
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 15px;
+    box-sizing: border-box;
+    padding: 0 70px 45px;
+    box-shadow: 0 0 16px #0e57a7;
+    position: relative;
+    height: 440px;
+}
+
+.layui-input-inline,
+.layui-input-block {
+    margin-left: 0px;
+}
+
+.layui-title {
+    font: 26px/62px "Microsoft YaHei";
+    color: #666;
+    text-align: center;
+    height: 122px;
+    box-sizing: border-box;
+    padding-top: 30px;
+}
+
+.layui-title>div span {
+    cursor: pointer;
+}
+
+.layui-title .line {
+    color: #b8e1ff;
+}
+
+.layui-title .bot-line {
+    width: 70%;
+    font-weight: bold;
+    border-bottom: 3px solid #419bff;
+    margin: 0 auto;
+    display: none;
+}
+
+.layui-title .active {
+    color: #419bff;
+}
+
+.layui-title .active .bot-line {
+    display: block;
+}
+
+.layui-form .dl {
+    width: 249px;
+    position: absolute;
+    left: 50%;
+    margin-left: -124.5px;
+    top: -39px;
+}
+
+.layui-form input {
+    height: 40px;
+    line-height: 40px;
+    border-radius: 6px;
+    font-size: 16px;
+    text-indent: 40px;
+}
+
+.layui-form .layui-btn {
+    height: 46px;
+    line-height: 46px;
+    border-radius: 46px;
+    font-size: 16px;
+}
+
+.layui-form .layui-form-checked[lay-skin=primary] i {
+    border-color: #419bff!important;
+    background-color: #419bff;
+    color: #fff;
+    font-size: 16px;
+}
+
+.layui-form .layui-form-checkbox[lay-skin=primary] span {
+    font-size: 16px;
+}
+
+.layui-tab-box {
+    display: none;
+}
+
+#login {
+    width: 95%;
+    display: block;
+    margin: 0 auto;
+}
+
+
+/* 二维码 */
+
+.scan {
+    text-align: center;
+    font: 22px/22px "Microsoft YaHei";
+    color: #999999;
+    margin: 20px auto;
+}
+
+.layui-icon-refresh-3 {
+    font: 22px/22px "Microsoft YaHei";
+    color: #3aaeff;
+}
+
+.ewm {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+.layui-form-item {
+    position: relative;
+}
+
+.layui-form-item .icon {
+    font-size: 22px;
+    color: #5d91f5;
+    left: 20px;
+    top: 8px;
+    position: absolute;
+}
+
+.layui-form-mid {
+    height: 40px;
+    padding: 0!important;
+    margin-right: 0;
+    width: 125px;
+    background: none;
+}
+
+.layui-form-item .layui-input-inline {
+    width: 180px;
+}
+
+.layui-icon-ok:hover {
+    color: #5d91f5;
+}

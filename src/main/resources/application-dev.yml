@@ -1,4 +1,7 @@
 spring:
+  thymeleaf: # 修改前端页面不刷新
+    cache: false
+    mode: LEGACYHTML5
   datasource:
     dynamic:
       # 是否开启 SQL日志输出，生产环境建议关闭，有性能损耗
@@ -15,25 +18,25 @@ spring:
       datasource:
         # 数据源-1，名称为 base
         base:
-          username: root
-          password: 123456
+          username: nyt_xzspxt
+          password: xzspxt
           driver-class-name: com.mysql.cj.jdbc.Driver
-          url: jdbc:mysql://localhost:3306/nyt_xzspxt?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8&zeroDateTimeBehavior=CONVERT_TO_NULL
+          url: jdbc:mysql://192.168.14.88:3396/nyt_xzspxt?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8&zeroDateTimeBehavior=CONVERT_TO_NULL
          # 数据源-2，名称为 quartz
         quartz:
-          username: root
-          password: 123456
+          username: qlt_qlsx
+          password: qlsx
           driver-class-name: com.mysql.jdbc.Driver
-          url: jdbc:mysql://localhost:3306/qlt_qlsx?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8&zeroDateTimeBehavior=CONVERT_TO_NULL
+          url: jdbc:mysql://192.168.14.88:3396/qlt_qlsx?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8&zeroDateTimeBehavior=CONVERT_TO_NULL
   redis:
     # Redis数据库索引（默认为 0）
     database: 0
     # Redis服务器地址
-    host: 127.0.0.1
+    host: 192.168.14.88
     # Redis服务器连接端口
     port: 6379
     # Redis 密码
-    password:
+    password: 347d6kAvuXkSNO6L
     lettuce:
       pool:
         # 连接池中的最小空闲连接
@@ -56,3 +59,8 @@ upload:
   path: \opt\tomcat8080
   #文件folder
   folder: \file
+#pagehelper:
+#  helper-dialect: mysql
+#  params: count=countSql
+#  reasonable: true
+#  support-methods-arguments: true

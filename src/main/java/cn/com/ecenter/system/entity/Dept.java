@@ -43,7 +43,6 @@ public class Dept implements Serializable {
      */
     @TableField("DEPT_NAME")
     @NotBlank(message = "{required}")
-    @Size(max = 10, message = "{noMoreThan}")
     @ExcelField(value = "部门名称")
     private String deptName;
 
@@ -63,5 +62,37 @@ public class Dept implements Serializable {
     @TableField("MODIFY_TIME")
     @ExcelField(value = "修改时间", writeConverter = TimeConverter.class)
     private Date modifyTime;
+
+    @TableField("organization_oid")
+    @ExcelField(value = "组织oid")
+    private String organizationOid;
+
+    @TableField("unified_credit_code")
+    @ExcelField(value = "统一信用代码")
+    private String unifiedCreditCode;
+
+    @TableField("org_live")
+    @ExcelField(value = "原组织编码")
+    private String orgLive;
+
+    @TableField("unique_coding")
+    @ExcelField(value = "组织唯一编码")
+    private String uniqueCoding;
+
+    @TableField("administration_code")
+    @ExcelField(value = "行政区划编码+部门序号")
+    private String administrationCode;
+
+    @TableField("is_delete")
+    @ExcelField(value = "是否删除（0-正常，1删除）")
+    private String isDelete;
+
+    @TableField("regioncode")
+    @ExcelField(value = "原组织编码")
+    private String regioncode;
+
+    @TableField("bik1")
+    @ExcelField(value = "备用字段")
+    private String bik1;
 
 }

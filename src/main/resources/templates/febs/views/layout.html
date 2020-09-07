@@ -21,14 +21,15 @@
                     <a>
                         <img style="width: 1.9rem;margin-right:.5rem;border-radius: 50%"
                              src="{{= ctx + 'febs/images/avatar/' + currentUser.avatar }}" title="头像">
-                        {{ currentUser.username }}
+                        {{ currentUser.name }}
                     </a>
                     <dl class="layui-nav-child">
                         <dd><a class="layui-nav-child-href" id="user-profile">个人中心</a></dd>
                         <dd><a class="layui-nav-child-href" id="password-update">密码修改</a></dd>
-                        <dd><a class="layui-nav-child-href" target="_blank" href="https://github.com/wuyouzhuguli/FEBS-Shiro">项目地址</a></dd>
+                        <!--<dd><a class="layui-nav-child-href" target="_blank" href="https://github.com/wuyouzhuguli/FEBS-Shiro">项目地址</a></dd>-->
                         <hr/>
-                        <dd><a class="layui-nav-child-href" data-th-href="@{logout}">退出登录</a></dd>
+                       <!-- <dd><a class="layui-nav-child-href" data-th-href="@{logout}">退出登录</a></dd>-->
+<dd><a class="layui-nav-child-href" id="user-logout">退出登录</a></dd>
                     </dl>
                 </li>
             </ul>
@@ -65,7 +66,7 @@
         <div class="layui-side-scroll">
             <div class="layui-logo" style="cursor: pointer">
                 <img data-th-src="@{febs/images/logo.png}">
-                <span>浙江省农业农村厅行政审批系统</span>
+                <span>浙江省农业农村厅<br/>行政审批系统</span>
             </div>
             <script
                     type="text/html"
@@ -164,6 +165,15 @@
 
         $view.on('click', '#user-profile', function () {
             febs.navigate("/user/profile");
+        });
+        
+        $view.on('click', '#user-logout', function () {
+        	febs.modal.confirm('提示信息', '确定要退出吗？', function () {
+                window.location='logout';
+                //febs.alert.info("确定按钮回调");
+            }, function () {
+                //febs.alert.info("取消按钮回调");
+            });
         });
 
         function initTheme() {

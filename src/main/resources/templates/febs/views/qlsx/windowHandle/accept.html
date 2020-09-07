@@ -1,0 +1,388 @@
+
+<!--办理弹框-->
+<div class="site-text" style="" id="acceptwin">
+    <div class="layui-tab">
+        <div class="layui-tab-content">
+            <!--基本信息弹框结束-->
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form" method="post" lay-filter="apasinfo" id="apasinfo" >
+                    <fieldset class="layui-elem-field site-demo-button"
+                              style="margin: 2px; padding:10px; border-color: #000;">
+                        <legend style="font-size: 18px">办件基本信息</legend>
+                        <table class="layui-table" style="border-color: #1c1f27;">
+                            <tr>
+                                <td style='color:#75409A'>  事项名称：</td>
+                                <td>  <input type="text" lay name="servicename" lay-verify="title" autocomplete="off"
+                                             class="layui-input" style="border-color: #ffffff " readonly></td>
+                                <td style='color:#75409A'>事项编码：</td>
+                                <td> <input type="text" lay name="servicecode" lay-verify="title" autocomplete="off" readonly
+                                            class="layui-input" style="border-color: #ffffff"></td>
+                            </tr>
+                            <tr>
+                                <td style='color:#75409A'>类型：</td>
+                                <td> <input type="radio" name="applyType" value="1" title="个人">
+                                    <input type="radio" name="applyType" value="2" title="企业">
+                                    <input type="radio" name="applyType" value="3" title="非企业"></td>
+                                <td style='color:#75409A'>是否投资固定资产项目：</td>
+                                <td><input type="radio" name="isTouzip" value="1" title="是">
+                                    <input type="radio" name="isTouzip" value="0" title="否"></td>
+                            </tr>
+                            <tr>
+                                <td style='color:#75409A'>申报事项名称：</td>
+                                <td> <input type="text" name="projectname" lay-verify="title" autocomplete="off" readonly
+                                            class="layui-input" ></td>
+                                <td style='color:#75409A'>权力事项基本码：</td>
+                                <td> <input type="text" lay name="servicecodeId" lay-verify="title" autocomplete="off"readonly
+                                            class="layui-input" style="border-color: #ffffff "></td>
+                            </tr>
+                            <tr>
+                                <td style='color:#75409A'> 权利事项版本号：</td>
+                                <td> <input type="text" lay name="serviceversion" lay-verify="title" autocomplete="off" readonly
+                                            class="layui-input" style="border-color: #ffffff"></td>
+                                <td style='color:#75409A'> 项目性质：</td>
+                                <td><select name="approveType" lay-verify="required" lay-search="" class="selDict" dict="273">
+                                </select></td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                    <fieldset class="layui-elem-field site-demo-button"
+                              style="margin: 2px; padding:10px; border-color: #000;">
+                        <legend style="font-size: 18px">申报者信息</legend>
+                        <table class="layui-table" style="border-color: #1c1f27;">
+                            <tr>
+                                <td style='color:#75409A'>申报者名称：</td>
+                                <td colspan="3"><input type="text" name="applyname" lay-verify="title" autocomplete="off"
+                                                       placeholder="如为个人，则填写姓名；如为法人，则填写单位名称" class="layui-input"></td>
+                            </tr>
+                            <tr>
+                                <td style='color:#75409A'>申报者证件类型</td>
+                                <td> <select name="applyCardtype" lay-verify="required" lay-search="" class="selDict" dict="232"
+                                             style="border-color: #ffffff">
+                                </select></td>
+                                <td style='color:#75409A'>申报者证件号码</td>
+                                <td><input type="text" name="applyCardnumber" lay-verify="title" autocomplete="off" onkeyup="value=value.replace(/[^\w\.\/]/ig,'')"
+                                           class="layui-input" style="border-color: #ffffff"></td>
+                            </tr>
+                            <tr>
+
+                                <td style='color:#75409A'>办理方式：</td>
+                                <td> <select name="busMode" lay-verify="required" lay-search="" class="selDict" dict="283">
+                                </select></td>
+                                <td style='color:#75409A'>办理方式说明：</td>
+                                <td>   <textarea name="busModeDesc" lay-verify="required" style=";"
+                                                 autocomplete="off" class="layui-textarea"
+                                                 placeholder="如果办理方式指为其他，可对该办理方式进行描述"></textarea></td>
+                            </tr>
+                            <tr>
+                                <td style='color:#75409A'>办件类型 ：</td>
+                                <td> <select name="infotype" class="selDict" dict="202">
+                                </select></td>
+                                <td style='color:#75409A'>业务类型：</td>
+                                <td> <select name="busType" lay-filter="aihao" class="selDict" dict="277">
+                                </select></td>
+                            </tr>
+                            <tr>
+                                <td style='color:#75409A'>联系人/代理人姓名：</td>
+                                <td> <input type="text" lay name="contactman" lay-verify="title" autocomplete="off"
+                                            class="layui-input" style="border-color: #ffffff"></td>
+                                <td style='color:#75409A'>联系人手机号码：</td>
+                                <td> <input Oninput="value=value.replace(/[^\d]/g,'')" maxlength=11 type="text" lay name="telphone" lay-verify="title" autocomplete="off"
+                                            class="layui-input" style="border-color: #ffffff"></td>
+                            </tr>
+                            <tr>
+
+                                <td style='color:#75409A'>联系人/代理人证件类型：</td>
+                                <td> <select name="contactmanCardtype" lay-verify="required" lay-search="" class="selDict" dict="232">
+                                </select></td>
+                                <td style='color:#75409A'>联系人/代理人证件号码：</td>
+                                <td>  <input type="text" name="contactmanCardnumber" onkeyup="value=value.replace(/[^\w\.\/]/ig,'')" lay-verify="title" autocomplete="off"
+                                             class="layui-input" style="border-color: #ffffff"></td>
+
+                            </tr>
+                            <tr>
+                                <td style='color:#75409A'>申报者邮编：</td>
+                                <td> <input type="text" name="postcode" lay-verify="title" autocomplete="off"
+                                            placeholder="申报者联系地址对应的邮政编码" class="layui-input"
+                                            style="border-color: #ffffff"></td>
+                                <td style='color:#75409A'>通讯地址 ：</td>
+                                <td><input type="text" name="address" lay-verify="title" autocomplete="off"
+                                           class="layui-input" placeholder="申报者的联系地址"
+                                           style="border-color: #ffffff;"></td>
+                            </tr>
+                            <tr>
+                                <td style='color:#75409A'>法定代表人：</td>
+                                <td > <input type="text" name="legalman" lay-verify="title" autocomplete="off"
+                                             class="layui-input" style="border-color: #ffffff"></td>
+                                <td style='color:#75409A'>申报数量：</td>
+                                <td> <input type="text" name="projnum" lay-verify="title" autocomplete="off" Oninput="value=value.replace(/[^\d]/g,'')"
+                                            class="layui-input"></td>
+                            </tr>
+
+                            <tr>
+                                <td style='color:#75409A'>法定代表人证件类型：</td>
+                                <td>  <select name="contactmanCardtype" lay-verify="required" lay-search="" class="selDict" dict="232">
+                                </select></td>
+                                <td style='color:#75409A'>法定代表人证件号码：</td>
+                                <td> <input type="text" name="xkFrSfzh" lay-verify="title" autocomplete="off" onkeyup="value=value.replace(/[^\w\.\/]/ig,'')"
+                                            class="layui-input" style="border-color: #ffffff;"></td>
+                            </tr>
+                            <tr>
+                                <td style='color:#75409A'>收件部门名称：</td>
+                                <td> <input type="text" lay name="deptname" lay-verify="title" autocomplete="off"
+                                            class="layui-input" style="border-color: #ffffff"></td>
+                                <td style='color:#75409A'>收件部门编码：</td>
+                                <td>  <input type="text" lay name="deptid" lay-verify="title" autocomplete="off"
+                                             class="layui-input" style="border-color: #ffffff"></td>
+                            </tr>
+                            <tr>
+                                <td style='color:#75409A'>实施机构统一社会信用代码：</td>
+                                <td> <input type="text" lay name="ssOrgcode" lay-verify="title" autocomplete="off"
+                                            class="layui-input" style="border-color: #ffffff"></td>
+                                <td style='color:#75409A'>收件部门所属行政区划编码：</td>
+                                <td>  <input type="text" lay name="areacode" lay-verify="title" autocomplete="off"
+                                             class="layui-input" style="border-color: #ffffff"></td>
+                            </tr>
+                            <tr>
+                                <td style='color:#75409A'>数据来源单位：</td>
+                                <td> <input type="text" lay name="xkLydw" lay-verify="title" autocomplete="off"
+                                            class="layui-input" style="border-color: #ffffff"></td>
+                                <td style='color:#75409A'>数据来源单位统一社会信用代码：</td>
+                                <td><input type="text" lay name="xkLydwdm" lay-verify="title" autocomplete="off"
+                                           class="layui-input" style="border-color: #ffffff"></td>
+                            </tr>
+                            <tr>
+                                <td style='color:#75409A'>项目性质：</td>
+                                <td> <select name="approveType" lay-verify="required" lay-search="" class="selDict" dict="273">
+                                </select></td>
+                                <td style='color:#75409A'>创建时间</td>
+                                <td><input type="date" lay name="createTime" lay-verify="title" autocomplete="off"
+                                           class="layui-input" style="border-color: #ffffff"></td>
+                            </tr>
+                            <tr>
+                                <td style='color:#75409A'>申报来源：</td>
+                                <td> <select name="applyfrom" lay-verify="required" lay-search="" class="selDict" dict="258">
+                                </select></td>
+                                <td style='color:#75409A'>审批类型：</td>
+                                <td>  <select name="approveType" lay-verify="required" lay-search="" class="selDict" dict="267">
+                                </select></td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                    <input type="text" lay name="tongid" lay-verify="title" autocomplete="off"
+                           class="layui-input" style="border-color: #ffffff;visibility:hidden;">
+
+
+                    <!--基本信息弹框结束-->
+
+                    <fieldset class="layui-elem-field site-demo-button"
+                              style="margin: 2px; padding:10px; border-color: #000;">
+                        <legend style="font-size: 18px">材料相关</legend>
+                        <table class="layui-table" id="cailiao" lay-filter="cailiao">
+                        </table>
+                    </fieldset>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="hidden" th:value="${pkId}" id="pkId" name="pkId"/>
+
+
+
+<script data-th-inline="none" type="text/javascript">
+
+    layui.use([ 'upload','dropdown', 'jquery', 'laydate', 'form', 'table', 'febs', 'treeSelect','dict'], function () {
+        var $ = layui.jquery,
+            laydate = layui.laydate,
+            febs = layui.febs,
+            form = layui.form,
+            table = layui.table,
+            treeSelect = layui.treeSelect,
+            dropdown = layui.dropdown,
+            $view = $('#acceptwin'),
+            dict = layui.dict,
+            $searchForm = $view.find('form'),
+            sortObject = {field: 'createTime', type: null},
+            linkTab = $("#linkTable"),
+            upload = layui.upload,
+            tableIns,
+            createTimeFrom,
+            createTimeTo,
+            materalIns;
+
+        dict.renderDictAll();
+        form.render();
+        form.render('select');
+
+        initmateral();
+
+        // 事项所需材料回显
+        function initmateral() {
+            table.render({
+                elem: '#cailiao',
+                url: ctx + 'nytMateralInfo/selectByChildren?pkId=' + $('#pkId').val(),
+                // cellMinWidth: 80,
+                page: false,
+                cols: [[
+                    {type: 'numbers', title: '<b>序号</b>', align:'center', width: 50},
+                    {field: 'materialName', title: '<b>材料名称</b>', align:'center', width: 300,templet :function (d) {
+                            return (`<input value="${d.materialName}" name="attrname" type="text" style="width: 280px;height: 40px;border: 0px;outline:none;cursor: pointer;" readonly  >`)
+                        }},
+                    {
+                        field: 'amount', title: '<b>份数</b>', width: 50, align:'center',templet: '#amount'
+                    },
+                    {
+                        field: 'memo', title: '<b>备注</b>', width: 150, align:'center',templet: '#memo'
+                    },
+                    {
+                        ffield: 'istake', title: '<b>是否收取</b>', width: 120, align:'center',templet: '#istake'
+                    },
+                    {
+                        field: 'taketype', title: '<b>收取方式</b>', width: 100, align:'center',templet: '#taketype'
+                    },
+
+                    {
+                        field: 'filename', title: '<b>上传</b>', width: 150, align:'center', templet: function (d) {
+
+                            var html = (`<button type="button" class="layui-btn fup" id="${d.id}"><i class="layui-icon"></i></button> `);
+                            picupload(d.id);
+
+                            return html;
+                        }
+                    },
+                    {
+                        field: 'fujian', title: '<b>操作</b>', width: 230, align:'center', templet: function (d) {
+
+                            var html = (`<div >
+                                            <table class="layui-table ${d.id}" style="width: 100%"></table>
+                                          </div>
+                                           <input name="filename" type="text" class="${d.id+'_ids'}" value="" hidden>`);
+                            return html;
+                        }
+                    }
+                ]],
+                done: function(res, curr, count){
+                    //如果是异步请求数据方式，res即为你接口返回的信息。
+                    //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
+
+                    var jsonData = JSON.stringify(res);// 转成JSON格式
+                    var result = $.parseJSON(jsonData);// 转成JSON对象
+                   picupload();
+                }
+            });
+        }
+
+        // 文件上传
+        function picupload(id) {
+
+            var ids = "";
+
+            upload.render({
+                elem:  '.fup',
+                url: 'formfile/upload', //改成您自己的上传接口
+                accept: 'file', //普通文件
+                multiple: true,
+                done: function(res){
+                    //返回附件id使用逗号分隔 拼接成字符串
+                    ids += res.id + ",";
+                    //alert(res.id);
+
+                    //定义出发上传的html控件
+                    var item = this.item;
+
+                   var i =  $(item).attr("id")
+                    console.log(i);
+                    // item.after('<div>'+res.originalName+'</div>');
+
+                    //上传附件后文件名称回显
+                    var html = (`
+                            <tr>
+                            <td><a href='${res.filepath}'>${res.originalName}</a> </td>
+                                 <td><input type="button" onclick='deleteTr(this)'  class="layui-btn layui-btn-xs layui-btn-danger demo-delete" value="删除"></td>
+                            </tr>`);
+                    //回显附件名称
+                    $('.'+i).append(html);
+                    //将ids追加到表格中;
+                    $('.'+i+'_ids').val(ids);
+                    layer.msg('上传成功');
+                }
+            });
+        }
+
+        //删除当前行
+        deleteTr = function (nowTr) {
+            //多一个parent就代表向前一个标签,
+            // 本删除范围为<td><tr>两个标签,即向前两个parent
+            //如果多一个parent就会删除整个table
+            $(nowTr).parent().parent().remove();
+            layer.msg("删除成功~")
+        }
+    })
+</script>
+
+
+<!--材料表格中的  文本框-->
+<script id="istake" type="text/html">
+    <select name="istake" lay-verify="required">
+        <option value="">-请选择-</option>'
+        <option value="0" >是</option>
+        <option value="1" >否</option>
+    </select>
+
+</script>
+
+<script type="text/html" id="amount">
+    <input type="text" name="amount" Oninput="value=value.replace(/[^\d]/g,'')" value=""  lay-filter="sexAmount" style="text-align: center; width: 40px;height: 40px;border: 0px;outline:none;cursor: pointer;">
+</script>
+<script type="text/html" id="memo">
+    <input type="text" name="memo" value=""  lay-filter="sexMemo" style="text-align: center; width: 100%;height: 40px;border: 0px;outline:none;cursor: pointer;">
+</script>
+<script type="text/html" id="taketype">
+    <select name="taketype" lay-verify="required" class="seDict" dict="287">
+      <option value="">-请选择-</option>'
+        <option value="1" >附件上传</option>
+        <option value="2" >纸质收取</option>
+        <option value="3" >电子证照库</option>
+    </select>
+</script>
+
+<!--页面按钮-->
+<script type="text/html" id="handlejob">
+    <span shiro:lacksPermission="user:view">
+        <span class="layui-badge-dot febs-bg-orange"></span> 无权限
+    </span>
+    <button type="button" class="layui-btn" lay-event="dojob" shiro:hasPermission="user:view">办理</button>
+</script>
+<script type="text/html" id="viewinfo">
+    <span shiro:lacksPermission="user:view">
+        <span class="layui-badge-dot febs-bg-orange"></span> 无权限
+    </span>
+    <button class="layui-btn layui-btn-primary layui-btn-sm" lay-event="nodedetail" shiro:hasPermission="user:update">环节详情</button>
+    <button class="layui-btn layui-btn-primary layui-btn-sm" lay-event="qldetail" shiro:hasPermission="user:update">事项详情</button>
+</script>
+
+
+<style>
+    .layui-table-cell {
+        font-size: 14px;
+        padding: 0 5px;
+        height: auto;
+        overflow: visible;
+        text-overflow: inherit;
+        white-space: normal;
+        word-break: break-all;
+        border-color: #000000;
+    }
+    .layui-table {
+        border-color: #000000;
+    }
+    .layui-input,
+    .layui-input-block,
+    .layui-textarea {
+        border-color: #ffffff
+    }
+    .layui-input layui-unselect {
+        hight: 22px;
+    }
+</style>

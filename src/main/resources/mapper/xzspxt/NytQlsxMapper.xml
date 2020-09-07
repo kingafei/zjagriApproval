@@ -294,7 +294,8 @@
         where id = #{id,jdbcType=VARCHAR}
     </select>
 
-    <insert id="addList" parameterType="java.util.List" >
+
+    <insert id="add" parameterType="cn.com.ecenter.xzspxt.entity.NytQlsxEntity" useGeneratedKeys="true" keyProperty="id">
         insert into nyt_qlsx
         (
         ID,
@@ -437,151 +438,151 @@
         NoSuit_ReasonDesc,
         business_regulate
         )
-        values
-        <foreach collection="list" item="item" index="index" separator=",">(
-            #{item.id
-        },
-            #{item.rowguid},
-            #{item.updateDate},
-            #{item.updateType},
-            #{item.qlKind},
-            #{item.qlAtt},
-            #{item.qlFullId},
-            #{item.qlMainitemId},
-            #{item.qlSubitemId},
-            #{item.shiquancj},
-            #{item.belongxiaqucode},
-            #{item.qlDepOrgcdoe},
-            #{item.ouorgcode},
-            #{item.ouguid},
-            #{item.itemsource},
-            #{item.itemsourcetype},
-            #{item.entrust},
-            #{item.entrustdes},
-            #{item.versionNumber},
-            #{item.versionDate},
-            #{item.qlEffectTime},
-            #{item.qlInnerCode},
-            #{item.qlName},
-            #{item.qlState},
-            #{item.lawbasis},
-            #{item.anticipateDay},
-            #{item.anticipateType},
-            #{item.promiseDay},
-            #{item.feebasis},
-            #{item.isLevywaiver},
-            #{item.applyerminCount},
-            #{item.isPilot},
-            #{item.isSimplepunish},
-            #{item.qlDep},
-            #{item.acpInstitution},
-            #{item.decInstitution},
-            #{item.leadDept},
-            #{item.bjtype},
-            #{item.benjispxz},
-            #{item.handleFrequency},
-            #{item.contentInvolve},
-            #{item.xingzhenxdrxz},
-            #{item.applicableObject},
-            #{item.xingzhenxdrxy},
-            #{item.applyCondition},
-            #{item.countLimit},
-            #{item.countNote},
-            #{item.banRequirement},
-            #{item.shixiangsctype},
-            #{item.shixiangsclx},
-            #{item.banjianFinishfiles},
-            #{item.linkTel},
-            #{item.superviseTel},
-            #{item.applyType},
-            #{item.applyTypeTel},
-            #{item.applyTypeMail},
-            #{item.applyTypeFax},
-            #{item.handleType},
-            #{item.webapplyurl},
-            #{item.webconsulturl},
-            #{item.mbfarenadd},
-            #{item.mbgerenflag},
-            #{item.nosuitApply},
-            #{item.isUnifydo},
-            #{item.isUpunify},
-            #{item.isCs},
-            #{item.isVlb},
-            #{item.unifydodes},
-            #{item.webapplymode},
-            #{item.chargeFlag},
-            #{item.chargeBasis},
-            #{item.hangyeclasstype},
-            #{item.rightclassQiyezt},
-            #{item.rightclassQiyedx},
-            #{item.rightclassGerensx},
-            #{item.rightclassGerendx},
-            #{item.qlSubKind},
-            #{item.imFlowUrl},
-            #{item.inFlowInfoId},
-            #{item.outFlowUrl},
-            #{item.materialInfoId},
-            #{item.chargeitemInfoId},
-            #{item.qaInfoId},
-            #{item.factInfoid},
-            #{item.acceptAddressInfoId},
-            #{item.farenurl},
-            #{item.serviceMode},
-            #{item.serviceDay},
-            #{item.destime},
-            #{item.gerenflag},
-            #{item.isTongjian},
-            #{item.qlInnerCodeItem},
-            #{item.applyerminCountDesc},
-            #{item.outypecode},
-            #{item.outFlowDesc},
-            #{item.banjianFinishtype},
-            #{item.isSpecialpro},
-            #{item.baknote},
-            #{item.state2},
-            #{item.syncSign},
-            #{item.syncDate},
-            #{item.syncErrorDesc},
-            #{item.appwebapplyurl},
-            #{item.appappointmenturl},
-            #{item.appointmenturl},
-            #{item.isWebappointment},
-            #{item.webappointmentperiod},
-            #{item.maincontext},
-            #{item.doDept},
-            #{item.relatedguid},
-            #{item.relatedId},
-            #{item.isExpress},
-            #{item.ispyc},
-            #{item.lbsx},
-            #{item.serviceSubKind},
-            #{item.bak1},
-            #{item.bak2},
-            #{item.bak3},
-            #{item.bak4},
-            #{item.bak5},
-            #{item.bak6},
-            #{item.bak7},
-            #{item.bak8},
-            #{item.bak9},
-            #{item.bak10},
-            #{item.bak11},
-            #{item.bak12},
-            #{item.bak13},
-            #{item.op},
-            #{item.tongTime},
-            #{item.sendtime},
-            #{item.tongid},
-            #{item.isTouzip},
-            #{item.nounifyDo},
-            #{item.ununifydoOther},
-            #{item.ishasownflow},
-            #{item.bsznUrl},
-            #{item.nosuitReasondesc},
-            #{item.businessRegulate}
-         )
-        </foreach>
+        values(
+        <!--<foreach collection="list" item="item" index="index" separator=",">(-->
+        #{id},
+        #{rowguid},
+        #{updateDate},
+        #{updateType},
+        #{qlKind},
+        #{qlAtt},
+        #{qlFullId},
+        #{qlMainitemId},
+        #{qlSubitemId},
+        #{shiquancj},
+        #{belongxiaqucode},
+        #{qlDepOrgcdoe},
+        #{ouorgcode},
+        #{ouguid},
+        #{itemsource},
+        #{itemsourcetype},
+        #{entrust},
+        #{entrustdes},
+        #{versionNumber},
+        #{versionDate},
+        #{qlEffectTime},
+        #{qlInnerCode},
+        #{qlName},
+        #{qlState},
+        #{lawbasis},
+        #{anticipateDay},
+        #{anticipateType},
+        #{promiseDay},
+        #{feebasis},
+        #{isLevywaiver},
+        #{applyerminCount},
+        #{isPilot},
+        #{isSimplepunish},
+        #{qlDep},
+        #{acpInstitution},
+        #{decInstitution},
+        #{leadDept},
+        #{bjtype},
+        #{benjispxz},
+        #{handleFrequency},
+        #{contentInvolve},
+        #{xingzhenxdrxz},
+        #{applicableObject},
+        #{xingzhenxdrxy},
+        #{applyCondition},
+        #{countLimit},
+        #{countNote},
+        #{banRequirement},
+        #{shixiangsctype},
+        #{shixiangsclx},
+        #{banjianFinishfiles},
+        #{linkTel},
+        #{superviseTel},
+        #{applyType},
+        #{applyTypeTel},
+        #{applyTypeMail},
+        #{applyTypeFax},
+        #{handleType},
+        #{webapplyurl},
+        #{webconsulturl},
+        #{mbfarenadd},
+        #{mbgerenflag},
+        #{nosuitApply},
+        #{isUnifydo},
+        #{isUpunify},
+        #{isCs},
+        #{isVlb},
+        #{unifydodes},
+        #{webapplymode},
+        #{chargeFlag},
+        #{chargeBasis},
+        #{hangyeclasstype},
+        #{rightclassQiyezt},
+        #{rightclassQiyedx},
+        #{rightclassGerensx},
+        #{rightclassGerendx},
+        #{qlSubKind},
+        #{imFlowUrl},
+        #{inFlowInfoId},
+        #{outFlowUrl},
+        #{materialInfoId},
+        #{chargeitemInfoId},
+        #{qaInfoId},
+        #{factInfoid},
+        #{acceptAddressInfoId},
+        #{farenurl},
+        #{serviceMode},
+        #{serviceDay},
+        #{destime},
+        #{gerenflag},
+        #{isTongjian},
+        #{qlInnerCodeItem},
+        #{applyerminCountDesc},
+        #{outypecode},
+        #{outFlowDesc},
+        #{banjianFinishtype},
+        #{isSpecialpro},
+        #{baknote},
+        #{state2},
+        #{syncSign},
+        #{syncDate},
+        #{syncErrorDesc},
+        #{appwebapplyurl},
+        #{appappointmenturl},
+        #{appointmenturl},
+        #{isWebappointment},
+        #{webappointmentperiod},
+        #{maincontext},
+        #{doDept},
+        #{relatedguid},
+        #{relatedId},
+        #{isExpress},
+        #{ispyc},
+        #{lbsx},
+        #{serviceSubKind},
+        #{bak1},
+        #{bak2},
+        #{bak3},
+        #{bak4},
+        #{bak5},
+        #{bak6},
+        #{bak7},
+        #{bak8},
+        #{bak9},
+        #{bak10},
+        #{bak11},
+        #{bak12},
+        #{bak13},
+        #{op},
+        #{tongTime},
+        #{sendtime},
+        #{tongid},
+        #{isTouzip},
+        #{nounifyDo},
+        #{ununifydoOther},
+        #{ishasownflow},
+        #{bsznUrl},
+        #{nosuitReasondesc},
+        #{businessRegulate}
+        )
+        <!--</foreach>-->
     </insert>
+
 
     <update id="updateByPrimaryKeySelective" parameterType="cn.com.ecenter.xzspxt.entity.NytQlsxEntity" >
         update "nyt_qlsx"
@@ -1031,4 +1032,64 @@
         </if>
     </select>
 
+    <select id="selectByUserId" parameterType="java.util.Map" resultType="cn.com.ecenter.xzspxt.entity.NytQlsxEntity">
+      SELECT * from (SELECT * from nyt_qlsx
+        where  ouguid = (select org_live from t_user tu LEFT JOIN t_dept td on tu.dept_id =  td.dept_id where tu.user_id = #{id})
+        ORDER BY UPDATE_DATE desc)  t
+        LEFT JOIN nyt_data_dict ndd
+        on t.QL_KIND = ndd.dict_value
+                <where>
+                    ndd.dict_sign="QL_KIND" and  t.QL_KIND = "01"
+                    <if test="param!=null">
+                       and  ql_name like concat('%', #{param}, '%')
+                    </if>
+                </where>
+        GROUP BY ql_inner_code
+
+    </select>
+
+        <select id="getTotal" resultType="java.lang.Integer" parameterType="java.util.Map">
+          SELECT count(1) from (
+            SELECT (id) from (SELECT * from nyt_qlsx
+            where  ouguid = (select org_live from t_user tu LEFT JOIN t_dept td on tu.dept_id =  td.dept_id where tu.user_id =  #{id})
+            ORDER BY UPDATE_DATE desc)  t
+            LEFT JOIN nyt_data_dict ndd
+            on t.QL_KIND = ndd.dict_value
+            <where>
+                ndd.dict_sign="QL_KIND" and  t.QL_KIND = "01"
+                <if test="param!=null">
+                  and   ql_name like concat('%', #{param}, '%')
+                </if>
+            </where>
+            GROUP BY ql_inner_code
+            ) w
+
+
+
+
+
+<!--            select count(1) from   (SELECT count(1) FROM-->
+
+<!--            (SELECT id,ql_inner_code FROM nyt_qlsx WHERE-->
+<!--            ouguid =(SELECT org_live FROM t_user tu LEFT JOIN t_dept td ON tu.dept_id = td.dept_id WHERE tu.user_id = 1)-->
+<!--            ORDER BY UPDATE_DATE DESC) t-->
+<!--            <where>-->
+<!--                <if test="param!=null">-->
+<!--                    ql_name like concat('%', #{param}, '%')-->
+<!--                </if>-->
+<!--            </where>-->
+<!--            GROUP BY ql_inner_code) w-->
+
+        </select>
+
+    <select id="selectByTongId" parameterType="java.lang.String" resultType="cn.com.ecenter.xzspxt.entity.NytQlsxEntity" >
+         select nq.*,value_comment bjtype1   from nyt_qlsx nq left join  nyt_data_dict nd
+         on nq.BJTYPE = nd.dict_value
+         where tongId = #{tongId} and dict_sign = "BJTYPE"
+    </select>
+
+<!--    <select id="selBjType" resultType="java.lang.String">-->
+<!--        select value_comment from nyt_data_dict-->
+<!--        where dict_sign = "BJTYPE" and dict_value = #{typeValue}-->
+<!--    </select>-->
 </mapper>

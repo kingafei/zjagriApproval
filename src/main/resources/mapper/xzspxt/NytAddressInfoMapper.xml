@@ -15,7 +15,8 @@
         CREATE_TIME,
         UPDATE_TIME,
         REMARKS,
-        IS_DELETE
+        IS_DELETE,
+        tongID
         )
         values
         <foreach collection="list" item="item" index= "index" separator =",">
@@ -31,7 +32,8 @@
             #{item.createTime},
             #{item.updateTime},
             #{item.remarks},
-            #{item.isDelete}
+            #{item.isDelete},
+            #{item.tongid}
             )
         </foreach>
 

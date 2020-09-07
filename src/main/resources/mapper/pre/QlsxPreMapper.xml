@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.com.ecenter.pre.mapper.QlsxPreMapper">
+
+    <resultMap type="cn.com.ecenter.pre.entity.QlsxPreEntity" id="BaseResultMap">
+        <result property="id" column="id"/>
+        <result property="rowguid" column="ROWGUID"/>
+        <result property="tongid" column="tongID"/>
+        <result property="projid" column="PROJID"/>
+        <result property="sxid" column="sxid"/>
+        <result property="bjid" column="bjid"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+                        id,
+                        ROWGUID,
+                        tongID,
+                        PROJID,
+                        sxid,
+                        bjid,
+            </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        *
+        from "qlsx_pre"
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <insert id="insertSelective" parameterType="cn.com.ecenter.pre.entity.QlsxPreEntity" >
+        insert into qlsx_pre
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+                        <if test="id != null" >
+                id,
+            </if>
+                        <if test="rowguid != null" >
+                ROWGUID,
+            </if>
+                        <if test="tongid != null" >
+                tongID,
+            </if>
+                        <if test="projid != null" >
+                PROJID,
+            </if>
+                        <if test="sxid != null" >
+                sxid,
+            </if>
+                        <if test="bjid != null" >
+                bjid,
+            </if>
+                    </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+                        <if test="id != null" >
+                #{id},
+            </if>
+                        <if test="rowguid != null" >
+                #{rowguid},
+            </if>
+                        <if test="tongid != null" >
+                #{tongid},
+            </if>
+                        <if test="projid != null" >
+                #{projid},
+            </if>
+                        <if test="sxid != null" >
+                #{sxid},
+            </if>
+                        <if test="bjid != null" >
+                #{bjid},
+            </if>
+                    </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="cn.com.ecenter.pre.entity.QlsxPreEntity" >
+        update "qlsx_pre"
+        <set >
+                                    <if test="id != null" >
+                id = #{id},
+            </if>
+                                                <if test="rowguid != null" >
+                ROWGUID = #{rowguid},
+            </if>
+                                                <if test="tongid != null" >
+                tongID = #{tongid},
+            </if>
+                                                <if test="projid != null" >
+                PROJID = #{projid},
+            </if>
+                                                <if test="sxid != null" >
+                sxid = #{sxid},
+            </if>
+                                                <if test="bjid != null" >
+                bjid = #{bjid},
+            </if>
+                                </set>
+        where pk_id = #{pkId,jdbcType=VARCHAR}
+    </update>
+
+    <select id="list" resultMap="BaseResultMap" parameterType="java.util.Map">
+        SELECT *
+        FROM
+        "qlsx_pre"
+        WHERE
+        1 = 1
+        <if test="startTime != null and endTime != null">
+            and date(create_time) between #{startTime,jdbcType=VARCHAR} and #{endTime,jdbcType=VARCHAR}
+        </if>
+        ORDER BY create_time <if test="sort == 0">ASC</if><if test="sort == 1">DESC</if>
+        limit #{pageIndex}, #{pageSize};
+    </select>
+
+    <select id="count" resultType="java.lang.Integer" parameterType="java.util.Map" >
+        select COUNT(1)
+        FROM
+        "qlsx_pre"
+        WHERE
+        1 = 1
+        <if test="startTime != null and endTime != null">
+            and date(create_time) between #{startTime,jdbcType=VARCHAR} and #{endTime,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+</mapper>

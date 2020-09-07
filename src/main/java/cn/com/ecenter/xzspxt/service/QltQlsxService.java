@@ -11,19 +11,19 @@ public interface QltQlsxService {
 
     public int fingTotal();
 
-    public Map<String, Object> flowAnalytical(String strXml, String pid);
+    public Map<String, Object> flowAnalytical(String strXml, String pid, Long tongid);
 
-    public List<NytMateralInfoEntity> materalAnalytical(String strXml, String pid);
+    public List<NytMateralInfoEntity> materalAnalytical(String strXml, String pid, Long tongid);
 
-    public List<NytChargeitemInfoEntity> chargeitmeAnalytical(String strXml, String pid);
+    public List<NytChargeitemInfoEntity> chargeitmeAnalytical(String strXml, String pid, Long tongid);
 
-    public List<NytQaInfoEntity> qaAnalytical(String strXml, String pid);
+    public List<NytQaInfoEntity> qaAnalytical(String strXml, String pid, Long tongid);
 
-    public List<NytFactInfoEntity> factAnalytical(String strXml, String pid);
+    public List<NytFactInfoEntity> factAnalytical(String strXml, String pid, Long tongid);
 
-    public List<NytAddressInfoEntity> addressAnalytical(String strXml, String pid);
+    public List<NytAddressInfoEntity> addressAnalytical(String strXml, String pid, Long tongid);
 
-    public List<NytRelatedInfoEntity> relatedAnalytical(String strXml, String pid);
+    public List<NytRelatedInfoEntity> relatedAnalytical(String strXml, String pid, Long tongid);
 
 
 

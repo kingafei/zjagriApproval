@@ -17,4 +17,10 @@ public class NytMateralInfoServiceImpl implements NytMateralInfoService {
     public void add(List<NytMateralInfoEntity> list) {
         nytMateralInfoMapper.add(list);
     }
+
+    @Override
+    public List<NytMateralInfoEntity> selectPId(String pId) {
+
+        return  nytMateralInfoMapper.selectPID(pId);
+    }
 }
